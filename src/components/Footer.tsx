@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 const BrandIcons = {
   Twitter: () => (
@@ -28,14 +29,17 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-4 gap-12 mb-20">
           <div className="col-span-1 md:col-span-1">
-            <div className="flex items-center gap-2 mb-6">
-              <div style={{ backgroundColor: "#2A8FA0" }} className="w-10 h-10 rounded-xl flex items-center justify-center">
-                <span className="text-white font-bold text-xl">A</span>
-              </div>
+            <Link href="/" className="flex items-center gap-3 mb-6">
+              <Image
+                src="/whitelogo.png"
+                alt="Articulink Logo"
+                width={44}
+                height={44}
+              />
               <span className="text-2xl font-bold tracking-tight text-white">
                 Articu<span style={{ color: "#3DAFC4" }}>link</span>
               </span>
-            </div>
+            </Link>
             <p style={{ color: "#C8D8EE" }} className="leading-relaxed mb-8">
               Revolutionizing speech therapy with AI. We help people find their voice and reconnect with the world.
             </p>

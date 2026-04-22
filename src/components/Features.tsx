@@ -3,53 +3,75 @@
 import { motion } from "framer-motion";
 import { Mic2, LineChart, MapPin, ShieldCheck, Zap, Globe } from "lucide-react";
 
+const COLORS = {
+  teal: "#2A8FA0",
+  royalBlue: "#1A4480",
+  mediumBlue: "#2A5FA8",
+  tealDark: "#1E6B78",
+  tealLight: "#3DAFC4",
+  deepNavy: "#0F2847",
+  textDark: "#1C2B3A",
+  textMid: "#4A5A6A",
+  cream: "#FAF8F4",
+  warmWhite: "#F5F1EA",
+  sandMid: "#DDD6C8",
+};
+
 const features = [
   {
     icon: Mic2,
     title: "AI Clarity Engine",
     description: "Our neural networks analyze speech patterns in real-time to provide instant feedback and clarity enhancement.",
-    color: "bg-teal"
+    color: COLORS.teal,
   },
   {
     icon: LineChart,
     title: "Progress Analytics",
     description: "Track your improvement over weeks and months with detailed visualization of your speech milestones.",
-    color: "bg-royal-blue"
+    color: COLORS.royalBlue,
   },
   {
     icon: MapPin,
     title: "Facility Locator",
     description: "Connect with the nearest certified clinical facilities and speech-language pathologists in your area.",
-    color: "bg-medium-blue"
+    color: COLORS.mediumBlue,
   },
   {
     icon: ShieldCheck,
     title: "HIPAA Compliant",
     description: "Your data is encrypted and secure. We prioritize your privacy above all else with clinical-grade security.",
-    color: "bg-teal-dark"
+    color: COLORS.tealDark,
   },
   {
     icon: Zap,
     title: "Instant Feedback",
     description: "Get real-time visual cues on pronunciation, rhythm, and volume to adjust your speech on the fly.",
-    color: "bg-teal-light"
+    color: COLORS.tealLight,
   },
   {
     icon: Globe,
     title: "Multi-language Support",
     description: "Available in 12+ languages, helping people across the globe reconnect with their loved ones.",
-    color: "bg-deep-navy"
-  }
+    color: COLORS.deepNavy,
+  },
 ];
 
 export default function Features() {
   return (
-    <section id="features" className="py-24 bg-warm-white">
+    <section id="features" className="py-24" style={{ backgroundColor: COLORS.warmWhite }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-20">
-          <h2 className="text-teal font-bold tracking-widest uppercase text-sm mb-4">Core Benefits</h2>
-          <p className="text-4xl md:text-5xl font-bold text-text-dark">
-            Empowering your voice with <br /> 
+          <h2
+            className="font-bold tracking-widest uppercase text-sm mb-4"
+            style={{ color: COLORS.teal }}
+          >
+            Core Benefits
+          </h2>
+          <p
+            className="text-4xl md:text-5xl font-bold"
+            style={{ fontFamily: "var(--font-playfair), serif", color: COLORS.textDark }}
+          >
+            Empowering your voice with <br />
             <span className="text-gradient">cutting-edge technology</span>
           </p>
         </div>
@@ -62,13 +84,22 @@ export default function Features() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="p-8 rounded-3xl border border-sand-mid/50 hover:border-teal/30 transition-all group bg-cream shadow-sm hover:shadow-xl hover:shadow-teal/5"
+              className="p-8 rounded-3xl transition-all group shadow-sm hover:shadow-xl"
+              style={{
+                backgroundColor: COLORS.cream,
+                border: `1px solid ${COLORS.sandMid}50`,
+              }}
             >
-              <div className={`w-14 h-14 ${feature.color} rounded-2xl flex items-center justify-center text-white mb-6 group-hover:scale-110 transition-transform shadow-lg`}>
+              <div
+                className="w-14 h-14 rounded-2xl flex items-center justify-center text-white mb-6 group-hover:scale-110 transition-transform shadow-lg"
+                style={{ backgroundColor: feature.color }}
+              >
                 <feature.icon className="w-7 h-7" />
               </div>
-              <h3 className="text-xl font-bold mb-4 text-text-dark">{feature.title}</h3>
-              <p className="text-text-mid leading-relaxed">
+              <h3 className="text-xl font-bold mb-4" style={{ color: COLORS.textDark }}>
+                {feature.title}
+              </h3>
+              <p className="leading-relaxed" style={{ color: COLORS.textMid }}>
                 {feature.description}
               </p>
             </motion.div>

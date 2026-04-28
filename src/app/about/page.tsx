@@ -21,6 +21,14 @@ import {
   Mail,
   MapPin,
   Phone,
+  MessageCircle,
+  History,
+  BarChart3,
+  Sparkles,
+  Map,
+  FileText,
+  Lock,
+  Waves,
 } from "lucide-react";
 
 const C = {
@@ -192,6 +200,145 @@ export default function About() {
                 </div>
               ))}
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════ APP FEATURES ═══════════════ */}
+      <section className="py-24" style={{ backgroundColor: C.cream }}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-20">
+            <h2
+              className="font-bold tracking-widest uppercase text-sm mb-4"
+              style={{ color: C.teal }}
+            >
+              App Features
+            </h2>
+            <p
+              className="text-4xl md:text-5xl font-bold max-w-3xl mx-auto"
+              style={{ fontFamily: "var(--font-playfair), serif", color: C.textDark }}
+            >
+              Everything you need for{" "}
+              <span className="text-gradient">clearer communication</span>
+            </p>
+            <p className="text-lg mt-6 max-w-2xl mx-auto" style={{ color: C.textMid }}>
+              Articulink is packed with powerful tools designed to make speech
+              assistance seamless, intelligent, and accessible.
+            </p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              {
+                icon: Mic,
+                title: "Real-Time Transcription",
+                desc: "Record your voice and get instant speech-to-text transcription powered by advanced AI recognition, supporting natural speaking patterns.",
+                accent: C.teal,
+                accentBg: "rgba(42, 143, 160, 0.08)",
+                accentBorder: "rgba(42, 143, 160, 0.15)",
+              },
+              {
+                icon: Sparkles,
+                title: "AI Clarity Engine",
+                desc: "Your speech is analyzed and enhanced by our AI model, correcting misarticulations and producing clearer, more understandable output text.",
+                accent: C.royalBlue,
+                accentBg: "rgba(26, 68, 128, 0.08)",
+                accentBorder: "rgba(26, 68, 128, 0.15)",
+              },
+              {
+                icon: Map,
+                title: "Interactive Clinic Map",
+                desc: "Find nearby speech therapy clinics, cleft care centers, SPED schools, and PWD support facilities with real-time routing and directions.",
+                accent: "#059669",
+                accentBg: "rgba(5, 150, 105, 0.08)",
+                accentBorder: "rgba(5, 150, 105, 0.15)",
+              },
+              {
+                icon: MessageCircle,
+                title: "AI Chatbot Assistant",
+                desc: "Chat with our intelligent assistant for speech tips, therapy guidance, and answers to your questions about speech improvement.",
+                accent: "#7C3AED",
+                accentBg: "rgba(124, 58, 237, 0.08)",
+                accentBorder: "rgba(124, 58, 237, 0.15)",
+              },
+              {
+                icon: History,
+                title: "Speech History & Analytics",
+                desc: "Track all your recordings with detailed stats — accuracy percentage, word count, duration — and generate AI-powered deep-dive analysis reports.",
+                accent: "#D97706",
+                accentBg: "rgba(217, 119, 6, 0.08)",
+                accentBorder: "rgba(217, 119, 6, 0.15)",
+              },
+              {
+                icon: Volume2,
+                title: "Text-to-Speech Playback",
+                desc: "Hear how your corrected text sounds with natural text-to-speech synthesis, so you can compare your speech with the intended clarity.",
+                accent: C.tealDark,
+                accentBg: "rgba(30, 107, 120, 0.08)",
+                accentBorder: "rgba(30, 107, 120, 0.15)",
+              },
+              {
+                icon: BarChart3,
+                title: "Word-Level Confidence",
+                desc: "See confidence scores for every individual word in your transcript, color-coded to highlight which words need more practice.",
+                accent: "#E11D48",
+                accentBg: "rgba(225, 29, 72, 0.08)",
+                accentBorder: "rgba(225, 29, 72, 0.15)",
+              },
+              {
+                icon: Lock,
+                title: "Secure & Private",
+                desc: "Your recordings and personal data are protected with authentication and privacy-first design. Your speech journey stays yours.",
+                accent: C.deepNavy,
+                accentBg: "rgba(15, 40, 71, 0.08)",
+                accentBorder: "rgba(15, 40, 71, 0.15)",
+              },
+            ].map((feature, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.07 }}
+                className="group relative p-7 rounded-3xl transition-all duration-300 hover:shadow-xl cursor-default"
+                style={{
+                  backgroundColor: "white",
+                  border: `1px solid ${C.sandMid}50`,
+                }}
+              >
+                {/* Decorative corner accent */}
+                <div
+                  className="absolute top-0 right-0 w-24 h-24 rounded-bl-[4rem] opacity-40 -z-0 transition-opacity group-hover:opacity-70"
+                  style={{
+                    background: `linear-gradient(135deg, ${feature.accentBg}, transparent)`,
+                  }}
+                />
+
+                <div className="relative z-10">
+                  <div
+                    className="w-14 h-14 rounded-2xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300 shadow-sm"
+                    style={{
+                      backgroundColor: feature.accentBg,
+                      border: `1px solid ${feature.accentBorder}`,
+                    }}
+                  >
+                    <feature.icon className="w-6 h-6" style={{ color: feature.accent }} />
+                  </div>
+                  <h3
+                    className="text-lg font-bold mb-2 leading-snug"
+                    style={{ color: C.textDark }}
+                  >
+                    {feature.title}
+                  </h3>
+                  <p
+                    className="text-sm leading-relaxed"
+                    style={{ color: C.textMid }}
+                  >
+                    {feature.desc}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>

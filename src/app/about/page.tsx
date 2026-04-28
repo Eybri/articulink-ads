@@ -260,6 +260,78 @@ export default function About() {
         </div>
       </section>
 
+      {/* ═══════════════ SDG SECTION ═══════════════ */}
+      <section className="py-24" style={{ backgroundColor: C.cream }}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-20">
+            <h2
+              className="font-bold tracking-widest uppercase text-sm mb-4"
+              style={{ color: C.teal }}
+            >
+              Global Impact
+            </h2>
+            <p
+              className="text-4xl md:text-5xl font-bold"
+              style={{ fontFamily: "var(--font-playfair), serif", color: C.textDark }}
+            >
+              Advancing Sustainable <br />
+              <span className="text-gradient">Development Goals</span>
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {[
+              {
+                number: "03",
+                title: "Good Health & Well-being",
+                desc: "Articulink supports emotional and social well-being by providing a tool that helps individuals with speech challenges communicate more effectively.",
+                color: "#4C9F38",
+              },
+              {
+                number: "04",
+                title: "Quality Education",
+                desc: "We promote inclusive learning environments by ensuring that speech-impaired students have the technology to express their ideas clearly.",
+                color: "#C5192D",
+              },
+              {
+                number: "10",
+                title: "Reduced Inequalities",
+                desc: "By breaking down communication barriers, we empower individuals with lisp and hypernasal speech to participate fully in society.",
+                color: "#E11484",
+              },
+            ].map((sdg, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                className="group text-center"
+              >
+                {/* SDG Image Placeholder */}
+                <div
+                  className="w-full aspect-square rounded-[2.5rem] mb-8 flex items-center justify-center relative overflow-hidden group-hover:scale-[1.02] transition-transform shadow-lg"
+                  style={{ backgroundColor: sdg.color }}
+                >
+                  <div className="text-white p-8">
+                    <p className="text-6xl font-black mb-4 opacity-30">{sdg.number}</p>
+                    <p className="text-xs font-bold uppercase tracking-widest leading-relaxed">
+                      SDG {sdg.number} Image Placeholder
+                    </p>
+                  </div>
+                </div>
+                <h3 className="text-xl font-bold mb-4" style={{ color: C.textDark }}>
+                  {sdg.title}
+                </h3>
+                <p className="text-sm leading-relaxed max-w-xs mx-auto" style={{ color: C.textMid }}>
+                  {sdg.desc}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ═══════════════ CLIENT & DEVELOPERS ═══════════════ */}
       <section className="py-24" style={{ backgroundColor: C.warmWhite }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -369,20 +441,19 @@ export default function About() {
                 boxShadow: `0 10px 40px ${C.sandMid}50`,
               }}
             >
-              {/* Developer Image Placeholder */}
+              {/* Developer Image */}
               <div
-                className="w-full h-48 flex items-center justify-center"
+                className="w-full h-48 relative overflow-hidden"
                 style={{
-                  backgroundColor: C.sandLight,
                   borderBottom: `1px solid ${C.sandMid}50`,
                 }}
               >
-                <div className="text-center">
-                  <GraduationCap className="w-10 h-10 mx-auto mb-2" style={{ color: C.sandMid }} />
-                  <p className="text-xs font-semibold" style={{ color: C.sandMid }}>
-                    Team Photo
-                  </p>
-                </div>
+                <Image
+                  src="/images/team-image.jpg"
+                  alt="Articulink Development Team"
+                  fill
+                  className="object-cover"
+                />
               </div>
 
               <div className="p-10">

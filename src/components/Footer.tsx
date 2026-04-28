@@ -80,8 +80,8 @@ export default function Footer() {
             <h4 className="font-bold text-lg mb-6 text-white">Stay Updated</h4>
             <p style={{ color: "#C8D8EE" }} className="mb-6">Join our newsletter for latest updates and speech tips.</p>
             <form className="relative">
-              <input 
-                type="email" 
+              <input
+                type="email"
                 placeholder="Enter your email"
                 className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-white/50 transition-colors placeholder:text-white/40"
               />
@@ -93,7 +93,7 @@ export default function Footer() {
         </div>
 
         <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-sm" style={{ color: "#C8D8EE80" }}>
-          <p>© 2026 Articulink AI Inc. All rights reserved.</p>
+          <p>© 2026 Articulink. All rights reserved.</p>
           <div className="flex gap-8">
             <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
             <Link href="#" className="hover:text-white transition-colors">Terms of Service</Link>

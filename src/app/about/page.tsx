@@ -123,20 +123,21 @@ export default function About() {
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-transparent to-teal-50/30" />
                 <div className="relative w-full h-full">
-                  <AnimatePresence mode="wait">
+                  <AnimatePresence>
                     <motion.div
                       key={iconIndex}
-                      initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
-                      animate={{ opacity: 1, scale: 1, rotate: 0 }}
-                      exit={{ opacity: 0, scale: 1.1, rotate: 10 }}
-                      transition={{ duration: 0.6, ease: "easeInOut" }}
-                      className="absolute inset-0"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 1, ease: "easeInOut" }}
+                      className="absolute inset-0 flex items-center justify-center p-8"
                     >
                       <Image
                         src={icons[iconIndex]}
                         alt="Articulink App Icon"
                         fill
-                        className="object-cover"
+                        className="object-contain"
+                        priority
                       />
                     </motion.div>
                   </AnimatePresence>

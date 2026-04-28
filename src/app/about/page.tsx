@@ -245,7 +245,7 @@ export default function About() {
 
             {/* Central Sun / Info Hub */}
             <div className="relative z-20 w-72 h-72 md:w-80 md:h-80 rounded-full flex items-center justify-center p-8 text-center transition-all duration-500"
-              style={{ 
+              style={{
                 background: "linear-gradient(135deg, rgba(15, 40, 71, 0.9), rgba(11, 26, 46, 0.95))",
                 border: "1px solid rgba(61, 175, 196, 0.2)",
                 boxShadow: "0 0 60px rgba(42, 143, 160, 0.15), 0 0 120px rgba(42, 143, 160, 0.05), inset 0 0 30px rgba(42, 143, 160, 0.08)",
@@ -261,11 +261,11 @@ export default function About() {
                     exit={{ opacity: 0, scale: 0.9, y: -10 }}
                     className="flex flex-col items-center"
                   >
-                    <div 
+                    <div
                       className="w-16 h-16 rounded-2xl flex items-center justify-center mb-4 shadow-lg"
-                      style={{ 
+                      style={{
                         backgroundColor: [
-                          C.teal, C.royalBlue, "#059669", "#7C3AED", 
+                          C.teal, C.royalBlue, "#059669", "#7C3AED",
                           "#D97706", C.tealDark, "#E11D48", C.deepNavy
                         ][activeFeature % 8],
                         color: "white",
@@ -273,7 +273,7 @@ export default function About() {
                       }}
                     >
                       {React.createElement([
-                        Mic, Sparkles, Map, MessageCircle, 
+                        Mic, Sparkles, Map, MessageCircle,
                         History, Volume2, BarChart3, Lock
                       ][activeFeature % 8], { className: "w-8 h-8" })}
                     </div>
@@ -295,7 +295,7 @@ export default function About() {
                         "Your recordings and personal data are protected with authentication and privacy-first design."
                       ][activeFeature % 8]}
                     </p>
-                    <button 
+                    <button
                       onClick={() => setActiveFeature(null)}
                       className="mt-6 text-xs font-bold uppercase tracking-widest hover:opacity-70 transition-opacity"
                       style={{ color: C.tealLight }}
@@ -312,7 +312,7 @@ export default function About() {
                     className="flex flex-col items-center"
                   >
                     <div className="relative w-24 h-24 mb-4 rounded-3xl overflow-hidden" style={{ boxShadow: "0 0 30px rgba(42, 143, 160, 0.2)" }}>
-                       <Image src="/images/app-icon.png" alt="Articulink" fill className="object-contain" />
+                      <Image src="/images/app-icon.png" alt="Articulink" fill className="object-contain" />
                     </div>
                     <p className="text-sm font-bold uppercase tracking-widest mb-1" style={{ color: C.tealLight }}>
                       Explore Features
@@ -325,8 +325,8 @@ export default function About() {
 
             {/* Rotating Planets Container */}
             <motion.div
-              animate={{ rotate: activeFeature === null ? 360 : 0 }}
-              transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+              animate={{ rotate: activeFeature === null ? 360 : -360 }}
+              transition={{ duration: activeFeature === null ? 30 : 12, repeat: Infinity, ease: "linear" }}
               className="absolute inset-0 flex items-center justify-center"
             >
               {[
@@ -354,8 +354,8 @@ export default function About() {
                     }}
                   >
                     <motion.div
-                      animate={{ rotate: activeFeature === null ? -360 : 0 }}
-                      transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+                      animate={{ rotate: activeFeature === null ? -360 : 360 }}
+                      transition={{ duration: activeFeature === null ? 30 : 12, repeat: Infinity, ease: "linear" }}
                     >
                       <motion.button
                         whileHover={{ scale: 1.2, boxShadow: `0 0 30px ${feature.glowColor}` }}
@@ -364,18 +364,18 @@ export default function About() {
                           setActiveFeature(i);
                         }}
                         className="w-14 h-14 md:w-20 md:h-20 rounded-full flex items-center justify-center transition-all border"
-                        style={{ 
+                        style={{
                           background: "linear-gradient(135deg, rgba(15, 40, 71, 0.8), rgba(11, 26, 46, 0.9))",
                           borderColor: activeFeature === i ? feature.color : "rgba(61, 175, 196, 0.15)",
                           boxShadow: activeFeature === i ? `0 0 20px ${feature.glowColor}` : "0 4px 20px rgba(0, 0, 0, 0.3)",
                         }}
                       >
-                         <feature.icon className="w-6 h-6 md:w-8 md:h-8 transition-colors" style={{ color: feature.color }} />
+                        <feature.icon className="w-6 h-6 md:w-8 md:h-8 transition-colors" style={{ color: feature.color }} />
                       </motion.button>
                       <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-                         <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded" style={{ color: feature.color, backgroundColor: "rgba(11, 26, 46, 0.8)", border: `1px solid ${feature.color}30` }}>
-                            {["Transcription", "AI Engine", "Clinic Map", "AI Chatbot", "Analytics", "Playback", "Confidence", "Privacy"][i]}
-                         </span>
+                        <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded" style={{ color: feature.color, backgroundColor: "rgba(11, 26, 46, 0.8)", border: `1px solid ${feature.color}30` }}>
+                          {["Transcription", "AI Engine", "Clinic Map", "AI Chatbot", "Analytics", "Playback", "Confidence", "Privacy"][i]}
+                        </span>
                       </div>
                     </motion.div>
                   </div>
@@ -782,7 +782,7 @@ export default function About() {
               <h3 className="font-bold text-amber-900 mb-2">Important Disclaimer</h3>
               <p className="text-sm leading-relaxed text-amber-800">
                 Articulink is a communication tool and <strong>not a replacement for professional
-                speech therapy.</strong> We encourage working with a qualified speech-language
+                  speech therapy.</strong> We encourage working with a qualified speech-language
                 pathologist alongside using Articulink for the best outcomes.
               </p>
             </div>

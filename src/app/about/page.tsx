@@ -3,7 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   Heart,
   Users,
@@ -41,6 +41,16 @@ const C = {
 };
 
 export default function About() {
+  const [iconIndex, setIconIndex] = React.useState(0);
+  const icons = ["/images/app-icon.png", "/images/app-icon-white.png"];
+
+  React.useEffect(() => {
+    const timer = setInterval(() => {
+      setIconIndex((prev) => (prev + 1) % icons.length);
+    }, 3000);
+    return () => clearInterval(timer);
+  }, [icons.length]);
+
   return (
     <main className="min-h-screen" style={{ backgroundColor: C.cream }}>
       {/* ═══════════════ HERO ═══════════════ */}
@@ -89,27 +99,39 @@ export default function About() {
               </p>
             </motion.div>
 
-            {/* Hero Image Placeholder */}
+            {/* Hero Image */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
+              className="flex justify-center lg:justify-end"
             >
               <div
-                className="w-full aspect-[4/3] rounded-[3rem] flex items-center justify-center"
+                className="relative w-64 h-64 md:w-80 md:h-80 rounded-[4rem] flex items-center justify-center shadow-2xl overflow-hidden"
                 style={{
-                  backgroundColor: C.warmWhite,
-                  border: `2px dashed ${C.sandMid}`,
+                  backgroundColor: "white",
+                  boxShadow: `0 30px 60px -12px ${C.sandMid}80, 0 18px 36px -18px rgba(0,0,0,0.1)`,
                 }}
               >
-                <div className="text-center">
-                  <Heart className="w-12 h-12 mx-auto mb-4" style={{ color: C.sandMid }} />
-                  <p className="text-sm font-semibold" style={{ color: C.sandMid }}>
-                    Team / Product Photo
-                  </p>
-                  <p className="text-xs mt-1" style={{ color: `${C.textMid}80` }}>
-                    Replace with actual image
-                  </p>
+                <div className="absolute inset-0 bg-gradient-to-br from-transparent to-teal-50/30" />
+                <div className="relative w-full h-full">
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={iconIndex}
+                      initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
+                      animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                      exit={{ opacity: 0, scale: 1.1, rotate: 10 }}
+                      transition={{ duration: 0.6, ease: "easeInOut" }}
+                      className="absolute inset-0"
+                    >
+                      <Image
+                        src={icons[iconIndex]}
+                        alt="Articulink App Icon"
+                        fill
+                        className="object-cover"
+                      />
+                    </motion.div>
+                  </AnimatePresence>
                 </div>
               </div>
             </motion.div>
@@ -286,18 +308,21 @@ export default function About() {
                 title: "Good Health & Well-being",
                 desc: "Articulink supports emotional and social well-being by providing a tool that helps individuals with speech challenges communicate more effectively.",
                 color: "#4C9F38",
+                image: "/images/sdg3.jfif",
               },
               {
                 number: "04",
                 title: "Quality Education",
                 desc: "We promote inclusive learning environments by ensuring that speech-impaired students have the technology to express their ideas clearly.",
                 color: "#C5192D",
+                image: "/images/sdg4.jfif",
               },
               {
                 number: "10",
                 title: "Reduced Inequalities",
                 desc: "By breaking down communication barriers, we empower individuals with lisp and hypernasal speech to participate fully in society.",
                 color: "#E11484",
+                image: "/images/sdg10.jfif",
               },
             ].map((sdg, i) => (
               <motion.div
@@ -308,17 +333,17 @@ export default function About() {
                 transition={{ duration: 0.5, delay: i * 0.1 }}
                 className="group text-center"
               >
-                {/* SDG Image Placeholder */}
+                {/* SDG Image */}
                 <div
-                  className="w-full aspect-square rounded-[2.5rem] mb-8 flex items-center justify-center relative overflow-hidden group-hover:scale-[1.02] transition-transform shadow-lg"
+                  className="w-full aspect-square rounded-[2.5rem] mb-8 relative overflow-hidden group-hover:scale-[1.02] transition-transform shadow-lg"
                   style={{ backgroundColor: sdg.color }}
                 >
-                  <div className="text-white p-8">
-                    <p className="text-6xl font-black mb-4 opacity-30">{sdg.number}</p>
-                    <p className="text-xs font-bold uppercase tracking-widest leading-relaxed">
-                      SDG {sdg.number} Image Placeholder
-                    </p>
-                  </div>
+                  <Image
+                    src={sdg.image}
+                    alt={sdg.title}
+                    fill
+                    className="object-cover"
+                  />
                 </div>
                 <h3 className="text-xl font-bold mb-4" style={{ color: C.textDark }}>
                   {sdg.title}
@@ -366,7 +391,7 @@ export default function About() {
             >
               {/* Client Image Placeholder */}
               <div
-                className="w-full h-48 flex items-center justify-center"
+                className="w-full h-[400px] flex items-center justify-center"
                 style={{
                   backgroundColor: C.sandLight,
                   borderBottom: `1px solid ${C.sandMid}50`,
@@ -443,7 +468,7 @@ export default function About() {
             >
               {/* Developer Image */}
               <div
-                className="w-full h-48 relative overflow-hidden"
+                className="w-full h-[400px] relative overflow-hidden"
                 style={{
                   borderBottom: `1px solid ${C.sandMid}50`,
                 }}
@@ -452,7 +477,7 @@ export default function About() {
                   src="/images/team-image.jpg"
                   alt="Articulink Development Team"
                   fill
-                  className="object-cover"
+                  className="object-cover object-top"
                 />
               </div>
 
@@ -472,7 +497,7 @@ export default function About() {
                 <p className="leading-relaxed mb-6" style={{ color: C.textMid }}>
                   {/* PLACEHOLDER — Replace with actual team description */}
                   The Articulink development team brings together expertise in information
-                  technology, artificial intelligence, and healthcare innovation to build
+                  technology, artificial intelligence, and communication technology to build
                   a platform that creates real-world impact through technology.
                 </p>
                 <div className="space-y-3">
@@ -483,10 +508,9 @@ export default function About() {
                     </span>
                   </div>
                   <div className="flex items-center gap-3">
-                    <Handshake className="w-4 h-4" style={{ color: C.royalBlue }} />
+                    <Mic className="w-4 h-4" style={{ color: C.royalBlue }} />
                     <span className="text-sm font-medium" style={{ color: C.textDark }}>
-                      {/* PLACEHOLDER */}
-                      Healthcare Innovation
+                      Speech & Communication Tech
                     </span>
                   </div>
                 </div>

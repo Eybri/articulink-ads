@@ -122,17 +122,19 @@ export default function Hero() {
               />
               
               {/* Mobile Device Frame Container */}
-              <div className="relative w-full aspect-[9/19.5] border-[12px] sm:border-[16px] border-[#1C2B3A] rounded-[2.5rem] sm:rounded-[3rem] bg-white shadow-2xl overflow-hidden group">
+              <div className="relative w-full aspect-[9/19.5] border-[12px] sm:border-[16px] border-[#1C2B3A] rounded-[2.5rem] sm:rounded-[3rem] bg-white shadow-2xl overflow-hidden group flex items-center justify-center">
                 {/* Top Notch (iPhone style) */}
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-28 sm:w-32 h-6 sm:h-7 bg-[#1C2B3A] rounded-b-2xl z-20" />
                 
-                <Image
-                  src="/hero-mobile.png"
-                  alt="Articulink App Mockup"
-                  fill
-                  className="object-cover group-hover:scale-[1.02] transition-transform duration-700"
-                  priority
-                />
+                <div className="relative w-40 h-40 sm:w-48 sm:h-48 rounded-[2rem] overflow-hidden">
+                  <Image
+                    src="/app-icon.png"
+                    alt="Articulink App Icon"
+                    fill
+                    className="object-contain group-hover:scale-110 transition-transform duration-700"
+                    priority
+                  />
+                </div>
               </div>
             </div>
 

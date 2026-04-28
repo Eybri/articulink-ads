@@ -50,6 +50,7 @@ const C = {
 
 export default function About() {
   const [iconIndex, setIconIndex] = React.useState(0);
+  const [activeFeature, setActiveFeature] = React.useState<number | null>(null);
   const icons = ["/images/app-icon.png", "/images/app-icon-white.png"];
 
   React.useEffect(() => {
@@ -228,118 +229,150 @@ export default function About() {
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              {
-                icon: Mic,
-                title: "Real-Time Transcription",
-                desc: "Record your voice and get instant speech-to-text transcription powered by advanced AI recognition, supporting natural speaking patterns.",
-                accent: C.teal,
-                accentBg: "rgba(42, 143, 160, 0.08)",
-                accentBorder: "rgba(42, 143, 160, 0.15)",
-              },
-              {
-                icon: Sparkles,
-                title: "AI Clarity Engine",
-                desc: "Your speech is analyzed and enhanced by our AI model, correcting misarticulations and producing clearer, more understandable output text.",
-                accent: C.royalBlue,
-                accentBg: "rgba(26, 68, 128, 0.08)",
-                accentBorder: "rgba(26, 68, 128, 0.15)",
-              },
-              {
-                icon: Map,
-                title: "Interactive Clinic Map",
-                desc: "Find nearby speech therapy clinics, cleft care centers, SPED schools, and PWD support facilities with real-time routing and directions.",
-                accent: "#059669",
-                accentBg: "rgba(5, 150, 105, 0.08)",
-                accentBorder: "rgba(5, 150, 105, 0.15)",
-              },
-              {
-                icon: MessageCircle,
-                title: "AI Chatbot Assistant",
-                desc: "Chat with our intelligent assistant for speech tips, therapy guidance, and answers to your questions about speech improvement.",
-                accent: "#7C3AED",
-                accentBg: "rgba(124, 58, 237, 0.08)",
-                accentBorder: "rgba(124, 58, 237, 0.15)",
-              },
-              {
-                icon: History,
-                title: "Speech History & Analytics",
-                desc: "Track all your recordings with detailed stats — accuracy percentage, word count, duration — and generate AI-powered deep-dive analysis reports.",
-                accent: "#D97706",
-                accentBg: "rgba(217, 119, 6, 0.08)",
-                accentBorder: "rgba(217, 119, 6, 0.15)",
-              },
-              {
-                icon: Volume2,
-                title: "Text-to-Speech Playback",
-                desc: "Hear how your corrected text sounds with natural text-to-speech synthesis, so you can compare your speech with the intended clarity.",
-                accent: C.tealDark,
-                accentBg: "rgba(30, 107, 120, 0.08)",
-                accentBorder: "rgba(30, 107, 120, 0.15)",
-              },
-              {
-                icon: BarChart3,
-                title: "Word-Level Confidence",
-                desc: "See confidence scores for every individual word in your transcript, color-coded to highlight which words need more practice.",
-                accent: "#E11D48",
-                accentBg: "rgba(225, 29, 72, 0.08)",
-                accentBorder: "rgba(225, 29, 72, 0.15)",
-              },
-              {
-                icon: Lock,
-                title: "Secure & Private",
-                desc: "Your recordings and personal data are protected with authentication and privacy-first design. Your speech journey stays yours.",
-                accent: C.deepNavy,
-                accentBg: "rgba(15, 40, 71, 0.08)",
-                accentBorder: "rgba(15, 40, 71, 0.15)",
-              },
-            ].map((feature, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.07 }}
-                className="group relative p-7 rounded-3xl transition-all duration-300 hover:shadow-xl cursor-default"
-                style={{
-                  backgroundColor: "white",
-                  border: `1px solid ${C.sandMid}50`,
-                }}
-              >
-                {/* Decorative corner accent */}
-                <div
-                  className="absolute top-0 right-0 w-24 h-24 rounded-bl-[4rem] opacity-40 -z-0 transition-opacity group-hover:opacity-70"
-                  style={{
-                    background: `linear-gradient(135deg, ${feature.accentBg}, transparent)`,
-                  }}
-                />
+          <div className="relative min-h-[600px] flex items-center justify-center overflow-hidden py-12">
+            {/* Background Decorative Orbits */}
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+              <div className="w-[300px] h-[300px] rounded-full border border-dashed border-teal-200/50 absolute" />
+              <div className="w-[500px] h-[500px] rounded-full border border-dashed border-teal-100/30 absolute" />
+              <div className="w-[700px] h-[700px] rounded-full border border-dashed border-teal-50/20 absolute" />
+            </div>
 
-                <div className="relative z-10">
+            {/* Central Sun / Info Hub */}
+            <div className="relative z-20 w-72 h-72 md:w-80 md:h-80 rounded-full flex items-center justify-center p-8 text-center shadow-2xl transition-all duration-500"
+              style={{ 
+                backgroundColor: "white",
+                border: `8px solid ${C.cream}`,
+                boxShadow: `0 0 50px rgba(42, 143, 160, 0.1), inset 0 0 20px rgba(42, 143, 160, 0.05)`
+              }}
+            >
+              <AnimatePresence mode="wait">
+                {activeFeature !== null ? (
+                  <motion.div
+                    key="info"
+                    initial={{ opacity: 0, scale: 0.9, y: 10 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    exit={{ opacity: 0, scale: 0.9, y: -10 }}
+                    className="flex flex-col items-center"
+                  >
+                    <div 
+                      className="w-16 h-16 rounded-2xl flex items-center justify-center mb-4 shadow-lg"
+                      style={{ 
+                        backgroundColor: [
+                          C.teal, C.royalBlue, "#059669", "#7C3AED", 
+                          "#D97706", C.tealDark, "#E11D48", C.deepNavy
+                        ][activeFeature % 8],
+                        color: "white"
+                      }}
+                    >
+                      {React.createElement([
+                        Mic, Sparkles, Map, MessageCircle, 
+                        History, Volume2, BarChart3, Lock
+                      ][activeFeature % 8], { className: "w-8 h-8" })}
+                    </div>
+                    <h3 className="text-xl font-bold mb-3" style={{ color: C.textDark }}>
+                      {[
+                        "Real-Time Transcription", "AI Clarity Engine", "Interactive Clinic Map", "AI Chatbot Assistant",
+                        "Speech History & Analytics", "Text-to-Speech Playback", "Word-Level Confidence", "Secure & Private"
+                      ][activeFeature % 8]}
+                    </h3>
+                    <p className="text-sm leading-relaxed" style={{ color: C.textMid }}>
+                      {[
+                        "Record your voice and get instant speech-to-text transcription powered by advanced AI recognition.",
+                        "Your speech is analyzed and enhanced by our AI model, correcting misarticulations and producing clearer text.",
+                        "Find nearby speech therapy clinics, cleft care centers, and support facilities with real-time routing.",
+                        "Chat with our intelligent assistant for speech tips, therapy guidance, and answers to your questions.",
+                        "Track all your recordings with detailed stats — accuracy percentage, word count, and duration.",
+                        "Hear how your corrected text sounds with natural text-to-speech synthesis for comparative learning.",
+                        "See confidence scores for every individual word in your transcript to highlight areas for practice.",
+                        "Your recordings and personal data are protected with authentication and privacy-first design."
+                      ][activeFeature % 8]}
+                    </p>
+                    <button 
+                      onClick={() => setActiveFeature(null)}
+                      className="mt-6 text-xs font-bold uppercase tracking-widest hover:opacity-70 transition-opacity"
+                      style={{ color: C.teal }}
+                    >
+                      Back to Overview
+                    </button>
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key="default"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    className="flex flex-col items-center"
+                  >
+                    <div className="relative w-24 h-24 mb-4 rounded-3xl overflow-hidden shadow-inner">
+                       <Image src="/images/app-icon.png" alt="Articulink" fill className="object-contain" />
+                    </div>
+                    <p className="text-sm font-bold uppercase tracking-widest mb-1" style={{ color: C.teal }}>
+                      Explore Features
+                    </p>
+                    <p className="text-xs text-slate-400">Click a planet to learn more</p>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+
+            {/* Rotating Planets Container */}
+            <motion.div
+              animate={{ rotate: activeFeature === null ? 360 : 0 }}
+              transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+              className="absolute inset-0 flex items-center justify-center"
+            >
+              {[
+                { icon: Mic, color: C.teal, bg: "rgba(42, 143, 160, 0.1)" },
+                { icon: Sparkles, color: C.royalBlue, bg: "rgba(26, 68, 128, 0.1)" },
+                { icon: Map, color: "#059669", bg: "rgba(5, 150, 105, 0.1)" },
+                { icon: MessageCircle, color: "#7C3AED", bg: "rgba(124, 58, 237, 0.1)" },
+                { icon: History, color: "#D97706", bg: "rgba(217, 119, 6, 0.1)" },
+                { icon: Volume2, color: C.tealDark, bg: "rgba(30, 107, 120, 0.1)" },
+                { icon: BarChart3, color: "#E11D48", bg: "rgba(225, 29, 72, 0.1)" },
+                { icon: Lock, color: C.deepNavy, bg: "rgba(15, 40, 71, 0.1)" },
+              ].map((feature, i) => {
+                const angle = (i * 360) / 8;
+                // Responsive radius: smaller on mobile
+                const radius = typeof window !== 'undefined' && window.innerWidth < 768 ? 160 : 260;
+                const x = Math.cos((angle * Math.PI) / 180) * radius;
+                const y = Math.sin((angle * Math.PI) / 180) * radius;
+
+                return (
                   <div
-                    className="w-14 h-14 rounded-2xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300 shadow-sm"
+                    key={i}
+                    className="absolute group"
                     style={{
-                      backgroundColor: feature.accentBg,
-                      border: `1px solid ${feature.accentBorder}`,
+                      transform: `translate(${x}px, ${y}px)`,
                     }}
                   >
-                    <feature.icon className="w-6 h-6" style={{ color: feature.accent }} />
+                    <motion.div
+                      animate={{ rotate: activeFeature === null ? -360 : 0 }}
+                      transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+                    >
+                      <motion.button
+                        whileHover={{ scale: 1.2, boxShadow: `0 0 25px ${feature.color}40` }}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setActiveFeature(i);
+                        }}
+                        className="w-14 h-14 md:w-20 md:h-20 rounded-full flex items-center justify-center transition-all shadow-lg border-2"
+                        style={{ 
+                          backgroundColor: "white",
+                          borderColor: activeFeature === i ? feature.color : "transparent",
+                        }}
+                      >
+                         <feature.icon className="w-6 h-6 md:w-8 md:h-8 transition-colors" style={{ color: feature.color }} />
+                      </motion.button>
+                      <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                         <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded bg-white/80 backdrop-blur-sm shadow-sm" style={{ color: feature.color }}>
+                            {["Transcription", "AI Engine", "Clinic Map", "AI Chatbot", "Analytics", "Playback", "Confidence", "Privacy"][i]}
+                         </span>
+                      </div>
+                    </motion.div>
                   </div>
-                  <h3
-                    className="text-lg font-bold mb-2 leading-snug"
-                    style={{ color: C.textDark }}
-                  >
-                    {feature.title}
-                  </h3>
-                  <p
-                    className="text-sm leading-relaxed"
-                    style={{ color: C.textMid }}
-                  >
-                    {feature.desc}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
+                );
+              })}
+            </motion.div>
           </div>
         </div>
       </section>

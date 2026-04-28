@@ -29,6 +29,7 @@ import {
   FileText,
   Lock,
   Waves,
+  Send,
 } from "lucide-react";
 
 const C = {
@@ -47,6 +48,132 @@ const C = {
   orbBlue: "#C8D8EE",
   orbSand: "#E8E0D0",
 };
+
+/* ─── Contact Form (client-side only — wire to SMTP later) ─── */
+function ContactForm() {
+  const [email, setEmail] = React.useState("");
+  const [subject, setSubject] = React.useState("");
+  const [message, setMessage] = React.useState("");
+  const [sent, setSent] = React.useState(false);
+  const [sending, setSending] = React.useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email.trim() || !subject.trim() || !message.trim()) return;
+
+    setSending(true);
+
+    // TODO: Replace with actual SMTP API call
+    // Example: await fetch("/api/contact", { method: "POST", body: JSON.stringify({ email, subject, message }) });
+    await new Promise((r) => setTimeout(r, 1200)); // simulate network delay
+
+    setSending(false);
+    setSent(true);
+    setEmail("");
+    setSubject("");
+    setMessage("");
+  };
+
+  if (sent) {
+    return (
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="bg-white/5 border border-white/10 rounded-2xl p-10 text-center backdrop-blur-sm"
+      >
+        <div
+          className="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-5"
+          style={{ backgroundColor: "rgba(42, 143, 160, 0.2)" }}
+        >
+          <Send className="w-6 h-6" style={{ color: C.tealLight }} />
+        </div>
+        <h3 className="text-xl font-bold text-white mb-2">Message Sent!</h3>
+        <p className="text-sm mb-6" style={{ color: C.orbBlue }}>
+          Thank you for reaching out. We&apos;ll get back to you at{" "}
+          <span className="text-white font-semibold">articulink00@gmail.com</span>.
+        </p>
+        <button
+          onClick={() => setSent(false)}
+          className="text-xs font-bold uppercase tracking-widest hover:opacity-70 transition-opacity"
+          style={{ color: C.tealLight }}
+        >
+          Send another message
+        </button>
+      </motion.div>
+    );
+  }
+
+  return (
+    <form
+      onSubmit={handleSubmit}
+      className="bg-white/5 border border-white/10 rounded-2xl p-8 md:p-10 backdrop-blur-sm"
+    >
+      <h3 className="text-lg font-bold text-white mb-6">Send us a message</h3>
+
+      <div className="grid sm:grid-cols-2 gap-5 mb-5">
+        <div>
+          <label className="block text-xs font-bold uppercase tracking-widest mb-2" style={{ color: C.tealLight }}>
+            Your Email
+          </label>
+          <input
+            type="email"
+            required
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="you@example.com"
+            className="w-full bg-white/5 border border-white/15 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-white/40 transition-colors placeholder:text-white/30"
+          />
+        </div>
+        <div className="flex items-end">
+          <p className="text-xs leading-relaxed" style={{ color: "rgba(200, 216, 238, 0.5)" }}>
+            Your message will be sent to{" "}
+            <a href="mailto:articulink00@gmail.com" className="underline" style={{ color: C.tealLight }}>
+              articulink00@gmail.com
+            </a>
+          </p>
+        </div>
+      </div>
+
+      <div className="mb-5">
+        <label className="block text-xs font-bold uppercase tracking-widest mb-2" style={{ color: C.tealLight }}>
+          Subject
+        </label>
+        <input
+          type="text"
+          required
+          value={subject}
+          onChange={(e) => setSubject(e.target.value)}
+          placeholder="e.g. Partnership Inquiry"
+          className="w-full bg-white/5 border border-white/15 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-white/40 transition-colors placeholder:text-white/30"
+        />
+      </div>
+
+      <div className="mb-6">
+        <label className="block text-xs font-bold uppercase tracking-widest mb-2" style={{ color: C.tealLight }}>
+          Message
+        </label>
+        <textarea
+          required
+          rows={4}
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+          placeholder="Tell us what's on your mind..."
+          className="w-full bg-white/5 border border-white/15 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-white/40 transition-colors placeholder:text-white/30 resize-none"
+        />
+      </div>
+
+      <button
+        type="submit"
+        disabled={sending}
+        className="inline-flex items-center gap-2 text-white px-8 py-3 rounded-xl font-bold text-sm transition-all hover:opacity-90 disabled:opacity-50"
+        style={{ backgroundColor: C.teal }}
+      >
+        {sending ? "Sending..." : "Send Message"}
+        <Send className="w-4 h-4" />
+      </button>
+    </form>
+  );
+}
 
 export default function About() {
   const [iconIndex, setIconIndex] = React.useState(0);
@@ -821,26 +948,26 @@ export default function About() {
                 </p>
               </div>
 
-              {/* PLACEHOLDER — Replace with actual contact details */}
-              <div className="grid sm:grid-cols-3 gap-6">
+              {/* Contact Info Cards */}
+              <div className="grid sm:grid-cols-3 gap-6 mb-12">
                 {[
                   {
                     icon: Mail,
                     label: "Email",
-                    value: "contact@articulink.app",
-                    sub: "Replace with actual email",
+                    value: "articulink00@gmail.com",
+                    href: "mailto:articulink00@gmail.com",
                   },
                   {
                     icon: MapPin,
                     label: "Location",
                     value: "Metro Manila, Philippines",
-                    sub: "Replace with actual address",
+                    href: undefined,
                   },
                   {
                     icon: Phone,
                     label: "Phone",
                     value: "+63 XXX XXX XXXX",
-                    sub: "Replace with actual number",
+                    href: undefined,
                   },
                 ].map((item, i) => (
                   <div
@@ -856,11 +983,19 @@ export default function About() {
                     <p className="text-xs font-bold uppercase tracking-widest mb-2" style={{ color: C.tealLight }}>
                       {item.label}
                     </p>
-                    <p className="text-white font-semibold mb-1">{item.value}</p>
-                    <p className="text-[10px] opacity-40 text-white">{item.sub}</p>
+                    {item.href ? (
+                      <a href={item.href} className="text-white font-semibold hover:underline transition-colors">
+                        {item.value}
+                      </a>
+                    ) : (
+                      <p className="text-white font-semibold">{item.value}</p>
+                    )}
                   </div>
                 ))}
               </div>
+
+              {/* Contact Form — TODO: wire up to SMTP backend */}
+              <ContactForm />
             </div>
           </div>
         </div>

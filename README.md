@@ -1,36 +1,39 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Articulink — Promotional Website
 
-## Getting Started
+This is the official promotional website for **Articulink**, an AI-powered speech assistance mobile app designed to help individuals with lisp and hypernasal speech communicate more clearly.
 
-First, run the development server:
+The website serves as the public-facing landing page to showcase the app's features, explain how it works, introduce the team and partners, and provide privacy policy information to users.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Quick Start
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+2. **Run the development server**
+   ```bash
+   npm run dev
+   ```
 
-## Learn More
+3. **Open in browser**  
+   Go to [http://localhost:3000](http://localhost:3000)
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Pages
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Home (`/`)** — Landing page with hero, features, testimonials, and download call-to-action.
+- **About (`/about`)** — App overview, interactive feature explorer, how it works, SDG alignment, and team info.
+- **Privacy (`/privacy`)** — Privacy policy covering data protection, encryption, and legal compliance.
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Built With
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Next.js 16 (React 19)
+- TypeScript
+- Tailwind CSS v4
+- Framer Motion

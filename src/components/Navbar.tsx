@@ -47,6 +47,7 @@ export default function Navbar() {
               { href: "#features", label: "Features" },
               { href: "#how-it-works", label: "How it Works" },
               { href: "#testimonials", label: "Success Stories" },
+              { href: "/about", label: "About" },
             ].map((link) => (
               <Link
                 key={link.href}
@@ -104,6 +105,7 @@ export default function Navbar() {
               { href: "#features", label: "Features" },
               { href: "#how-it-works", label: "How it Works" },
               { href: "#testimonials", label: "Success Stories" },
+              { href: "/about", label: "About" },
             ].map((link) => (
               <Link
                 key={link.href}

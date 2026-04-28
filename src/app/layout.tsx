@@ -20,6 +20,9 @@ export const metadata: Metadata = {
     "Reclaim your voice with Articulink. The only app that uses advanced AI to analyze, clarify, and track your speech journey in real-time.",
 };
 
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -32,9 +35,11 @@ export default function RootLayout({
     >
       <body
         className="min-h-full flex flex-col"
-        style={{ fontFamily: "var(--font-dm-sans), sans-serif" }}
+        style={{ fontFamily: "var(--font-dm-sans), sans-serif", backgroundColor: "#FAF8F4" }}
       >
+        <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );

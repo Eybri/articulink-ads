@@ -207,42 +207,49 @@ export default function About() {
       </section>
 
       {/* ═══════════════ APP FEATURES ═══════════════ */}
-      <section className="py-24" style={{ backgroundColor: C.cream }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-24 relative overflow-hidden" style={{ background: "linear-gradient(135deg, #0B1A2E 0%, #0F2847 40%, #132D4F 70%, #0B1A2E 100%)" }}>
+        {/* Subtle star-field dots */}
+        <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: "radial-gradient(1px 1px at 10% 20%, rgba(255,255,255,0.15) 1px, transparent 0), radial-gradient(1px 1px at 80% 10%, rgba(255,255,255,0.1) 1px, transparent 0), radial-gradient(1px 1px at 50% 80%, rgba(255,255,255,0.12) 1px, transparent 0), radial-gradient(1px 1px at 30% 60%, rgba(255,255,255,0.08) 1px, transparent 0), radial-gradient(1px 1px at 70% 40%, rgba(255,255,255,0.1) 1px, transparent 0), radial-gradient(1.5px 1.5px at 90% 70%, rgba(255,255,255,0.15) 1px, transparent 0)" }} />
+        {/* Background glow orbs */}
+        <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[60%] rounded-full blur-[150px] pointer-events-none" style={{ backgroundColor: "rgba(42, 143, 160, 0.08)" }} />
+        <div className="absolute bottom-[-20%] right-[-10%] w-[40%] h-[50%] rounded-full blur-[150px] pointer-events-none" style={{ backgroundColor: "rgba(26, 68, 128, 0.08)" }} />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-20">
             <h2
               className="font-bold tracking-widest uppercase text-sm mb-4"
-              style={{ color: C.teal }}
+              style={{ color: C.tealLight }}
             >
               App Features
             </h2>
             <p
-              className="text-4xl md:text-5xl font-bold max-w-3xl mx-auto"
-              style={{ fontFamily: "var(--font-playfair), serif", color: C.textDark }}
+              className="text-4xl md:text-5xl font-bold max-w-3xl mx-auto text-white"
+              style={{ fontFamily: "var(--font-playfair), serif" }}
             >
               Everything you need for{" "}
-              <span className="text-gradient">clearer communication</span>
+              <span style={{ background: "linear-gradient(135deg, #3DAFC4, #7DD3E8)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>clearer communication</span>
             </p>
-            <p className="text-lg mt-6 max-w-2xl mx-auto" style={{ color: C.textMid }}>
+            <p className="text-lg mt-6 max-w-2xl mx-auto" style={{ color: "rgba(200, 216, 238, 0.7)" }}>
               Articulink is packed with powerful tools designed to make speech
               assistance seamless, intelligent, and accessible.
             </p>
           </div>
 
-          <div className="relative min-h-[600px] flex items-center justify-center overflow-hidden py-12">
+          <div className="relative min-h-[600px] flex items-center justify-center py-12">
             {/* Background Decorative Orbits */}
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-              <div className="w-[300px] h-[300px] rounded-full border border-dashed border-teal-200/50 absolute" />
-              <div className="w-[500px] h-[500px] rounded-full border border-dashed border-teal-100/30 absolute" />
-              <div className="w-[700px] h-[700px] rounded-full border border-dashed border-teal-50/20 absolute" />
+              <div className="w-[300px] h-[300px] rounded-full absolute" style={{ border: "1px solid rgba(61, 175, 196, 0.15)" }} />
+              <div className="w-[500px] h-[500px] rounded-full absolute" style={{ border: "1px solid rgba(61, 175, 196, 0.08)" }} />
+              <div className="w-[700px] h-[700px] rounded-full absolute" style={{ border: "1px solid rgba(61, 175, 196, 0.04)" }} />
+              <div className="w-[520px] h-[520px] rounded-full absolute blur-xl" style={{ border: "2px solid rgba(42, 143, 160, 0.06)" }} />
             </div>
 
             {/* Central Sun / Info Hub */}
-            <div className="relative z-20 w-72 h-72 md:w-80 md:h-80 rounded-full flex items-center justify-center p-8 text-center shadow-2xl transition-all duration-500"
+            <div className="relative z-20 w-72 h-72 md:w-80 md:h-80 rounded-full flex items-center justify-center p-8 text-center transition-all duration-500"
               style={{ 
-                backgroundColor: "white",
-                border: `8px solid ${C.cream}`,
-                boxShadow: `0 0 50px rgba(42, 143, 160, 0.1), inset 0 0 20px rgba(42, 143, 160, 0.05)`
+                background: "linear-gradient(135deg, rgba(15, 40, 71, 0.9), rgba(11, 26, 46, 0.95))",
+                border: "1px solid rgba(61, 175, 196, 0.2)",
+                boxShadow: "0 0 60px rgba(42, 143, 160, 0.15), 0 0 120px rgba(42, 143, 160, 0.05), inset 0 0 30px rgba(42, 143, 160, 0.08)",
+                backdropFilter: "blur(20px)",
               }}
             >
               <AnimatePresence mode="wait">
@@ -261,7 +268,8 @@ export default function About() {
                           C.teal, C.royalBlue, "#059669", "#7C3AED", 
                           "#D97706", C.tealDark, "#E11D48", C.deepNavy
                         ][activeFeature % 8],
-                        color: "white"
+                        color: "white",
+                        boxShadow: `0 0 20px ${[C.teal, C.royalBlue, "#059669", "#7C3AED", "#D97706", C.tealDark, "#E11D48", "#1A4480"][activeFeature % 8]}50`
                       }}
                     >
                       {React.createElement([
@@ -269,13 +277,13 @@ export default function About() {
                         History, Volume2, BarChart3, Lock
                       ][activeFeature % 8], { className: "w-8 h-8" })}
                     </div>
-                    <h3 className="text-xl font-bold mb-3" style={{ color: C.textDark }}>
+                    <h3 className="text-xl font-bold mb-3 text-white">
                       {[
                         "Real-Time Transcription", "AI Clarity Engine", "Interactive Clinic Map", "AI Chatbot Assistant",
                         "Speech History & Analytics", "Text-to-Speech Playback", "Word-Level Confidence", "Secure & Private"
                       ][activeFeature % 8]}
                     </h3>
-                    <p className="text-sm leading-relaxed" style={{ color: C.textMid }}>
+                    <p className="text-sm leading-relaxed" style={{ color: "rgba(200, 216, 238, 0.7)" }}>
                       {[
                         "Record your voice and get instant speech-to-text transcription powered by advanced AI recognition.",
                         "Your speech is analyzed and enhanced by our AI model, correcting misarticulations and producing clearer text.",
@@ -290,9 +298,9 @@ export default function About() {
                     <button 
                       onClick={() => setActiveFeature(null)}
                       className="mt-6 text-xs font-bold uppercase tracking-widest hover:opacity-70 transition-opacity"
-                      style={{ color: C.teal }}
+                      style={{ color: C.tealLight }}
                     >
-                      Back to Overview
+                      ← Back to Overview
                     </button>
                   </motion.div>
                 ) : (
@@ -303,13 +311,13 @@ export default function About() {
                     exit={{ opacity: 0 }}
                     className="flex flex-col items-center"
                   >
-                    <div className="relative w-24 h-24 mb-4 rounded-3xl overflow-hidden shadow-inner">
+                    <div className="relative w-24 h-24 mb-4 rounded-3xl overflow-hidden" style={{ boxShadow: "0 0 30px rgba(42, 143, 160, 0.2)" }}>
                        <Image src="/images/app-icon.png" alt="Articulink" fill className="object-contain" />
                     </div>
-                    <p className="text-sm font-bold uppercase tracking-widest mb-1" style={{ color: C.teal }}>
+                    <p className="text-sm font-bold uppercase tracking-widest mb-1" style={{ color: C.tealLight }}>
                       Explore Features
                     </p>
-                    <p className="text-xs text-slate-400">Click a planet to learn more</p>
+                    <p className="text-xs" style={{ color: "rgba(200, 216, 238, 0.5)" }}>Click a planet to learn more</p>
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -322,14 +330,14 @@ export default function About() {
               className="absolute inset-0 flex items-center justify-center"
             >
               {[
-                { icon: Mic, color: C.teal, bg: "rgba(42, 143, 160, 0.1)" },
-                { icon: Sparkles, color: C.royalBlue, bg: "rgba(26, 68, 128, 0.1)" },
-                { icon: Map, color: "#059669", bg: "rgba(5, 150, 105, 0.1)" },
-                { icon: MessageCircle, color: "#7C3AED", bg: "rgba(124, 58, 237, 0.1)" },
-                { icon: History, color: "#D97706", bg: "rgba(217, 119, 6, 0.1)" },
-                { icon: Volume2, color: C.tealDark, bg: "rgba(30, 107, 120, 0.1)" },
-                { icon: BarChart3, color: "#E11D48", bg: "rgba(225, 29, 72, 0.1)" },
-                { icon: Lock, color: C.deepNavy, bg: "rgba(15, 40, 71, 0.1)" },
+                { icon: Mic, color: "#4DD8E8", glowColor: "rgba(77, 216, 232, 0.3)" },
+                { icon: Sparkles, color: "#6B9AFF", glowColor: "rgba(107, 154, 255, 0.3)" },
+                { icon: Map, color: "#34D399", glowColor: "rgba(52, 211, 153, 0.3)" },
+                { icon: MessageCircle, color: "#A78BFA", glowColor: "rgba(167, 139, 250, 0.3)" },
+                { icon: History, color: "#FBBF24", glowColor: "rgba(251, 191, 36, 0.3)" },
+                { icon: Volume2, color: "#5EEAD4", glowColor: "rgba(94, 234, 212, 0.3)" },
+                { icon: BarChart3, color: "#FB7185", glowColor: "rgba(251, 113, 133, 0.3)" },
+                { icon: Lock, color: "#94A3B8", glowColor: "rgba(148, 163, 184, 0.3)" },
               ].map((feature, i) => {
                 const angle = (i * 360) / 8;
                 // Responsive radius: smaller on mobile
@@ -350,21 +358,22 @@ export default function About() {
                       transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
                     >
                       <motion.button
-                        whileHover={{ scale: 1.2, boxShadow: `0 0 25px ${feature.color}40` }}
+                        whileHover={{ scale: 1.2, boxShadow: `0 0 30px ${feature.glowColor}` }}
                         onClick={(e) => {
                           e.stopPropagation();
                           setActiveFeature(i);
                         }}
-                        className="w-14 h-14 md:w-20 md:h-20 rounded-full flex items-center justify-center transition-all shadow-lg border-2"
+                        className="w-14 h-14 md:w-20 md:h-20 rounded-full flex items-center justify-center transition-all border"
                         style={{ 
-                          backgroundColor: "white",
-                          borderColor: activeFeature === i ? feature.color : "transparent",
+                          background: "linear-gradient(135deg, rgba(15, 40, 71, 0.8), rgba(11, 26, 46, 0.9))",
+                          borderColor: activeFeature === i ? feature.color : "rgba(61, 175, 196, 0.15)",
+                          boxShadow: activeFeature === i ? `0 0 20px ${feature.glowColor}` : "0 4px 20px rgba(0, 0, 0, 0.3)",
                         }}
                       >
                          <feature.icon className="w-6 h-6 md:w-8 md:h-8 transition-colors" style={{ color: feature.color }} />
                       </motion.button>
                       <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-                         <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded bg-white/80 backdrop-blur-sm shadow-sm" style={{ color: feature.color }}>
+                         <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded" style={{ color: feature.color, backgroundColor: "rgba(11, 26, 46, 0.8)", border: `1px solid ${feature.color}30` }}>
                             {["Transcription", "AI Engine", "Clinic Map", "AI Chatbot", "Analytics", "Playback", "Confidence", "Privacy"][i]}
                          </span>
                       </div>

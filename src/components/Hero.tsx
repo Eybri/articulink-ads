@@ -131,7 +131,14 @@ export default function Hero() {
                     src="/app-icon.png"
                     alt="Articulink App Icon"
                     fill
-                    className="object-contain group-hover:scale-110 transition-transform duration-700"
+                    className="object-contain group-hover:opacity-0 transition-all duration-700 group-hover:scale-110"
+                    priority
+                  />
+                  <Image
+                    src="/images/app-icon-white.png"
+                    alt="Articulink App Icon Light"
+                    fill
+                    className="object-contain opacity-0 group-hover:opacity-100 transition-all duration-700 group-hover:scale-110"
                     priority
                   />
                 </div>

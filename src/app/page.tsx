@@ -1,7 +1,5 @@
-import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Features from "@/components/Features";
-import Footer from "@/components/Footer";
 
 const C = {
   cream: "#FAF8F4",
@@ -21,7 +19,6 @@ const C = {
 export default function Home() {
   return (
     <main className="min-h-screen" style={{ backgroundColor: C.cream }}>
-      <Navbar />
       <Hero />
       <Features />
 
@@ -125,7 +122,6 @@ export default function Home() {
         </div>
       </section>
 
-      <Footer />
     </main>
   );
 }

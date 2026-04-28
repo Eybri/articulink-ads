@@ -38,8 +38,8 @@ const features = [
   },
   {
     icon: ShieldCheck,
-    title: "HIPAA Compliant",
-    description: "Your data is encrypted and secure. We prioritize your privacy above all else with clinical-grade security.",
+    title: "Privacy Protected",
+    description: "Your data is handled securely and responsibly. We are fully compliant with the Data Privacy Act of 2012 (NPC).",
     color: COLORS.tealDark,
   },
   {
@@ -50,8 +50,8 @@ const features = [
   },
   {
     icon: Globe,
-    title: "Multi-language Support",
-    description: "Available in 12+ languages, helping people across the globe reconnect with their loved ones.",
+    title: "Bilingual Support",
+    description: "Seamlessly switch between English and Tagalog in seconds. Talk naturally in either language without friction.",
     color: COLORS.deepNavy,
   },
 ];

@@ -111,62 +111,41 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="relative"
           >
-            <div className="relative z-10 w-full max-w-[500px] mx-auto">
+            <div className="relative z-10 w-full max-w-[240px] sm:max-w-[300px] mx-auto">
+              {/* Outer Glow */}
               <div
-                className="absolute inset-0 rounded-3xl blur-3xl -z-10"
+                className="absolute inset-0 rounded-[3rem] blur-3xl -z-10"
                 style={{
                   background:
-                    "linear-gradient(to top right, rgba(190,228,236,0.3), rgba(200,216,238,0.3))",
+                    "linear-gradient(to top right, rgba(190,228,236,0.6), rgba(42,143,160,0.3))",
                 }}
               />
-              <Image
-                src="/hero.png"
-                alt="Articulink App Mockup"
-                width={500}
-                height={800}
-                className="rounded-[40px] shadow-2xl"
-                priority
-              />
-            </div>
-
-            {/* Floating Clarity Score Card */}
-            <motion.div
-              animate={{ y: [0, -10, 0] }}
-              transition={{
-                duration: 4,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-              className="absolute -top-6 -right-6 glass p-6 rounded-2xl shadow-xl hidden md:block"
-            >
-              <div className="flex items-center gap-4">
-                <div
-                  className="w-12 h-12 rounded-full flex items-center justify-center overflow-hidden"
-                  style={{ backgroundColor: "rgba(42, 143, 160, 0.1)" }}
-                >
+              
+              {/* Mobile Device Frame Container */}
+              <div className="relative w-full aspect-[9/19.5] border-[12px] sm:border-[16px] border-[#1C2B3A] rounded-[2.5rem] sm:rounded-[3rem] bg-white shadow-2xl overflow-hidden group flex items-center justify-center">
+                {/* Top Notch (iPhone style) */}
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-28 sm:w-32 h-6 sm:h-7 bg-[#1C2B3A] rounded-b-2xl z-20" />
+                
+                <div className="relative w-40 h-40 sm:w-48 sm:h-48 rounded-[2rem] overflow-hidden">
                   <Image
-                    src="/logo-color.png"
-                    alt="Articulink"
-                    width={32}
-                    height={32}
+                    src="/app-icon.png"
+                    alt="Articulink App Icon"
+                    fill
+                    className="object-contain group-hover:opacity-0 transition-all duration-700 group-hover:scale-110"
+                    priority
+                  />
+                  <Image
+                    src="/images/app-icon-white.png"
+                    alt="Articulink App Icon Light"
+                    fill
+                    className="object-contain opacity-0 group-hover:opacity-100 transition-all duration-700 group-hover:scale-110"
+                    priority
                   />
                 </div>
-                <div>
-                  <p
-                    className="text-sm font-bold"
-                    style={{ color: "#1C2B3A" }}
-                  >
-                    Clarity Score
-                  </p>
-                  <p
-                    className="text-2xl font-black"
-                    style={{ color: "#2A8FA0" }}
-                  >
-                    94%
-                  </p>
-                </div>
               </div>
-            </motion.div>
+            </div>
+
+
           </motion.div>
         </div>
       </div>

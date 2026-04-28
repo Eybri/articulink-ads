@@ -111,7 +111,7 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="relative"
           >
-            <div className="relative z-10 w-full max-w-[320px] sm:max-w-[380px] mx-auto">
+            <div className="relative z-10 w-full max-w-[240px] sm:max-w-[300px] mx-auto">
               {/* Outer Glow */}
               <div
                 className="absolute inset-0 rounded-[3rem] blur-3xl -z-10"
@@ -136,44 +136,7 @@ export default function Hero() {
               </div>
             </div>
 
-            {/* Floating Clarity Score Card */}
-            <motion.div
-              animate={{ y: [0, -10, 0] }}
-              transition={{
-                duration: 4,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-              className="absolute -top-6 -right-6 glass p-6 rounded-2xl shadow-xl hidden md:block"
-            >
-              <div className="flex items-center gap-4">
-                <div
-                  className="w-12 h-12 rounded-full flex items-center justify-center overflow-hidden"
-                  style={{ backgroundColor: "rgba(42, 143, 160, 0.1)" }}
-                >
-                  <Image
-                    src="/logo-color.png"
-                    alt="Articulink"
-                    width={32}
-                    height={32}
-                  />
-                </div>
-                <div>
-                  <p
-                    className="text-sm font-bold"
-                    style={{ color: "#1C2B3A" }}
-                  >
-                    Clarity Score
-                  </p>
-                  <p
-                    className="text-2xl font-black"
-                    style={{ color: "#2A8FA0" }}
-                  >
-                    94%
-                  </p>
-                </div>
-              </div>
-            </motion.div>
+
           </motion.div>
         </div>
       </div>

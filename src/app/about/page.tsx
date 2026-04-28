@@ -342,6 +342,16 @@ export default function About() {
                       Patient Testing & Feedback
                     </span>
                   </div>
+                  <a
+                    href="http://cleft-foundation.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 mt-3 text-sm font-semibold transition-opacity hover:opacity-70"
+                    style={{ color: C.teal }}
+                  >
+                    Visit Website
+                    <ArrowRight className="w-4 h-4" />
+                  </a>
                 </div>
               </div>
             </motion.div>

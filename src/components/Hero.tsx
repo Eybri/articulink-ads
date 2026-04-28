@@ -111,22 +111,29 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="relative"
           >
-            <div className="relative z-10 w-full max-w-[500px] mx-auto">
+            <div className="relative z-10 w-full max-w-[320px] sm:max-w-[380px] mx-auto">
+              {/* Outer Glow */}
               <div
-                className="absolute inset-0 rounded-3xl blur-3xl -z-10"
+                className="absolute inset-0 rounded-[3rem] blur-3xl -z-10"
                 style={{
                   background:
-                    "linear-gradient(to top right, rgba(190,228,236,0.3), rgba(200,216,238,0.3))",
+                    "linear-gradient(to top right, rgba(190,228,236,0.6), rgba(42,143,160,0.3))",
                 }}
               />
-              <Image
-                src="/hero.png"
-                alt="Articulink App Mockup"
-                width={500}
-                height={800}
-                className="rounded-[40px] shadow-2xl"
-                priority
-              />
+              
+              {/* Mobile Device Frame Container */}
+              <div className="relative w-full aspect-[9/19.5] border-[12px] sm:border-[16px] border-[#1C2B3A] rounded-[2.5rem] sm:rounded-[3rem] bg-white shadow-2xl overflow-hidden group">
+                {/* Top Notch (iPhone style) */}
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-28 sm:w-32 h-6 sm:h-7 bg-[#1C2B3A] rounded-b-2xl z-20" />
+                
+                <Image
+                  src="/hero-mobile.png"
+                  alt="Articulink App Mockup"
+                  fill
+                  className="object-cover group-hover:scale-[1.02] transition-transform duration-700"
+                  priority
+                />
+              </div>
             </div>
 
             {/* Floating Clarity Score Card */}

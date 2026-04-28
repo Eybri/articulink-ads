@@ -96,7 +96,7 @@ export default function Footer() {
           <p>© 2026 Articulink. All rights reserved.</p>
           <div className="flex gap-8">
             <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
-            <Link href="#" className="hover:text-white transition-colors">Terms of Service</Link>
+            <Link href="/about" className="hover:text-white transition-colors">About</Link>
           </div>
         </div>
       </div>

@@ -896,22 +896,30 @@ export default function About() {
               { 
                 name: "Avey Macasa", 
                 role: "Project Lead / AI, Mobile & Web Developer",
-                desc: "Lead architect of AI/ML models, cross-platform mobile application, and web ecosystem."
+                desc: "Lead architect of AI/ML models, cross-platform mobile application, and web ecosystem.",
+                image: "/images/avery.jfif",
+                hoverImage: "/images/averycartoon.png"
               },
               { 
                 name: "Bryan James Batan", 
                 role: "Admin Designer & Backend Developer",
-                desc: "Focused on administrative interface design and core backend services."
+                desc: "Focused on administrative interface design and core backend services.",
+                image: null,
+                hoverImage: null
               },
               { 
                 name: "Gelgin Del Los Santos", 
                 role: "Documentation & Data Specialist",
-                desc: "Handles technical documentation and critical dataset collection."
+                desc: "Handles technical documentation and critical dataset collection.",
+                image: null,
+                hoverImage: null
               },
               { 
                 name: "Tyrone Justine Medina", 
                 role: "Documentation & Data Specialist",
-                desc: "Specializes in research documentation and speech dataset management."
+                desc: "Specializes in research documentation and speech dataset management.",
+                image: null,
+                hoverImage: null
               },
             ].map((member, i) => (
               <motion.div
@@ -922,18 +930,37 @@ export default function About() {
                 transition={{ duration: 0.5, delay: i * 0.1 }}
                 className="text-center group"
               >
-                {/* Member Photo Placeholder */}
+                {/* Member Photo */}
                 <div
-                  className="w-full aspect-square rounded-3xl mb-6 flex items-center justify-center group-hover:scale-[1.02] transition-transform shadow-sm"
+                  className="w-full aspect-square rounded-3xl mb-6 flex items-center justify-center group-hover:scale-[1.02] transition-transform shadow-sm overflow-hidden"
                   style={{
                     backgroundColor: C.warmWhite,
                     border: `1px solid ${C.sandMid}40`,
                   }}
                 >
-                  <div className="relative w-full h-full p-8 flex flex-col items-center justify-center">
-                    <Users className="w-12 h-12 mb-3 opacity-20" style={{ color: C.textDark }} />
-                    <div className="w-8 h-1 rounded-full mb-2" style={{ backgroundColor: [C.teal, C.royalBlue, C.tealDark, C.deepNavy][i % 4] }} />
-                  </div>
+                  {member.image ? (
+                    <div className="relative w-full h-full">
+                      <Image
+                        src={member.image}
+                        alt={member.name}
+                        fill
+                        className={`object-cover transition-opacity duration-500 ${member.hoverImage ? 'group-hover:opacity-0' : ''}`}
+                      />
+                      {member.hoverImage && (
+                        <Image
+                          src={member.hoverImage}
+                          alt={`${member.name} hover`}
+                          fill
+                          className="object-cover absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                        />
+                      )}
+                    </div>
+                  ) : (
+                    <div className="relative w-full h-full p-8 flex flex-col items-center justify-center">
+                      <Users className="w-12 h-12 mb-3 opacity-20" style={{ color: C.textDark }} />
+                      <div className="w-8 h-1 rounded-full mb-2" style={{ backgroundColor: [C.teal, C.royalBlue, C.tealDark, C.deepNavy][i % 4] }} />
+                    </div>
+                  )}
                 </div>
                 <h3 className="text-xl font-bold mb-1" style={{ color: C.textDark }}>
                   {member.name}

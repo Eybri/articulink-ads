@@ -49,29 +49,48 @@ const C = {
   orbSand: "#E8E0D0",
 };
 
-/* ─── Contact Form (client-side only — wire to SMTP later) ─── */
+/* ─── Contact Form (connected to SMTP backend) ─── */
 function ContactForm() {
   const [email, setEmail] = React.useState("");
   const [subject, setSubject] = React.useState("");
   const [message, setMessage] = React.useState("");
   const [sent, setSent] = React.useState(false);
   const [sending, setSending] = React.useState(false);
+  const [error, setError] = React.useState("");
+
+  const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email.trim() || !subject.trim() || !message.trim()) return;
 
     setSending(true);
+    setError("");
 
-    // TODO: Replace with actual SMTP API call
-    // Example: await fetch("/api/contact", { method: "POST", body: JSON.stringify({ email, subject, message }) });
-    await new Promise((r) => setTimeout(r, 1200)); // simulate network delay
+    try {
+      const res = await fetch(`${API_URL}/api/contact`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, subject, message }),
+      });
 
-    setSending(false);
-    setSent(true);
-    setEmail("");
-    setSubject("");
-    setMessage("");
+      if (!res.ok) {
+        const data = await res.json().catch(() => null);
+        throw new Error(data?.detail || "Something went wrong. Please try again.");
+      }
+
+      setSent(true);
+      setEmail("");
+      setSubject("");
+      setMessage("");
+    } catch (err: unknown) {
+      const errorMessage = err instanceof Error ? err.message : "Failed to send message. Please try again.";
+      setError(errorMessage);
+      // Auto-clear error after 6 seconds
+      setTimeout(() => setError(""), 6000);
+    } finally {
+      setSending(false);
+    }
   };
 
   if (sent) {
@@ -161,6 +180,21 @@ function ContactForm() {
           className="w-full bg-white/5 border border-white/15 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-white/40 transition-colors placeholder:text-white/30 resize-none"
         />
       </div>
+
+      {error && (
+        <motion.div
+          initial={{ opacity: 0, y: -5 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="mb-4 px-4 py-3 rounded-xl text-sm font-medium border"
+          style={{
+            backgroundColor: "rgba(239, 68, 68, 0.1)",
+            borderColor: "rgba(239, 68, 68, 0.3)",
+            color: "#FCA5A5",
+          }}
+        >
+          {error}
+        </motion.div>
+      )}
 
       <button
         type="submit"
@@ -994,7 +1028,7 @@ export default function About() {
                 ))}
               </div>
 
-              {/* Contact Form — TODO: wire up to SMTP backend */}
+              {/* Contact Form — connected to SMTP backend */}
               <ContactForm />
             </div>
           </div>

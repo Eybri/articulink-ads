@@ -59,8 +59,8 @@ export default function Footer() {
           <div>
             <h4 className="font-bold text-lg mb-6 text-white">Quick Links</h4>
             <ul className="space-y-4" style={{ color: "#C8D8EE" }}>
-              <li><Link href="/#features" className="hover:text-white transition-colors">Features</Link></li>
-              <li><Link href="/#how-it-works" className="hover:text-white transition-colors">How it Works</Link></li>
+              <li><Link href="/features" className="hover:text-white transition-colors">Features</Link></li>
+              <li><Link href="/how-it-works" className="hover:text-white transition-colors">How it Works</Link></li>
               <li><Link href="/#testimonials" className="hover:text-white transition-colors">Success Stories</Link></li>
               <li><Link href="/about" className="hover:text-white transition-colors">About Us</Link></li>
             </ul>

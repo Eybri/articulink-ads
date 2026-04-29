@@ -482,47 +482,6 @@ export default function About() {
         </div>
       </section>
 
-      {/* ─── THE HUMAN STORY ─── */}
-      <section className="py-24 relative overflow-hidden" style={{ backgroundColor: C.cream }}>
-        {/* Background Decoration */}
-        <div className="absolute top-1/2 left-0 w-full h-1 bg-gradient-to-r from-transparent via-teal-500/10 to-transparent -translate-y-1/2" />
-
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center">
-            <motion.h2
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              className="text-3xl md:text-5xl font-bold mb-12 leading-tight"
-              style={{ fontFamily: "var(--font-playfair), serif", color: C.textDark }}
-            >
-              Because no one should have to <br />
-              <span style={{ color: C.teal }}>stay silent</span> just to be accepted.
-            </motion.h2>
-
-            <div className="space-y-12">
-              {[
-                "For many individuals with cleft palate and hypernasal speech, speaking isn't the hard part—being understood is.",
-                "Every word can be met with confusion, every sentence with hesitation. Over time, voices grow quieter, confidence fades, and conversations are avoided.",
-                "Articulink changes that.",
-                "By transforming speech into clearer, more understandable communication, it gives users the freedom to speak without fear—to join conversations, share ideas, and express who they truly are.",
-                "With Articulink, every voice finally has the chance to be heard—and understood."
-              ].map((para, i) => (
-                <motion.p
-                  key={i}
-                  initial={{ opacity: 0, x: i % 2 === 0 ? -20 : 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{ duration: 0.8, delay: i * 0.1 }}
-                  className={`text-xl leading-relaxed ${para.includes("changes that") ? "text-3xl font-bold text-[#1A4480]" : "text-[#4A5A6A]"} ${para.includes("chance to be heard") ? "font-bold text-[#1C2B3A]" : ""}`}
-                >
-                  {para}
-                </motion.p>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* ═══════════════ APP FEATURES ═══════════════ */}
       <section className="py-24 relative overflow-hidden" style={{ background: "linear-gradient(135deg, #0B1A2E 0%, #0F2847 40%, #132D4F 70%, #0B1A2E 100%)" }}>
@@ -816,21 +775,21 @@ export default function About() {
                 title: "Good Health & Well-being",
                 desc: "Articulink supports emotional and social well-being by providing a tool that helps individuals with speech challenges communicate more effectively.",
                 color: "#4C9F38",
-                image: "/images/sdg3.jfif",
+                image: "/images/sdg3.png",
               },
               {
                 number: "04",
                 title: "Quality Education",
                 desc: "We promote inclusive learning environments by ensuring that speech-impaired students have the technology to express their ideas clearly.",
                 color: "#C5192D",
-                image: "/images/sdg4.jfif",
+                image: "/images/sdg4.png",
               },
               {
                 number: "10",
                 title: "Reduced Inequalities",
                 desc: "By breaking down communication barriers, we empower individuals with lisp and hypernasal speech to participate fully in society.",
                 color: "#E11484",
-                image: "/images/sdg10.jfif",
+                image: "/images/sdg10.png",
               },
             ].map((sdg, i) => (
               <motion.div
@@ -1065,7 +1024,7 @@ export default function About() {
                 name: "Avey Macasa",
                 role: "Project Lead / AI, Mobile & Web Developer",
                 desc: "Lead architect of AI/ML models, cross-platform mobile application, and web ecosystem.",
-                image: "/images/avery.jfif",
+                image: "/images/avery.png",
                 hoverImage: "/images/averycartoon.png",
                 objectPosition: "center"
               },

@@ -44,9 +44,9 @@ export default function Navbar() {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-10 text-sm font-medium">
             {[
-              { href: "#features", label: "Features" },
-              { href: "#how-it-works", label: "How it Works" },
-              { href: "#testimonials", label: "Success Stories" },
+              { href: "/features", label: "Features" },
+              { href: "/how-it-works", label: "How it Works" },
+              { href: "/#testimonials", label: "Success Stories" },
               { href: "/about", label: "About" },
             ].map((link) => (
               <Link
@@ -102,9 +102,9 @@ export default function Navbar() {
         >
           <div className="flex flex-col gap-4">
             {[
-              { href: "#features", label: "Features" },
-              { href: "#how-it-works", label: "How it Works" },
-              { href: "#testimonials", label: "Success Stories" },
+              { href: "/features", label: "Features" },
+              { href: "/how-it-works", label: "How it Works" },
+              { href: "/#testimonials", label: "Success Stories" },
               { href: "/about", label: "About" },
             ].map((link) => (
               <Link

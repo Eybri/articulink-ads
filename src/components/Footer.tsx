@@ -93,7 +93,10 @@ export default function Footer() {
         </div>
 
         <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-sm" style={{ color: "#C8D8EE80" }}>
-          <p>© 2026 Articulink. All rights reserved.</p>
+          <div className="flex flex-col items-center md:items-start gap-1">
+            <p>© 2026 Articulink. All rights reserved.</p>
+            <p className="text-[10px] uppercase tracking-widest opacity-50">Powered by OpenAI&apos;s Whisper Small</p>
+          </div>
           <div className="flex gap-8">
             <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
             <Link href="/about" className="hover:text-white transition-colors">About</Link>

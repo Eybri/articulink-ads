@@ -447,7 +447,7 @@ export default function About() {
                     <p className="text-sm leading-relaxed" style={{ color: "rgba(200, 216, 238, 0.7)" }}>
                       {[
                         "Record your voice and get instant speech-to-text transcription powered by advanced AI recognition.",
-                        "Your speech is analyzed and enhanced by our AI model, correcting misarticulations and producing clearer text.",
+                        "Your speech is analyzed and enhanced using OpenAI's Whisper Small model, correcting misarticulations and producing clearer text.",
                         "Find nearby speech therapy clinics, cleft care centers, and support facilities with real-time routing.",
                         "Chat with our intelligent assistant for speech tips, therapy guidance, and answers to your questions.",
                         "Track all your recordings with detailed stats — accuracy percentage, word count, and duration.",
@@ -486,8 +486,8 @@ export default function About() {
 
             {/* Rotating Planets Container */}
             <motion.div
-              animate={{ rotate: activeFeature === null ? 360 : -360 }}
-              transition={{ duration: activeFeature === null ? 30 : 12, repeat: Infinity, ease: "linear" }}
+              animate={{ rotate: activeFeature === null ? -360 : 360 }}
+              transition={{ duration: activeFeature === null ? 50 : 25, repeat: Infinity, ease: "linear" }}
               className="absolute inset-0 flex items-center justify-center"
             >
               {[
@@ -515,8 +515,8 @@ export default function About() {
                     }}
                   >
                     <motion.div
-                      animate={{ rotate: activeFeature === null ? -360 : 360 }}
-                      transition={{ duration: activeFeature === null ? 30 : 12, repeat: Infinity, ease: "linear" }}
+                      animate={{ rotate: activeFeature === null ? 360 : -360 }}
+                      transition={{ duration: activeFeature === null ? 50 : 25, repeat: Infinity, ease: "linear" }}
                     >
                       <motion.button
                         whileHover={{ scale: 1.2, boxShadow: `0 0 30px ${feature.glowColor}` }}
@@ -579,7 +579,7 @@ export default function About() {
                 icon: Brain,
                 step: "02",
                 title: "AI Processing",
-                desc: "The app analyzes your speech and enhances clarity using AI.",
+                desc: "Speech is processed using OpenAI's Whisper Small model to analyze patterns and enhance clarity.",
                 color: C.royalBlue,
               },
               {

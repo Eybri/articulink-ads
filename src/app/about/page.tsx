@@ -893,10 +893,26 @@ export default function About() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* PLACEHOLDER — Replace names, roles, and images with real team info */}
             {[
-              { name: "Team Member 1", role: "Project Lead" },
-              { name: "Team Member 2", role: "Full-Stack Developer" },
-              { name: "Team Member 3", role: "AI / ML Engineer" },
-              { name: "Team Member 4", role: "UI/UX Designer" },
+              { 
+                name: "Avey Macasa", 
+                role: "Project Lead / AI, Mobile & Web Developer",
+                desc: "Lead architect of AI/ML models, cross-platform mobile application, and web ecosystem."
+              },
+              { 
+                name: "Bryan James Batan", 
+                role: "Admin Designer & Backend Developer",
+                desc: "Focused on administrative interface design and core backend services."
+              },
+              { 
+                name: "Gelgin Del Los Santos", 
+                role: "Documentation & Data Specialist",
+                desc: "Handles technical documentation and critical dataset collection."
+              },
+              { 
+                name: "Tyrone Justine Medina", 
+                role: "Documentation & Data Specialist",
+                desc: "Specializes in research documentation and speech dataset management."
+              },
             ].map((member, i) => (
               <motion.div
                 key={i}
@@ -908,22 +924,25 @@ export default function About() {
               >
                 {/* Member Photo Placeholder */}
                 <div
-                  className="w-full aspect-square rounded-3xl mb-6 flex items-center justify-center group-hover:scale-[1.02] transition-transform"
+                  className="w-full aspect-square rounded-3xl mb-6 flex items-center justify-center group-hover:scale-[1.02] transition-transform shadow-sm"
                   style={{
                     backgroundColor: C.warmWhite,
-                    border: `2px dashed ${C.sandMid}`,
+                    border: `1px solid ${C.sandMid}40`,
                   }}
                 >
-                  <div>
-                    <Users className="w-10 h-10 mx-auto mb-2" style={{ color: C.sandMid }} />
-                    <p className="text-xs" style={{ color: C.sandMid }}>Photo</p>
+                  <div className="relative w-full h-full p-8 flex flex-col items-center justify-center">
+                    <Users className="w-12 h-12 mb-3 opacity-20" style={{ color: C.textDark }} />
+                    <div className="w-8 h-1 rounded-full mb-2" style={{ backgroundColor: [C.teal, C.royalBlue, C.tealDark, C.deepNavy][i % 4] }} />
                   </div>
                 </div>
-                <h3 className="text-lg font-bold" style={{ color: C.textDark }}>
+                <h3 className="text-xl font-bold mb-1" style={{ color: C.textDark }}>
                   {member.name}
                 </h3>
-                <p className="text-sm" style={{ color: C.textMid }}>
+                <p className="text-sm font-bold uppercase tracking-widest mb-3" style={{ color: C.teal, fontSize: '0.65rem' }}>
                   {member.role}
+                </p>
+                <p className="text-xs leading-relaxed max-w-[200px] mx-auto" style={{ color: C.textMid }}>
+                  {member.desc}
                 </p>
               </motion.div>
             ))}

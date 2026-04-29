@@ -264,8 +264,8 @@ export default function About() {
               </h1>
 
               <p className="text-xl mb-10 max-w-lg leading-relaxed" style={{ color: C.textMid }}>
-                A speech assistance app designed to help individuals with lisp and hypernasal
-                speech communicate more clearly — powered by AI, built with heart.
+                Articulink exists to give a voice to those who struggle to be understood. 
+                We turn uncertainty into confidence and silence into meaningful conversations.
               </p>
             </motion.div>
 
@@ -310,7 +310,8 @@ export default function About() {
         </div>
       </section>
 
-      {/* ═══════════════ WHAT IS ARTICULINK ═══════════════ */}
+
+      {/* ─── OUR FOUNDATION (Purpose, Mission, Vision) ─── */}
       <section className="py-24" style={{ backgroundColor: C.warmWhite }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20">
@@ -318,53 +319,101 @@ export default function About() {
               className="font-bold tracking-widest uppercase text-sm mb-4"
               style={{ color: C.teal }}
             >
-              What is Articulink?
+              Our Foundation
             </h2>
             <p
               className="text-4xl md:text-5xl font-bold max-w-3xl mx-auto"
               style={{ fontFamily: "var(--font-playfair), serif", color: C.textDark }}
             >
-              Empowering communication <br />
-              <span className="text-gradient">through AI</span>
+              Built with <span className="text-gradient">Compassion</span> <br />
+              Driven by Technology
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-12 items-center max-w-5xl mx-auto">
-            <div>
-              <p className="text-lg leading-relaxed mb-6" style={{ color: C.textMid }}>
-                Articulink is a speech assistance application designed to help individuals with
-                lisp and hypernasal speech communicate more clearly.
-              </p>
-              <p className="text-lg leading-relaxed" style={{ color: C.textMid }}>
-                The app processes your voice and converts it into a clearer, more understandable
-                speech output — preserving your message while enhancing clarity through advanced
-                AI processing.
-              </p>
-            </div>
-            <div className="space-y-4">
-              {[
-                "Individuals with lisp speech patterns",
-                "Individuals with hypernasal speech",
-                "Speech therapy support users",
-                "Students and professionals needing clearer communication",
-              ].map((text, i) => (
-                <div
-                  key={i}
-                  className="flex items-center gap-4 p-5 rounded-2xl"
-                  style={{
-                    backgroundColor: C.cream,
-                    border: `1px solid ${C.sandMid}50`,
-                  }}
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {[
+              {
+                title: "Purpose",
+                icon: Waves,
+                content: "Articulink exists to give a voice to those who struggle to be understood. For individuals with hypernasality caused by cleft palate, everyday conversations can feel isolating. We transform speech into clearer communication—helping users connect and belong without hesitation.",
+                color: C.teal
+              },
+              {
+                title: "Mission",
+                icon: Heart,
+                content: "To empower individuals with speech differences by turning uncertainty into confidence, isolation into connection, and silence into meaningful conversations through compassionate and innovative technology.",
+                color: C.royalBlue
+              },
+              {
+                title: "Vision",
+                icon: Accessibility,
+                content: "We envision a world where no one is left unheard—where every person, regardless of how they speak, can share their thoughts freely, be understood deeply, and live with confidence, dignity, and connection.",
+                color: C.tealDark
+              }
+            ].map((item, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                whileHover={{ y: -10, scale: 1.02 }}
+                className="p-10 rounded-[2.5rem] bg-white shadow-xl border border-black/5 transition-all group"
+              >
+                <div 
+                   className="w-14 h-14 rounded-2xl flex items-center justify-center text-white mb-8 shadow-lg group-hover:rotate-12 transition-transform duration-500" 
+                   style={{ backgroundColor: item.color }}
                 >
-                  <Users className="w-5 h-5 shrink-0" style={{ color: C.teal }} />
-                  <span className="font-medium" style={{ color: C.textDark }}>
-                    {text}
-                  </span>
+                  <item.icon className="w-7 h-7" />
                 </div>
-              ))}
-            </div>
+                <h3 className="text-2xl font-bold mb-6 group-hover:text-[#2A8FA0] transition-colors" style={{ color: C.textDark }}>{item.title}</h3>
+                <p className="text-base leading-relaxed" style={{ color: C.textMid }}>{item.content}</p>
+              </motion.div>
+            ))}
           </div>
         </div>
+      </section>
+
+      {/* ─── THE HUMAN STORY ─── */}
+      <section className="py-24 relative overflow-hidden" style={{ backgroundColor: C.cream }}>
+         {/* Background Decoration */}
+         <div className="absolute top-1/2 left-0 w-full h-1 bg-gradient-to-r from-transparent via-teal-500/10 to-transparent -translate-y-1/2" />
+         
+         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="text-center">
+              <motion.h2 
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                className="text-3xl md:text-5xl font-bold mb-12 leading-tight" 
+                style={{ fontFamily: "var(--font-playfair), serif", color: C.textDark }}
+              >
+                Because no one should have to <br />
+                <span style={{ color: C.teal }}>stay silent</span> just to be accepted.
+              </motion.h2>
+              
+              <div className="space-y-12">
+                {[
+                  "For many individuals with cleft palate and hypernasal speech, speaking isn't the hard part—being understood is.",
+                  "Every word can be met with confusion, every sentence with hesitation. Over time, voices grow quieter, confidence fades, and conversations are avoided.",
+                  "Articulink changes that.",
+                  "By transforming speech into clearer, more understandable communication, it gives users the freedom to speak without fear—to join conversations, share ideas, and express who they truly are.",
+                  "With Articulink, every voice finally has the chance to be heard—and understood."
+                ].map((para, i) => (
+                  <motion.p
+                    key={i}
+                    initial={{ opacity: 0, x: i % 2 === 0 ? -20 : 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, margin: "-50px" }}
+                    transition={{ duration: 0.8, delay: i * 0.1 }}
+                    className={`text-xl leading-relaxed ${para.includes("changes that") ? "text-3xl font-bold text-[#1A4480]" : "text-[#4A5A6A]"} ${para.includes("chance to be heard") ? "font-bold text-[#1C2B3A]" : ""}`}
+                  >
+                    {para}
+                  </motion.p>
+                ))}
+              </div>
+            </div>
+         </div>
       </section>
 
       {/* ═══════════════ APP FEATURES ═══════════════ */}

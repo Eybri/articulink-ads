@@ -211,6 +211,7 @@ function ContactForm() {
 
 export default function About() {
   const [iconIndex, setIconIndex] = React.useState(0);
+  const [foundationIndex, setFoundationIndex] = React.useState(0);
   const [activeFeature, setActiveFeature] = React.useState<number | null>(null);
   const icons = ["/images/app-icon.png", "/images/app-icon-white.png"];
 
@@ -264,7 +265,7 @@ export default function About() {
               </h1>
 
               <p className="text-xl mb-10 max-w-lg leading-relaxed" style={{ color: C.textMid }}>
-                Articulink exists to give a voice to those who struggle to be understood. 
+                Articulink exists to give a voice to those who struggle to be understood.
                 We turn uncertainty into confidence and silence into meaningful conversations.
               </p>
             </motion.div>
@@ -311,109 +312,188 @@ export default function About() {
       </section>
 
 
-      {/* ─── OUR FOUNDATION (Purpose, Mission, Vision) ─── */}
+      {/* ─── OUR FOUNDATION (Premium 3D Storybook) ─── */}
       <section className="py-24" style={{ backgroundColor: C.warmWhite }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-20">
-            <h2
-              className="font-bold tracking-widest uppercase text-sm mb-4"
-              style={{ color: C.teal }}
-            >
-              Our Foundation
-            </h2>
-            <p
-              className="text-4xl md:text-5xl font-bold max-w-3xl mx-auto"
-              style={{ fontFamily: "var(--font-playfair), serif", color: C.textDark }}
-            >
-              Built with <span className="text-gradient">Compassion</span> <br />
-              Driven by Technology
+          <div className="text-center mb-16">
+            <h2 className="font-bold tracking-widest uppercase text-sm mb-4" style={{ color: C.teal }}>Our Foundation</h2>
+            <p className="text-3xl md:text-5xl font-bold" style={{ fontFamily: "var(--font-playfair), serif", color: C.textDark }}>
+              The Articulink <span className="text-gradient">Storybook</span>
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {[
-              {
-                title: "Purpose",
-                icon: Waves,
-                content: "Articulink exists to give a voice to those who struggle to be understood. For individuals with hypernasality caused by cleft palate, everyday conversations can feel isolating. We transform speech into clearer communication—helping users connect and belong without hesitation.",
-                color: C.teal
-              },
-              {
-                title: "Mission",
-                icon: Heart,
-                content: "To empower individuals with speech differences by turning uncertainty into confidence, isolation into connection, and silence into meaningful conversations through compassionate and innovative technology.",
-                color: C.royalBlue
-              },
-              {
-                title: "Vision",
-                icon: Accessibility,
-                content: "We envision a world where no one is left unheard—where every person, regardless of how they speak, can share their thoughts freely, be understood deeply, and live with confidence, dignity, and connection.",
-                color: C.tealDark
-              }
-            ].map((item, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                whileHover={{ y: -10, scale: 1.02 }}
-                className="p-10 rounded-[2.5rem] bg-white shadow-xl border border-black/5 transition-all group"
-              >
-                <div 
-                   className="w-14 h-14 rounded-2xl flex items-center justify-center text-white mb-8 shadow-lg group-hover:rotate-12 transition-transform duration-500" 
-                   style={{ backgroundColor: item.color }}
+          <div className="flex justify-center items-center py-10 perspective-3000">
+            {/* Book Outer Cover */}
+            <div
+              className="relative w-full max-w-5xl h-[550px] bg-[#2A1D15] rounded-[3rem] p-3 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] border-4 border-[#3D2B1F]"
+              style={{
+                backgroundImage: "radial-gradient(circle at 50% 0%, #4a3528, #2a1d15)"
+              }}
+            >
+              {/* Page Stack Effect (Edges) */}
+              <div className="absolute top-4 bottom-4 left-4 right-4 bg-[#EDE8DF] rounded-[2.5rem] shadow-inner" />
+              <div className="absolute top-5 bottom-5 left-5 right-5 bg-white rounded-[2.3rem] shadow-sm overflow-hidden flex">
+
+                {/* Left Page (Static) */}
+                <div
+                  className="flex-1 bg-white px-16 py-12 relative z-10 border-r border-black/10"
+                  style={{
+                    backgroundImage: "linear-gradient(to right, #ffffff 90%, #f0ede6 100%)",
+                  }}
                 >
-                  <item.icon className="w-7 h-7" />
+                  <div className="h-full flex flex-col justify-center items-start">
+                    <div className="w-12 h-1 bg-teal-500 mb-8 rounded-full" />
+                    <h3 className="text-4xl md:text-5xl font-bold mb-6" style={{ color: C.textDark, fontFamily: "var(--font-playfair), serif" }}>
+                      Our <br />Foundation
+                    </h3>
+                    <p className="text-lg leading-relaxed italic opacity-70 max-w-[280px]" style={{ color: C.textMid }}>
+                      &ldquo;Every great journey begins with a clear purpose and a heart full of mission.&rdquo;
+                    </p>
+
+                    <div className="mt-12 space-y-6">
+                      {["Purpose", "Mission", "Vision"].map((label, i) => (
+                        <button
+                          key={i}
+                          onClick={() => setFoundationIndex(i)}
+                          className="flex flex-col items-start group text-left"
+                        >
+                          <span className={`text-[10px] font-extrabold uppercase tracking-widest mb-1 transition-colors ${foundationIndex === i ? "text-teal-600" : "text-gray-400"}`}>
+                            Chapter {i + 1}
+                          </span>
+                          <span className={`text-lg font-bold transition-all ${foundationIndex === i ? "translate-x-2 text-teal-800" : "text-gray-600 group-hover:translate-x-1"}`}>
+                            {label}
+                          </span>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
                 </div>
-                <h3 className="text-2xl font-bold mb-6 group-hover:text-[#2A8FA0] transition-colors" style={{ color: C.textDark }}>{item.title}</h3>
-                <p className="text-base leading-relaxed" style={{ color: C.textMid }}>{item.content}</p>
-              </motion.div>
-            ))}
+
+                {/* Realistic Spine / Gutter */}
+                <div className="absolute left-1/2 -translate-x-1/2 w-8 h-full z-20 pointer-events-none">
+                  <div className="w-full h-full" style={{ background: "linear-gradient(to right, rgba(0,0,0,0.1), rgba(0,0,0,0.05) 45%, rgba(0,0,0,0) 50%, rgba(0,0,0,0.05) 55%, rgba(0,0,0,0.1))" }} />
+                  <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-0.5 bg-black/10" />
+                </div>
+
+                {/* Right Page (Interactive Flip) */}
+                <div className="flex-1 relative bg-[#F9F7F2]">
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={foundationIndex}
+                      initial={{ rotateY: 90, opacity: 0, z: 100 }}
+                      animate={{ rotateY: 0, opacity: 1, z: 0 }}
+                      exit={{ rotateY: -90, opacity: 0, z: 100 }}
+                      transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
+                      className="absolute inset-0 bg-white p-12 origin-left"
+                      style={{
+                        backgroundImage: "linear-gradient(to left, #ffffff 90%, #f0ede6 100%)",
+                        backfaceVisibility: "hidden"
+                      }}
+                    >
+                      <div className="h-full flex flex-col justify-center">
+                        <motion.div
+                          initial={{ scale: 0.8, opacity: 0 }}
+                          animate={{ scale: 1, opacity: 1 }}
+                          transition={{ delay: 0.3 }}
+                          className="w-16 h-16 rounded-2xl flex items-center justify-center text-white mb-10 shadow-xl"
+                          style={{ backgroundColor: [C.teal, C.royalBlue, C.tealDark][foundationIndex] }}
+                        >
+                          {foundationIndex === 0 && <Waves className="w-8 h-8" />}
+                          {foundationIndex === 1 && <Heart className="w-8 h-8" />}
+                          {foundationIndex === 2 && <Accessibility className="w-8 h-8" />}
+                        </motion.div>
+
+                        <motion.h4
+                          initial={{ y: 20, opacity: 0 }}
+                          animate={{ y: 0, opacity: 1 }}
+                          transition={{ delay: 0.4 }}
+                          className="text-3xl font-bold mb-6"
+                          style={{ color: C.textDark, fontFamily: "var(--font-playfair), serif" }}
+                        >
+                          {["Purpose", "Mission", "Vision"][foundationIndex]}
+                        </motion.h4>
+
+                        <motion.p
+                          initial={{ y: 20, opacity: 0 }}
+                          animate={{ y: 0, opacity: 1 }}
+                          transition={{ delay: 0.5 }}
+                          className="text-lg leading-relaxed opacity-80"
+                          style={{ color: C.textMid }}
+                        >
+                          {[
+                            "Articulink exists to give a voice to those who struggle to be understood. For individuals with hypernasality caused by cleft palate, everyday conversations can feel isolating. We transform speech into clearer communication—helping users connect and belong without hesitation.",
+                            "To empower individuals with speech differences by turning uncertainty into confidence, isolation into connection, and silence into meaningful conversations through compassionate and innovative technology.",
+                            "We envision a world where no one is left unheard—where every person, regardless of how they speak, can share their thoughts freely, be understood deeply, and live with confidence, dignity, and connection."
+                          ][foundationIndex]}
+                        </motion.p>
+
+                        <div className="mt-auto flex justify-between items-center text-[10px] font-extrabold uppercase tracking-[0.2em] text-gray-400">
+                          <span>Archive vol. 01</span>
+                          <div className="flex gap-6">
+                            <button
+                              onClick={() => setFoundationIndex((p) => (p > 0 ? p - 1 : 2))}
+                              className="hover:text-teal-600 transition-colors flex items-center gap-2"
+                            >
+                              Back
+                            </button>
+                            <button
+                              onClick={() => setFoundationIndex((p) => (p < 2 ? p + 1 : 0))}
+                              className="hover:text-teal-600 transition-colors flex items-center gap-2"
+                            >
+                              Next
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </motion.div>
+                  </AnimatePresence>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* ─── THE HUMAN STORY ─── */}
       <section className="py-24 relative overflow-hidden" style={{ backgroundColor: C.cream }}>
-         {/* Background Decoration */}
-         <div className="absolute top-1/2 left-0 w-full h-1 bg-gradient-to-r from-transparent via-teal-500/10 to-transparent -translate-y-1/2" />
-         
-         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div className="text-center">
-              <motion.h2 
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                className="text-3xl md:text-5xl font-bold mb-12 leading-tight" 
-                style={{ fontFamily: "var(--font-playfair), serif", color: C.textDark }}
-              >
-                Because no one should have to <br />
-                <span style={{ color: C.teal }}>stay silent</span> just to be accepted.
-              </motion.h2>
-              
-              <div className="space-y-12">
-                {[
-                  "For many individuals with cleft palate and hypernasal speech, speaking isn't the hard part—being understood is.",
-                  "Every word can be met with confusion, every sentence with hesitation. Over time, voices grow quieter, confidence fades, and conversations are avoided.",
-                  "Articulink changes that.",
-                  "By transforming speech into clearer, more understandable communication, it gives users the freedom to speak without fear—to join conversations, share ideas, and express who they truly are.",
-                  "With Articulink, every voice finally has the chance to be heard—and understood."
-                ].map((para, i) => (
-                  <motion.p
-                    key={i}
-                    initial={{ opacity: 0, x: i % 2 === 0 ? -20 : 20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true, margin: "-50px" }}
-                    transition={{ duration: 0.8, delay: i * 0.1 }}
-                    className={`text-xl leading-relaxed ${para.includes("changes that") ? "text-3xl font-bold text-[#1A4480]" : "text-[#4A5A6A]"} ${para.includes("chance to be heard") ? "font-bold text-[#1C2B3A]" : ""}`}
-                  >
-                    {para}
-                  </motion.p>
-                ))}
-              </div>
+        {/* Background Decoration */}
+        <div className="absolute top-1/2 left-0 w-full h-1 bg-gradient-to-r from-transparent via-teal-500/10 to-transparent -translate-y-1/2" />
+
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center">
+            <motion.h2
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              className="text-3xl md:text-5xl font-bold mb-12 leading-tight"
+              style={{ fontFamily: "var(--font-playfair), serif", color: C.textDark }}
+            >
+              Because no one should have to <br />
+              <span style={{ color: C.teal }}>stay silent</span> just to be accepted.
+            </motion.h2>
+
+            <div className="space-y-12">
+              {[
+                "For many individuals with cleft palate and hypernasal speech, speaking isn't the hard part—being understood is.",
+                "Every word can be met with confusion, every sentence with hesitation. Over time, voices grow quieter, confidence fades, and conversations are avoided.",
+                "Articulink changes that.",
+                "By transforming speech into clearer, more understandable communication, it gives users the freedom to speak without fear—to join conversations, share ideas, and express who they truly are.",
+                "With Articulink, every voice finally has the chance to be heard—and understood."
+              ].map((para, i) => (
+                <motion.p
+                  key={i}
+                  initial={{ opacity: 0, x: i % 2 === 0 ? -20 : 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.8, delay: i * 0.1 }}
+                  className={`text-xl leading-relaxed ${para.includes("changes that") ? "text-3xl font-bold text-[#1A4480]" : "text-[#4A5A6A]"} ${para.includes("chance to be heard") ? "font-bold text-[#1C2B3A]" : ""}`}
+                >
+                  {para}
+                </motion.p>
+              ))}
             </div>
-         </div>
+          </div>
+        </div>
       </section>
 
       {/* ═══════════════ APP FEATURES ═══════════════ */}
@@ -953,32 +1033,32 @@ export default function About() {
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              { 
-                name: "Avey Macasa", 
+              {
+                name: "Avey Macasa",
                 role: "Project Lead / AI, Mobile & Web Developer",
                 desc: "Lead architect of AI/ML models, cross-platform mobile application, and web ecosystem.",
                 image: "/images/avery.jfif",
                 hoverImage: "/images/averycartoon.png",
                 objectPosition: "center"
               },
-              { 
-                name: "Bryan James Batan", 
+              {
+                name: "Bryan James Batan",
                 role: "Admin Designer & Backend Developer",
                 desc: "Focused on administrative interface design and core backend services.",
                 image: null,
                 hoverImage: null,
                 objectPosition: "center"
               },
-              { 
-                name: "Gelgin Del Los Santos", 
+              {
+                name: "Gelgin Del Los Santos",
                 role: "Documentation & Data Specialist",
                 desc: "Handles technical documentation and critical dataset collection.",
                 image: "/images/gelgin.jpg",
                 hoverImage: "/images/gelgincartoons.png",
                 objectPosition: "top"
               },
-              { 
-                name: "Tyrone Justine Medina", 
+              {
+                name: "Tyrone Justine Medina",
                 role: "Documentation & Data Specialist",
                 desc: "Specializes in research documentation and speech dataset management.",
                 image: null,

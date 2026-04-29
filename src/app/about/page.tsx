@@ -334,7 +334,7 @@ export default function About() {
                 <div className="absolute top-4 bottom-4 left-4 right-4 bg-[#EDE8DF] rounded-[2.5rem] shadow-inner" />
                 <div className="absolute top-5 bottom-5 left-5 right-5 bg-white rounded-[2.3rem] shadow-sm overflow-hidden flex">
                    
-                   {/* Left Page (Static / Dynamic) */}
+                   {/* Left Page (Static / TOC) */}
                    <div 
                      className="w-1/2 bg-white p-16 relative z-10 border-r border-black/10 transition-colors duration-700"
                      style={{ 
@@ -342,44 +342,16 @@ export default function About() {
                      }}
                    >
                       <div className="h-full flex flex-col relative">
-                         <AnimatePresence mode="wait">
-                            {foundationIndex < 3 ? (
-                               <motion.div
-                                 key="static-intro"
-                                 initial={{ opacity: 0, y: 10 }}
-                                 animate={{ opacity: 1, y: 0 }}
-                                 exit={{ opacity: 0, y: -10 }}
-                                 className="my-auto"
-                               >
-                                  <div className="w-12 h-1 bg-teal-500 mb-8 rounded-full" />
-                                  <h3 className="text-4xl md:text-5xl font-bold mb-6" style={{ color: C.textDark, fontFamily: "var(--font-playfair), serif" }}>
-                                    Our <br />Foundation
-                                  </h3>
-                                  <p className="text-lg leading-relaxed italic opacity-70 max-w-[280px]" style={{ color: C.textMid }}>
-                                    &ldquo;Every great journey begins with a clear purpose and a heart full of mission.&rdquo;
-                                  </p>
-                               </motion.div>
-                            ) : (
-                               <motion.div
-                                 key="story-intro"
-                                 initial={{ opacity: 0, y: 10 }}
-                                 animate={{ opacity: 1, y: 0 }}
-                                 exit={{ opacity: 0, y: -10 }}
-                                 className="my-auto"
-                               >
-                                  <div className="w-12 h-1 bg-teal-500 mb-8 rounded-full opacity-30" />
-                                  <h3 className="text-4xl font-bold mb-10 leading-tight" style={{ color: C.textDark, fontFamily: "var(--font-playfair), serif" }}>
-                                    Because no one <br />should have to <br />
-                                    <span style={{ color: C.teal }}>stay silent</span>
-                                  </h3>
-                                  <div className="space-y-8 text-lg leading-relaxed max-w-[320px]" style={{ color: C.textMid }}>
-                                     <p>For many individuals with cleft palate and hypernasal speech, speaking isn&apos;t the hard part—being understood is.</p>
-                                     <p>Every word can be met with confusion, every sentence with hesitation. Over time, voices grow quieter, confidence fades.</p>
-                                  </div>
-                               </motion.div>
-                            )}
-                         </AnimatePresence>
-
+                         <div className="my-auto">
+                            <div className="w-12 h-1 bg-teal-500 mb-8 rounded-full" />
+                            <h3 className="text-4xl md:text-5xl font-bold mb-6" style={{ color: C.textDark, fontFamily: "var(--font-playfair), serif" }}>
+                              Our <br />Foundation
+                            </h3>
+                            <p className="text-lg leading-relaxed italic opacity-70 max-w-[280px]" style={{ color: C.textMid }}>
+                              &ldquo;Every great journey begins with a clear purpose and a heart full of mission.&rdquo;
+                            </p>
+                         </div>
+                         
                          {/* Table of Contents (Fixed Bottom) */}
                          <div className="mt-auto pt-10">
                             <p className="text-[10px] font-extrabold uppercase tracking-widest text-gray-400 mb-6 border-t border-black/5 pt-6">Table of Contents</p>
@@ -422,58 +394,61 @@ export default function About() {
                          >
                             <div className="h-full flex flex-col relative">
                                <div className="my-auto">
-                               {foundationIndex < 3 ? (
-                                 <>
-                                   <motion.div 
-                                      initial={{ scale: 0.8, opacity: 0 }}
-                                      animate={{ scale: 1, opacity: 1 }}
+                                  {foundationIndex < 3 ? (
+                                    <>
+                                      <motion.div 
+                                         initial={{ scale: 0.8, opacity: 0 }}
+                                         animate={{ scale: 1, opacity: 1 }}
+                                         transition={{ delay: 0.3 }}
+                                         className="w-16 h-16 rounded-2xl flex items-center justify-center text-white mb-10 shadow-xl"
+                                         style={{ backgroundColor: [C.teal, C.royalBlue, C.tealDark][foundationIndex] }}
+                                      >
+                                         {foundationIndex === 0 && <Waves className="w-8 h-8" />}
+                                         {foundationIndex === 1 && <Heart className="w-8 h-8" />}
+                                         {foundationIndex === 2 && <Accessibility className="w-8 h-8" />}
+                                      </motion.div>
+                                      
+                                      <motion.h4 
+                                        initial={{ y: 20, opacity: 0 }}
+                                        animate={{ y: 0, opacity: 1 }}
+                                        transition={{ delay: 0.4 }}
+                                        className="text-3xl font-bold mb-6" 
+                                        style={{ color: C.textDark, fontFamily: "var(--font-playfair), serif" }}
+                                      >
+                                        {["Purpose", "Mission", "Vision"][foundationIndex]}
+                                      </motion.h4>
+                                      
+                                      <motion.p 
+                                        initial={{ y: 20, opacity: 0 }}
+                                        animate={{ y: 0, opacity: 1 }}
+                                        transition={{ delay: 0.5 }}
+                                        className="text-lg leading-relaxed opacity-80" 
+                                        style={{ color: C.textMid }}
+                                      >
+                                         {[
+                                           "Articulink exists to give a voice to those who struggle to be understood. For individuals with hypernasality caused by cleft palate, everyday conversations can feel isolating. We transform speech into clearer communication—helping users connect and belong without hesitation.",
+                                           "To empower individuals with speech differences by turning uncertainty into confidence, isolation into connection, and silence into meaningful conversations through compassionate and innovative technology.",
+                                           "We envision a world where no one is left unheard—where every person, regardless of how they speak, can share their thoughts freely, be understood deeply, and live with confidence, dignity, and connection."
+                                         ][foundationIndex]}
+                                      </motion.p>
+                                    </>
+                                  ) : (
+                                    <motion.div
+                                      initial={{ opacity: 0, x: 10 }}
+                                      animate={{ opacity: 1, x: 0 }}
                                       transition={{ delay: 0.3 }}
-                                      className="w-16 h-16 rounded-2xl flex items-center justify-center text-white mb-10 shadow-xl"
-                                      style={{ backgroundColor: [C.teal, C.royalBlue, C.tealDark][foundationIndex] }}
-                                   >
-                                      {foundationIndex === 0 && <Waves className="w-8 h-8" />}
-                                      {foundationIndex === 1 && <Heart className="w-8 h-8" />}
-                                      {foundationIndex === 2 && <Accessibility className="w-8 h-8" />}
-                                   </motion.div>
-                                   
-                                   <motion.h4 
-                                     initial={{ y: 20, opacity: 0 }}
-                                     animate={{ y: 0, opacity: 1 }}
-                                     transition={{ delay: 0.4 }}
-                                     className="text-3xl font-bold mb-6" 
-                                     style={{ color: C.textDark, fontFamily: "var(--font-playfair), serif" }}
-                                   >
-                                     {["Purpose", "Mission", "Vision"][foundationIndex]}
-                                   </motion.h4>
-                                   
-                                   <motion.p 
-                                     initial={{ y: 20, opacity: 0 }}
-                                     animate={{ y: 0, opacity: 1 }}
-                                     transition={{ delay: 0.5 }}
-                                     className="text-lg leading-relaxed opacity-80" 
-                                     style={{ color: C.textMid }}
-                                   >
-                                      {[
-                                        "Articulink exists to give a voice to those who struggle to be understood. For individuals with hypernasality caused by cleft palate, everyday conversations can feel isolating. We transform speech into clearer communication—helping users connect and belong without hesitation.",
-                                        "To empower individuals with speech differences by turning uncertainty into confidence, isolation into connection, and silence into meaningful conversations through compassionate and innovative technology.",
-                                        "We envision a world where no one is left unheard—where every person, regardless of how they speak, can share their thoughts freely, be understood deeply, and live with confidence, dignity, and connection."
-                                      ][foundationIndex]}
-                                   </motion.p>
-                                 </>
-                               ) : (
-                                 <motion.div
-                                   initial={{ opacity: 0, x: 10 }}
-                                   animate={{ opacity: 1, x: 0 }}
-                                   transition={{ delay: 0.3 }}
-                                   className="space-y-10"
-                                 >
-                                   <p className="text-2xl font-bold italic" style={{ color: C.royalBlue }}>Articulink changes that.</p>
-                                   <div className="space-y-8 text-xl leading-relaxed" style={{ color: C.textMid }}>
-                                      <p>By transforming speech into clearer communication, it gives users the freedom to speak without fear—to join conversations and share ideas.</p>
-                                      <p className="font-bold text-2xl leading-tight" style={{ color: C.textDark }}>Every voice finally has the chance to be heard—and understood.</p>
-                                   </div>
-                                 </motion.div>
-                               )}
+                                      className="space-y-6"
+                                    >
+                                      <h3 className="text-3xl font-bold mb-6 leading-tight" style={{ color: C.textDark, fontFamily: "var(--font-playfair), serif" }}>
+                                        Because no one <br />should have to <br />
+                                        <span style={{ color: C.teal }}>stay silent</span>
+                                      </h3>
+                                      <div className="space-y-6 text-lg leading-relaxed" style={{ color: C.textMid }}>
+                                         <p>For many individuals with cleft palate and hypernasal speech, speaking isn&apos;t the hard part—being understood is.</p>
+                                         <p>Every word can be met with confusion, every sentence with hesitation. Over time, voices grow quieter, confidence fades.</p>
+                                      </div>
+                                    </motion.div>
+                                  )}
                                </div>
                                
                                <div className="mt-auto flex justify-between items-center text-[10px] font-extrabold uppercase tracking-[0.2em] text-gray-400 border-t border-black/5 pt-6">

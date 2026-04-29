@@ -49,29 +49,48 @@ const C = {
   orbSand: "#E8E0D0",
 };
 
-/* ─── Contact Form (client-side only — wire to SMTP later) ─── */
+/* ─── Contact Form (connected to SMTP backend) ─── */
 function ContactForm() {
   const [email, setEmail] = React.useState("");
   const [subject, setSubject] = React.useState("");
   const [message, setMessage] = React.useState("");
   const [sent, setSent] = React.useState(false);
   const [sending, setSending] = React.useState(false);
+  const [error, setError] = React.useState("");
+
+  const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email.trim() || !subject.trim() || !message.trim()) return;
 
     setSending(true);
+    setError("");
 
-    // TODO: Replace with actual SMTP API call
-    // Example: await fetch("/api/contact", { method: "POST", body: JSON.stringify({ email, subject, message }) });
-    await new Promise((r) => setTimeout(r, 1200)); // simulate network delay
+    try {
+      const res = await fetch(`${API_URL}/api/contact`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, subject, message }),
+      });
 
-    setSending(false);
-    setSent(true);
-    setEmail("");
-    setSubject("");
-    setMessage("");
+      if (!res.ok) {
+        const data = await res.json().catch(() => null);
+        throw new Error(data?.detail || "Something went wrong. Please try again.");
+      }
+
+      setSent(true);
+      setEmail("");
+      setSubject("");
+      setMessage("");
+    } catch (err: unknown) {
+      const errorMessage = err instanceof Error ? err.message : "Failed to send message. Please try again.";
+      setError(errorMessage);
+      // Auto-clear error after 6 seconds
+      setTimeout(() => setError(""), 6000);
+    } finally {
+      setSending(false);
+    }
   };
 
   if (sent) {
@@ -162,6 +181,21 @@ function ContactForm() {
         />
       </div>
 
+      {error && (
+        <motion.div
+          initial={{ opacity: 0, y: -5 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="mb-4 px-4 py-3 rounded-xl text-sm font-medium border"
+          style={{
+            backgroundColor: "rgba(239, 68, 68, 0.1)",
+            borderColor: "rgba(239, 68, 68, 0.3)",
+            color: "#FCA5A5",
+          }}
+        >
+          {error}
+        </motion.div>
+      )}
+
       <button
         type="submit"
         disabled={sending}
@@ -177,6 +211,7 @@ function ContactForm() {
 
 export default function About() {
   const [iconIndex, setIconIndex] = React.useState(0);
+  const [foundationIndex, setFoundationIndex] = React.useState(0);
   const [activeFeature, setActiveFeature] = React.useState<number | null>(null);
   const icons = ["/images/app-icon.png", "/images/app-icon-white.png"];
 
@@ -230,8 +265,8 @@ export default function About() {
               </h1>
 
               <p className="text-xl mb-10 max-w-lg leading-relaxed" style={{ color: C.textMid }}>
-                A speech assistance app designed to help individuals with lisp and hypernasal
-                speech communicate more clearly — powered by AI, built with heart.
+                Articulink exists to give a voice to those who struggle to be understood.
+                We turn uncertainty into confidence and silence into meaningful conversations.
               </p>
             </motion.div>
 
@@ -276,57 +311,213 @@ export default function About() {
         </div>
       </section>
 
-      {/* ═══════════════ WHAT IS ARTICULINK ═══════════════ */}
+
+      {/* ─── OUR FOUNDATION (Premium 3D Storybook) ─── */}
       <section className="py-24" style={{ backgroundColor: C.warmWhite }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-20">
-            <h2
-              className="font-bold tracking-widest uppercase text-sm mb-4"
-              style={{ color: C.teal }}
-            >
-              What is Articulink?
-            </h2>
-            <p
-              className="text-4xl md:text-5xl font-bold max-w-3xl mx-auto"
-              style={{ fontFamily: "var(--font-playfair), serif", color: C.textDark }}
-            >
-              Empowering communication <br />
-              <span className="text-gradient">through AI</span>
+          <div className="text-center mb-16">
+            <h2 className="font-bold tracking-widest uppercase text-sm mb-4" style={{ color: C.teal }}>Our Foundation</h2>
+            <p className="text-3xl md:text-5xl font-bold" style={{ fontFamily: "var(--font-playfair), serif", color: C.textDark }}>
+              The Articulink <span className="text-gradient">Storybook</span>
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-12 items-center max-w-5xl mx-auto">
-            <div>
-              <p className="text-lg leading-relaxed mb-6" style={{ color: C.textMid }}>
-                Articulink is a speech assistance application designed to help individuals with
-                lisp and hypernasal speech communicate more clearly.
-              </p>
-              <p className="text-lg leading-relaxed" style={{ color: C.textMid }}>
-                The app processes your voice and converts it into a clearer, more understandable
-                speech output — preserving your message while enhancing clarity through advanced
-                AI processing.
-              </p>
-            </div>
-            <div className="space-y-4">
-              {[
-                "Individuals with lisp speech patterns",
-                "Individuals with hypernasal speech",
-                "Speech therapy support users",
-                "Students and professionals needing clearer communication",
-              ].map((text, i) => (
+          <div className="flex justify-center items-center py-10 perspective-3000">
+            {/* Book Outer Cover */}
+            <div
+              className="relative w-full max-w-5xl h-[550px] bg-[#2A1D15] rounded-[3rem] p-3 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] border-4 border-[#3D2B1F]"
+              style={{
+                backgroundImage: "radial-gradient(circle at 50% 0%, #4a3528, #2a1d15)"
+              }}
+            >
+              {/* Page Stack Effect (Edges) */}
+              <div className="absolute top-4 bottom-4 left-4 right-4 bg-[#EDE8DF] rounded-[2.5rem] shadow-inner" />
+              <div className="absolute top-5 bottom-5 left-5 right-5 bg-white rounded-[2.3rem] shadow-sm overflow-hidden flex">
+
+                {/* Left Page (Static / TOC) */}
                 <div
-                  key={i}
-                  className="flex items-center gap-4 p-5 rounded-2xl"
+                  className="w-1/2 bg-white p-16 relative z-10 border-r border-black/10 transition-colors duration-700"
                   style={{
-                    backgroundColor: C.cream,
-                    border: `1px solid ${C.sandMid}50`,
+                    backgroundImage: "linear-gradient(to right, #ffffff 90%, #f0ede6 100%)",
                   }}
                 >
-                  <Users className="w-5 h-5 shrink-0" style={{ color: C.teal }} />
-                  <span className="font-medium" style={{ color: C.textDark }}>
-                    {text}
-                  </span>
+                  <div className="h-full flex flex-col relative">
+                    <div className="my-auto">
+                      <div className="w-12 h-1 bg-teal-500 mb-8 rounded-full" />
+                      <h3 className="text-4xl md:text-5xl font-bold mb-6" style={{ color: C.textDark, fontFamily: "var(--font-playfair), serif" }}>
+                        Our <br />Foundation
+                      </h3>
+                      <p className="text-lg leading-relaxed italic opacity-70 max-w-[280px]" style={{ color: C.textMid }}>
+                        &ldquo;A clear purpose, guided by meaningful impact.&rdquo;
+                      </p>
+                    </div>
+
+                    {/* Table of Contents (Fixed Bottom) */}
+                    <div className="mt-auto pt-10">
+                      <p className="text-[10px] font-extrabold uppercase tracking-widest text-gray-400 mb-6 border-t border-black/5 pt-6">Table of Contents</p>
+                      <div className="grid grid-cols-2 gap-x-8 gap-y-4">
+                        {["Purpose", "Mission", "Vision", "User Context"].map((label, i) => (
+                          <button
+                            key={i}
+                            onClick={() => setFoundationIndex(i)}
+                            className={`flex items-center gap-3 transition-all ${foundationIndex === i ? "text-teal-700" : "text-gray-400 hover:text-gray-600"}`}
+                          >
+                            <span className="text-[10px] font-bold opacity-40">0{i + 1}</span>
+                            <span className="text-xs font-bold uppercase tracking-tight">{label}</span>
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
                 </div>
+
+                {/* Realistic Spine / Gutter */}
+                <div className="absolute left-1/2 -translate-x-1/2 w-8 h-full z-20 pointer-events-none">
+                  <div className="w-full h-full" style={{ background: "linear-gradient(to right, rgba(0,0,0,0.1), rgba(0,0,0,0.05) 45%, rgba(0,0,0,0) 50%, rgba(0,0,0,0.05) 55%, rgba(0,0,0,0.1))" }} />
+                  <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-0.5 bg-black/10" />
+                </div>
+
+                {/* Right Page (Interactive Flip) */}
+                <div className="w-1/2 relative bg-[#F9F7F2]">
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={foundationIndex}
+                      initial={{ rotateY: 90, opacity: 0, z: 100 }}
+                      animate={{ rotateY: 0, opacity: 1, z: 0 }}
+                      exit={{ rotateY: -90, opacity: 0, z: 100 }}
+                      transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
+                      className="absolute inset-0 bg-white p-16 origin-left"
+                      style={{
+                        backgroundImage: "linear-gradient(to left, #ffffff 90%, #f0ede6 100%)",
+                        backfaceVisibility: "hidden"
+                      }}
+                    >
+                      <div className="h-full flex flex-col relative">
+                        <div className="my-auto">
+                          {foundationIndex < 3 ? (
+                            <>
+                              <motion.div
+                                initial={{ scale: 0.8, opacity: 0 }}
+                                animate={{ scale: 1, opacity: 1 }}
+                                transition={{ delay: 0.3 }}
+                                className="w-16 h-16 rounded-2xl flex items-center justify-center text-white mb-10 shadow-xl"
+                                style={{ backgroundColor: [C.teal, C.royalBlue, C.tealDark][foundationIndex] }}
+                              >
+                                {foundationIndex === 0 && <Waves className="w-8 h-8" />}
+                                {foundationIndex === 1 && <Heart className="w-8 h-8" />}
+                                {foundationIndex === 2 && <Accessibility className="w-8 h-8" />}
+                              </motion.div>
+
+                              <motion.h4
+                                initial={{ y: 20, opacity: 0 }}
+                                animate={{ y: 0, opacity: 1 }}
+                                transition={{ delay: 0.4 }}
+                                className="text-3xl font-bold mb-6"
+                                style={{ color: C.textDark, fontFamily: "var(--font-playfair), serif" }}
+                              >
+                                {["Purpose", "Mission", "Vision"][foundationIndex]}
+                              </motion.h4>
+
+                              <motion.p
+                                initial={{ y: 20, opacity: 0 }}
+                                animate={{ y: 0, opacity: 1 }}
+                                transition={{ delay: 0.5 }}
+                                className="text-lg leading-relaxed opacity-80"
+                                style={{ color: C.textMid }}
+                              >
+                                {[
+                                  "Articulink exists to give a voice to those who struggle to be understood. For individuals with hypernasality caused by cleft palate, everyday conversations can feel isolating. We transform speech into clearer communication—helping users connect and belong without hesitation.",
+                                  "To empower individuals with speech differences by turning uncertainty into confidence, isolation into connection, and silence into meaningful conversations through compassionate and innovative technology.",
+                                  "We envision a world where no one is left unheard—where every person, regardless of how they speak, can share their thoughts freely, be understood deeply, and live with confidence, dignity, and connection."
+                                ][foundationIndex]}
+                              </motion.p>
+                            </>
+                          ) : (
+                            <motion.div
+                              initial={{ opacity: 0, x: 10 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              transition={{ delay: 0.3 }}
+                              className="space-y-6"
+                            >
+                              <h3 className="text-3xl font-bold mb-6 leading-tight" style={{ color: C.textDark, fontFamily: "var(--font-playfair), serif" }}>
+                                Because no one <br />should have to <br />
+                                <span style={{ color: C.teal }}>stay silent</span>
+                              </h3>
+                              <div className="space-y-6 text-lg leading-relaxed" style={{ color: C.textMid }}>
+                                <p>For many individuals with cleft palate and hypernasal speech, speaking isn&apos;t the hard part—being understood is.</p>
+                                <p>Every word can be met with confusion, every sentence with hesitation. Over time, voices grow quieter, confidence fades, and conversations are avoided.</p>
+
+                                <div className="pt-1 border-black/5">
+                                  <p className="font-bold text-teal-700 mb-2 italic">Articulink changes that.</p>
+                                </div>
+                              </div>
+                            </motion.div>
+                          )}
+                        </div>
+
+                        <div className="mt-auto flex justify-between items-center text-[10px] font-extrabold uppercase tracking-[0.2em] text-gray-400 border-t border-black/5 pt-6">
+                          <span>Archive vol. 01</span>
+                          <div className="flex gap-6">
+                            <button
+                              onClick={() => setFoundationIndex((p) => (p > 0 ? p - 1 : 3))}
+                              className="hover:text-teal-600 transition-colors"
+                            >
+                              &larr; Prev
+                            </button>
+                            <button
+                              onClick={() => setFoundationIndex((p) => (p < 3 ? p + 1 : 0))}
+                              className="hover:text-teal-600 transition-colors"
+                            >
+                              Next &rarr;
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </motion.div>
+                  </AnimatePresence>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── THE HUMAN STORY ─── */}
+      <section className="py-24 relative overflow-hidden" style={{ backgroundColor: C.cream }}>
+        {/* Background Decoration */}
+        <div className="absolute top-1/2 left-0 w-full h-1 bg-gradient-to-r from-transparent via-teal-500/10 to-transparent -translate-y-1/2" />
+
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center">
+            <motion.h2
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              className="text-3xl md:text-5xl font-bold mb-12 leading-tight"
+              style={{ fontFamily: "var(--font-playfair), serif", color: C.textDark }}
+            >
+              Because no one should have to <br />
+              <span style={{ color: C.teal }}>stay silent</span> just to be accepted.
+            </motion.h2>
+
+            <div className="space-y-12">
+              {[
+                "For many individuals with cleft palate and hypernasal speech, speaking isn't the hard part—being understood is.",
+                "Every word can be met with confusion, every sentence with hesitation. Over time, voices grow quieter, confidence fades, and conversations are avoided.",
+                "Articulink changes that.",
+                "By transforming speech into clearer, more understandable communication, it gives users the freedom to speak without fear—to join conversations, share ideas, and express who they truly are.",
+                "With Articulink, every voice finally has the chance to be heard—and understood."
+              ].map((para, i) => (
+                <motion.p
+                  key={i}
+                  initial={{ opacity: 0, x: i % 2 === 0 ? -20 : 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.8, delay: i * 0.1 }}
+                  className={`text-xl leading-relaxed ${para.includes("changes that") ? "text-3xl font-bold text-[#1A4480]" : "text-[#4A5A6A]"} ${para.includes("chance to be heard") ? "font-bold text-[#1C2B3A]" : ""}`}
+                >
+                  {para}
+                </motion.p>
               ))}
             </div>
           </div>
@@ -413,7 +604,7 @@ export default function About() {
                     <p className="text-sm leading-relaxed" style={{ color: "rgba(200, 216, 238, 0.7)" }}>
                       {[
                         "Record your voice and get instant speech-to-text transcription powered by advanced AI recognition.",
-                        "Your speech is analyzed and enhanced by our AI model, correcting misarticulations and producing clearer text.",
+                        "Your speech is analyzed and enhanced using OpenAI's Whisper Small model, correcting misarticulations and producing clearer text.",
                         "Find nearby speech therapy clinics, cleft care centers, and support facilities with real-time routing.",
                         "Chat with our intelligent assistant for speech tips, therapy guidance, and answers to your questions.",
                         "Track all your recordings with detailed stats — accuracy percentage, word count, and duration.",
@@ -452,8 +643,8 @@ export default function About() {
 
             {/* Rotating Planets Container */}
             <motion.div
-              animate={{ rotate: activeFeature === null ? 360 : -360 }}
-              transition={{ duration: activeFeature === null ? 30 : 12, repeat: Infinity, ease: "linear" }}
+              animate={{ rotate: activeFeature === null ? -360 : 360 }}
+              transition={{ duration: activeFeature === null ? 50 : 25, repeat: Infinity, ease: "linear" }}
               className="absolute inset-0 flex items-center justify-center"
             >
               {[
@@ -481,8 +672,8 @@ export default function About() {
                     }}
                   >
                     <motion.div
-                      animate={{ rotate: activeFeature === null ? -360 : 360 }}
-                      transition={{ duration: activeFeature === null ? 30 : 12, repeat: Infinity, ease: "linear" }}
+                      animate={{ rotate: activeFeature === null ? 360 : -360 }}
+                      transition={{ duration: activeFeature === null ? 50 : 25, repeat: Infinity, ease: "linear" }}
                     >
                       <motion.button
                         whileHover={{ scale: 1.2, boxShadow: `0 0 30px ${feature.glowColor}` }}
@@ -545,7 +736,7 @@ export default function About() {
                 icon: Brain,
                 step: "02",
                 title: "AI Processing",
-                desc: "The app analyzes your speech and enhances clarity using AI.",
+                desc: "Speech is processed using OpenAI's Whisper Small model to analyze patterns and enhance clarity.",
                 color: C.royalBlue,
               },
               {
@@ -708,18 +899,18 @@ export default function About() {
             >
               {/* Client Image Placeholder */}
               <div
-                className="w-full h-[400px] flex items-center justify-center"
+                className="w-full h-[400px] relative overflow-hidden"
                 style={{
                   backgroundColor: C.sandLight,
                   borderBottom: `1px solid ${C.sandMid}50`,
                 }}
               >
-                <div className="text-center">
-                  <Building2 className="w-10 h-10 mx-auto mb-2" style={{ color: C.sandMid }} />
-                  <p className="text-xs font-semibold" style={{ color: C.sandMid }}>
-                    Client Logo / Photo
-                  </p>
-                </div>
+                <Image
+                  src="/images/cleftfoundation.png"
+                  alt="Cleft Foundation"
+                  fill
+                  className="object-cover"
+                />
               </div>
 
               <div className="p-10">
@@ -838,31 +1029,70 @@ export default function About() {
       </section>
 
       {/* ═══════════════ THE TEAM ═══════════════ */}
-      <section className="py-24" style={{ backgroundColor: C.cream }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-24 relative overflow-hidden" style={{ backgroundColor: C.deepNavy }}>
+        {/* Decorative Background Orbs for the dark theme */}
+        <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+          <div
+            className="absolute top-[-10%] right-[-5%] w-[40%] h-[60%] rounded-full blur-[120px]"
+            style={{ backgroundColor: "rgba(42, 143, 160, 0.07)" }}
+          />
+          <div
+            className="absolute bottom-[-10%] left-[-5%] w-[30%] h-[50%] rounded-full blur-[100px]"
+            style={{ backgroundColor: "rgba(26, 68, 128, 0.1)" }}
+          />
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-20">
             <h2
               className="font-bold tracking-widest uppercase text-sm mb-4"
-              style={{ color: C.teal }}
+              style={{ color: C.tealLight }}
             >
               The Team
             </h2>
             <p
-              className="text-4xl md:text-5xl font-bold"
-              style={{ fontFamily: "var(--font-playfair), serif", color: C.textDark }}
+              className="text-4xl md:text-5xl font-bold text-white"
+              style={{ fontFamily: "var(--font-playfair), serif" }}
             >
               The people behind <br />
-              <span className="text-gradient">Articulink</span>
+              <span style={{ background: "linear-gradient(135deg, #3DAFC4, #7DD3E8)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>Articulink</span>
             </p>
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {/* PLACEHOLDER — Replace names, roles, and images with real team info */}
             {[
-              { name: "Team Member 1", role: "Project Lead" },
-              { name: "Team Member 2", role: "Full-Stack Developer" },
-              { name: "Team Member 3", role: "AI / ML Engineer" },
-              { name: "Team Member 4", role: "UI/UX Designer" },
+              {
+                name: "Avey Macasa",
+                role: "Project Lead / AI, Mobile & Web Developer",
+                desc: "Lead architect of AI/ML models, cross-platform mobile application, and web ecosystem.",
+                image: "/images/avery.jfif",
+                hoverImage: "/images/averycartoon.png",
+                objectPosition: "center"
+              },
+              {
+                name: "Bryan James Batan",
+                role: "Admin Designer & Backend Developer",
+                desc: "Focused on administrative interface design and core backend services.",
+                image: null,
+                hoverImage: null,
+                objectPosition: "center"
+              },
+              {
+                name: "Gelgin Del Los Santos",
+                role: "Documentation & Data Specialist",
+                desc: "Handles technical documentation and critical dataset collection.",
+                image: "/images/gelgin.jpg",
+                hoverImage: "/images/gelgincartoons.png",
+                objectPosition: "top"
+              },
+              {
+                name: "Tyrone Justine Medina",
+                role: "Documentation & Data Specialist",
+                desc: "Specializes in research documentation and speech dataset management.",
+                image: null,
+                hoverImage: null,
+                objectPosition: "center"
+              },
             ].map((member, i) => (
               <motion.div
                 key={i}
@@ -872,24 +1102,47 @@ export default function About() {
                 transition={{ duration: 0.5, delay: i * 0.1 }}
                 className="text-center group"
               >
-                {/* Member Photo Placeholder */}
+                {/* Member Photo */}
                 <div
-                  className="w-full aspect-square rounded-3xl mb-6 flex items-center justify-center group-hover:scale-[1.02] transition-transform"
+                  className="w-full aspect-square rounded-3xl mb-6 flex items-center justify-center group-hover:scale-[1.02] transition-transform shadow-lg overflow-hidden border border-white/10"
                   style={{
-                    backgroundColor: C.warmWhite,
-                    border: `2px dashed ${C.sandMid}`,
+                    backgroundColor: "rgba(255, 255, 255, 0.03)",
                   }}
                 >
-                  <div>
-                    <Users className="w-10 h-10 mx-auto mb-2" style={{ color: C.sandMid }} />
-                    <p className="text-xs" style={{ color: C.sandMid }}>Photo</p>
-                  </div>
+                  {member.image ? (
+                    <div className="relative w-full h-full">
+                      <Image
+                        src={member.image}
+                        alt={member.name}
+                        fill
+                        className={`object-cover transition-opacity duration-500 ${member.hoverImage ? 'group-hover:opacity-0' : ''}`}
+                        style={{ objectPosition: member.objectPosition || "center" }}
+                      />
+                      {member.hoverImage && (
+                        <Image
+                          src={member.hoverImage}
+                          alt={`${member.name} hover`}
+                          fill
+                          className="object-cover absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                          style={{ objectPosition: member.objectPosition || "center" }}
+                        />
+                      )}
+                    </div>
+                  ) : (
+                    <div className="relative w-full h-full p-8 flex flex-col items-center justify-center bg-white/5">
+                      <Users className="w-12 h-12 mb-3 opacity-20 text-white" />
+                      <div className="w-8 h-1 rounded-full mb-2" style={{ backgroundColor: [C.teal, C.royalBlue, C.tealLight, "#7DD3E8"][i % 4] }} />
+                    </div>
+                  )}
                 </div>
-                <h3 className="text-lg font-bold" style={{ color: C.textDark }}>
+                <h3 className="text-xl font-bold mb-1 text-white">
                   {member.name}
                 </h3>
-                <p className="text-sm" style={{ color: C.textMid }}>
+                <p className="text-sm font-bold uppercase tracking-widest mb-3" style={{ color: C.tealLight, fontSize: '0.65rem' }}>
                   {member.role}
+                </p>
+                <p className="text-xs leading-relaxed max-w-[200px] mx-auto" style={{ color: "rgba(200, 216, 238, 0.7)" }}>
+                  {member.desc}
                 </p>
               </motion.div>
             ))}
@@ -994,7 +1247,7 @@ export default function About() {
                 ))}
               </div>
 
-              {/* Contact Form — TODO: wire up to SMTP backend */}
+              {/* Contact Form — connected to SMTP backend */}
               <ContactForm />
             </div>
           </div>

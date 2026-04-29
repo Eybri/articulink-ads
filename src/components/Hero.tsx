@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Sparkles, ArrowRight } from "lucide-react";
+import { Sparkles, ArrowRight, Zap } from "lucide-react";
 
 export default function Hero() {
   return (
@@ -111,7 +111,7 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="relative"
           >
-            <div className="relative z-10 w-full max-w-[240px] sm:max-w-[300px] mx-auto">
+            <div className="relative z-10 w-full max-w-[280px] sm:max-w-[320px] mx-auto">
               {/* Outer Glow */}
               <div
                 className="absolute inset-0 rounded-[3rem] blur-3xl -z-10"
@@ -121,9 +121,42 @@ export default function Hero() {
                 }}
               />
               
-              {/* Mobile Device Frame Container */}
+              {/* Floating Badges */}
+              <motion.div
+                animate={{ y: [0, -10, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute -right-8 top-1/4 z-20 bg-white/80 backdrop-blur-md p-4 rounded-2xl shadow-xl border border-white/20 hidden sm:block"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-full bg-teal-500/20 flex items-center justify-center">
+                    <Sparkles className="w-4 h-4 text-teal-600" />
+                  </div>
+                  <div>
+                    <p className="text-[10px] uppercase tracking-wider font-bold text-teal-800">AI Analysis</p>
+                    <p className="text-sm font-bold text-[#1C2B3A]">98.2% Accuracy</p>
+                  </div>
+                </div>
+              </motion.div>
+
+              <motion.div
+                animate={{ y: [0, 10, 0] }}
+                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                className="absolute -left-12 bottom-1/4 z-20 bg-white/80 backdrop-blur-md p-4 rounded-2xl shadow-xl border border-white/20 hidden sm:block"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center">
+                    <Zap className="w-4 h-4 text-blue-600" />
+                  </div>
+                  <div>
+                    <p className="text-[10px] uppercase tracking-wider font-bold text-blue-800">Real-time</p>
+                    <p className="text-sm font-bold text-[#1C2B3A]">Instant Feedback</p>
+                  </div>
+                </div>
+              </motion.div>
+              
+              {/* Mobile Device Frame */}
               <div className="relative w-full aspect-[9/19.5] border-[12px] sm:border-[16px] border-[#1C2B3A] rounded-[2.5rem] sm:rounded-[3rem] bg-white shadow-2xl overflow-hidden group flex items-center justify-center">
-                {/* Top Notch (iPhone style) */}
+                {/* Top Notch */}
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-28 sm:w-32 h-6 sm:h-7 bg-[#1C2B3A] rounded-b-2xl z-20" />
                 
                 <div className="relative w-40 h-40 sm:w-48 sm:h-48 rounded-[2rem] overflow-hidden">
@@ -144,8 +177,6 @@ export default function Hero() {
                 </div>
               </div>
             </div>
-
-
           </motion.div>
         </div>
       </div>

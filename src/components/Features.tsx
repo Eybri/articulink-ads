@@ -21,7 +21,7 @@ const features = [
   {
     icon: Mic2,
     title: "AI Clarity Engine",
-    description: "Our neural networks analyze speech patterns in real-time to provide instant feedback and clarity enhancement.",
+    description: "Our Clarity Engine uses OpenAI's Whisper Small model to analyze speech patterns in real-time, providing instant feedback and enhancement.",
     color: COLORS.teal,
   },
   {

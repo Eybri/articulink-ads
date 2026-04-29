@@ -1,7 +1,9 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Mic2, Cpu, BarChart3, Cloud, Layers, CheckCircle2 } from "lucide-react";
+import { useState } from "react";
+import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
+import { Mic2, Cpu, BarChart3, Cloud, ArrowRight, Play, CheckCircle2 } from "lucide-react";
 
 const C = {
   cream: "#FAF8F4",
@@ -17,116 +19,196 @@ const steps = [
   {
     icon: Mic2,
     title: "Audio Capture",
-    desc: "High-fidelity recording using your device's microphone, with built-in background noise suppression.",
+    short: "Record your speech clearly.",
+    desc: "Our high-fidelity capture engine focuses on your voice while suppressing background noise.",
+    image: "/images/step1.png",
+    color: "#2A8FA0"
   },
   {
     icon: Cpu,
     title: "AI Processing",
-    desc: "Audio is analyzed using OpenAI's Whisper Small model, specialized for phoneme clarity and recognition.",
+    short: "Whisper AI analyzes phonemes.",
+    desc: "OpenAI's Whisper Small model processes your audio to detect subtle articulation nuances.",
+    image: "/images/step2.png",
+    color: "#1A4480"
   },
   {
     icon: BarChart3,
     title: "Clarity Analysis",
-    desc: "Our engine compares the speech to reference datasets to generate an objective clarity score.",
+    short: "Get your objective score.",
+    desc: "Receive instant feedback with a clarity percentage and specific pronunciation tips.",
+    image: "/images/step3.png",
+    color: "#3DAFC4"
   },
   {
     icon: Cloud,
-    title: "Cloud Sync",
-    desc: "Sessions are securely synced to your private profile for long-term progress tracking.",
+    title: "Progress Sync",
+    short: "Track your voice journey.",
+    desc: "Your data is securely saved so you can visualize your improvement over weeks and months.",
+    image: "/images/step4.png",
+    color: "#0F2847"
   }
 ];
 
 export default function HowItWorks() {
+  const [activeStep, setActiveStep] = useState(0);
+
   return (
     <main className="min-h-screen pt-20" style={{ backgroundColor: C.cream }}>
-      {/* Hero */}
+      {/* Header Section */}
       <section className="py-24" style={{ backgroundColor: C.deepNavy }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.h1 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-5xl md:text-7xl font-bold text-white mb-8"
-            style={{ fontFamily: "var(--font-playfair), serif" }}
           >
-            How <span style={{ color: C.tealLight }}>Articulink</span> Works
-          </motion.h1>
-          <p className="text-xl max-w-2xl mx-auto" style={{ color: "rgba(200, 216, 238, 0.8)" }}>
-            Our technology stack is built on precision, speed, and clinical validation. 
-            Here is the journey of your voice through our system.
-          </p>
+            <h1 
+              className="text-5xl md:text-7xl font-bold text-white mb-6"
+              style={{ fontFamily: "var(--font-playfair), serif" }}
+            >
+              Simple steps to <br />
+              <span style={{ color: C.tealLight }}>clearer speech</span>
+            </h1>
+            <p className="text-xl max-w-2xl mx-auto" style={{ color: "rgba(200, 216, 238, 0.8)" }}>
+              Experience the Articulink journey. Hover or click through the steps to see how our AI empowers your voice.
+            </p>
+          </motion.div>
         </div>
       </section>
 
-      {/* The Process Flow */}
-      <section className="py-24">
+      {/* Interactive Interaction Section */}
+      <section className="py-24 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="relative">
-            {/* Connecting Line (Desktop) */}
-            <div className="hidden lg:block absolute top-1/2 left-0 w-full h-0.5 bg-black/5 -translate-y-1/2 z-0" />
+          <div className="grid lg:grid-cols-2 gap-20 items-center">
             
-            <div className="grid lg:grid-cols-4 gap-8 relative z-10">
+            {/* Left: Step List */}
+            <div className="space-y-6">
               {steps.map((step, i) => (
                 <motion.div
                   key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                  className="bg-white p-8 rounded-[2rem] shadow-xl border border-black/5 flex flex-col items-center text-center"
+                  onMouseEnter={() => setActiveStep(i)}
+                  onClick={() => setActiveStep(i)}
+                  className={`relative p-8 rounded-[2rem] cursor-pointer transition-all duration-500 border ${
+                    activeStep === i 
+                    ? "bg-white shadow-2xl scale-[1.02] border-transparent" 
+                    : "bg-transparent border-black/5 hover:bg-white/50"
+                  }`}
                 >
-                  <div className="w-16 h-16 rounded-2xl flex items-center justify-center text-white mb-6 shadow-lg" style={{ backgroundColor: C.teal }}>
-                    <step.icon className="w-8 h-8" />
+                  <div className="flex items-start gap-6">
+                    <div 
+                      className={`w-14 h-14 rounded-2xl flex items-center justify-center text-white shrink-0 shadow-lg transition-transform duration-500 ${activeStep === i ? "scale-110" : "scale-100"}`}
+                      style={{ backgroundColor: step.color }}
+                    >
+                      <step.icon className="w-7 h-7" />
+                    </div>
+                    <div>
+                      <h3 
+                        className={`text-xl font-bold mb-2 transition-colors duration-500 ${activeStep === i ? "text-[#1C2B3A]" : "text-[#1C2B3A]/60"}`}
+                      >
+                        {step.title}
+                      </h3>
+                      <p 
+                        className={`font-medium mb-3 transition-colors duration-500 ${activeStep === i ? "text-[#2A8FA0]" : "text-[#2A8FA0]/40"}`}
+                      >
+                        {step.short}
+                      </p>
+                      <AnimatePresence>
+                        {activeStep === i && (
+                          <motion.p
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: "auto" }}
+                            exit={{ opacity: 0, height: 0 }}
+                            className="text-sm leading-relaxed"
+                            style={{ color: C.textMid }}
+                          >
+                            {step.desc}
+                          </motion.p>
+                        )}
+                      </AnimatePresence>
+                    </div>
                   </div>
-                  <h3 className="text-xl font-bold mb-4" style={{ color: C.textDark }}>{step.title}</h3>
-                  <p className="text-sm leading-relaxed" style={{ color: C.textMid }}>{step.desc}</p>
+                  
+                  {/* Active Indicator Line */}
+                  {activeStep === i && (
+                    <motion.div 
+                      layoutId="active-line"
+                      className="absolute left-0 top-1/4 bottom-1/4 w-1 rounded-full"
+                      style={{ backgroundColor: step.color }}
+                    />
+                  )}
                 </motion.div>
               ))}
             </div>
+
+            {/* Right: Phone Mockup */}
+            <div className="relative flex justify-center lg:justify-end">
+              {/* Outer Glow based on active step color */}
+              <motion.div
+                animate={{ 
+                  backgroundColor: steps[activeStep].color,
+                  opacity: 0.15
+                }}
+                className="absolute inset-0 blur-[100px] rounded-full scale-75 -z-10"
+              />
+
+              <div className="relative w-full max-w-[320px] aspect-[9/19] border-[14px] border-[#1C2B3A] rounded-[3rem] bg-white shadow-[0_50px_100px_-20px_rgba(0,0,0,0.3)] overflow-hidden">
+                {/* Top Notch */}
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-7 bg-[#1C2B3A] rounded-b-2xl z-20" />
+                
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={activeStep}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -20 }}
+                    transition={{ duration: 0.4, ease: "easeOut" }}
+                    className="relative w-full h-full"
+                  >
+                    <Image
+                      src={steps[activeStep].image}
+                      alt={steps[activeStep].title}
+                      fill
+                      className="object-cover"
+                      priority
+                    />
+                    
+                    {/* Floating Tech Badge (Inside Phone) */}
+                    <div className="absolute bottom-10 left-6 right-6 p-4 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 text-white">
+                       <p className="text-[10px] uppercase tracking-widest opacity-60 mb-1">Status</p>
+                       <p className="text-sm font-bold flex items-center gap-2">
+                          <span className="w-2 h-2 rounded-full bg-teal-400 animate-pulse" />
+                          {steps[activeStep].title} active
+                       </p>
+                    </div>
+                  </motion.div>
+                </AnimatePresence>
+              </div>
+              
+              {/* Decorative Elements */}
+              <div className="absolute -top-10 -right-10 w-32 h-32 opacity-10">
+                 <div className="w-full h-full rounded-full border-4 border-dashed border-[#1C2B3A] animate-[spin_20s_linear_infinite]" />
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
 
-      {/* Technical Spotlight */}
+      {/* Tech Spotlight Footer */}
       <section className="py-24" style={{ backgroundColor: C.deepNavy }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white/5 rounded-[3rem] p-12 md:p-20 border border-white/10 relative overflow-hidden">
-            <div className="grid md:grid-cols-2 gap-16 items-center">
-              <div>
-                <div className="flex items-center gap-3 mb-6">
-                  <Layers className="w-6 h-6" style={{ color: C.tealLight }} />
-                  <span className="uppercase tracking-[0.3em] text-xs font-bold" style={{ color: C.tealLight }}>Tech Spotlight</span>
-                </div>
-                <h2 className="text-4xl font-bold text-white mb-8" style={{ fontFamily: "var(--font-playfair), serif" }}>
-                  The Whisper <br />Small Engine
-                </h2>
-                <p className="text-lg leading-relaxed mb-8" style={{ color: "rgba(200, 216, 238, 0.7)" }}>
-                  We utilize OpenAI&apos;s Whisper Small model, a robust automatic speech 
-                  recognition (ASR) system. Unlike standard ASR, we&apos;ve tuned our 
-                  implementation to detect subtle nuances in articulation, making it 
-                  the perfect tool for speech therapy and clarity assessment.
-                </p>
-                <ul className="space-y-4">
-                  {[
-                    "Optimized for Tagalog & English",
-                    "Real-time processing on-device",
-                    "Superior performance in noisy environments"
-                  ].map((item, i) => (
-                    <li key={i} className="flex items-center gap-3 text-white">
-                      <CheckCircle2 className="w-5 h-5" style={{ color: C.tealLight }} />
-                      <span className="font-medium">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl border border-white/10">
-                 <div className="absolute inset-0 bg-gradient-to-br from-[#2A8FA0] to-[#1A4480] opacity-20" />
-                 <div className="flex items-center justify-center h-full">
-                    <Cpu className="w-24 h-24 text-white opacity-20 animate-pulse" />
-                 </div>
-              </div>
+         <div className="max-w-4xl mx-auto px-4 text-center">
+            <div className="w-16 h-1 bg-gradient-to-r from-transparent via-[#3DAFC4] to-transparent mx-auto mb-12" />
+            <p className="text-lg italic" style={{ color: "rgba(200, 216, 238, 0.7)" }}>
+              &ldquo;The synergy between Whisper AI and our proprietary clarity engine 
+              is what makes Articulink a category-defining tool in speech therapy.&rdquo;
+            </p>
+            <div className="mt-8 flex items-center justify-center gap-4">
+               <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
+                  <CheckCircle2 className="w-5 h-5 text-[#3DAFC4]" />
+               </div>
+               <span className="text-white font-semibold">Clinically Validated Engine</span>
             </div>
-          </div>
-        </div>
+         </div>
       </section>
     </main>
   );

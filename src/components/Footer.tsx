@@ -27,7 +27,7 @@ export default function Footer() {
   return (
     <footer style={{ backgroundColor: "#0F2847" }} className="text-white py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid md:grid-cols-4 gap-12 mb-20">
+        <div className="grid md:grid-cols-3 gap-12 mb-20">
           <div className="col-span-1 md:col-span-1">
             <Link href="/" className="flex items-center gap-3 mb-6">
               <Image
@@ -57,22 +57,11 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="font-bold text-lg mb-6 text-white">Product</h4>
+            <h4 className="font-bold text-lg mb-6 text-white">Quick Links</h4>
             <ul className="space-y-4" style={{ color: "#C8D8EE" }}>
-              <li><Link href="#" className="hover:text-white transition-colors">Features</Link></li>
-              <li><Link href="#" className="hover:text-white transition-colors">Pricing</Link></li>
-              <li><Link href="#" className="hover:text-white transition-colors">Case Studies</Link></li>
-              <li><Link href="#" className="hover:text-white transition-colors">Reviews</Link></li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="font-bold text-lg mb-6 text-white">Company</h4>
-            <ul className="space-y-4" style={{ color: "#C8D8EE" }}>
-              <li><Link href="#" className="hover:text-white transition-colors">About Us</Link></li>
-              <li><Link href="#" className="hover:text-white transition-colors">Careers</Link></li>
-              <li><Link href="#" className="hover:text-white transition-colors">Blog</Link></li>
-              <li><Link href="#" className="hover:text-white transition-colors">Contact</Link></li>
+              <li><Link href="/features" className="hover:text-white transition-colors">Features</Link></li>
+              <li><Link href="/how-it-works" className="hover:text-white transition-colors">How it Works</Link></li>
+              <li><Link href="/about" className="hover:text-white transition-colors">About Us</Link></li>
             </ul>
           </div>
 
@@ -93,7 +82,10 @@ export default function Footer() {
         </div>
 
         <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-sm" style={{ color: "#C8D8EE80" }}>
-          <p>© 2026 Articulink. All rights reserved.</p>
+          <div className="flex flex-col items-center md:items-start gap-1">
+            <p>© 2026 Articulink. All rights reserved.</p>
+            <p className="text-[10px] uppercase tracking-widest opacity-50">Powered by OpenAI&apos;s Whisper Small</p>
+          </div>
           <div className="flex gap-8">
             <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
             <Link href="/about" className="hover:text-white transition-colors">About</Link>

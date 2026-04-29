@@ -19,9 +19,12 @@ export default function Navbar() {
     <nav
       className="fixed top-0 w-full z-50 transition-all duration-300"
       style={{
-        backgroundColor: scrolled ? "#0F2847" : "rgba(15, 40, 71, 0.95)",
-        backdropFilter: "blur(16px)",
-        boxShadow: scrolled ? "0 4px 30px rgba(0,0,0,0.15)" : "none",
+        backgroundColor: "#0F2847",
+        backdropFilter: "blur(20px)",
+        boxShadow: scrolled 
+          ? "0 10px 40px -10px rgba(0,0,0,0.3), 0 1px 0 rgba(255,255,255,0.05)" 
+          : "0 4px 20px -5px rgba(0,0,0,0.1)",
+        borderBottom: scrolled ? "1px solid rgba(255,255,255,0.05)" : "1px solid rgba(255,255,255,0.02)",
       }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -44,9 +47,8 @@ export default function Navbar() {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-10 text-sm font-medium">
             {[
-              { href: "#features", label: "Features" },
-              { href: "#how-it-works", label: "How it Works" },
-              { href: "#testimonials", label: "Success Stories" },
+              { href: "/features", label: "Features" },
+              { href: "/how-it-works", label: "How it Works" },
               { href: "/about", label: "About" },
             ].map((link) => (
               <Link
@@ -102,9 +104,8 @@ export default function Navbar() {
         >
           <div className="flex flex-col gap-4">
             {[
-              { href: "#features", label: "Features" },
-              { href: "#how-it-works", label: "How it Works" },
-              { href: "#testimonials", label: "Success Stories" },
+              { href: "/features", label: "Features" },
+              { href: "/how-it-works", label: "How it Works" },
               { href: "/about", label: "About" },
             ].map((link) => (
               <Link

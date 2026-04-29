@@ -872,26 +872,37 @@ export default function About() {
       </section>
 
       {/* ═══════════════ THE TEAM ═══════════════ */}
-      <section className="py-24" style={{ backgroundColor: C.cream }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-24 relative overflow-hidden" style={{ backgroundColor: C.deepNavy }}>
+        {/* Decorative Background Orbs for the dark theme */}
+        <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+          <div
+            className="absolute top-[-10%] right-[-5%] w-[40%] h-[60%] rounded-full blur-[120px]"
+            style={{ backgroundColor: "rgba(42, 143, 160, 0.07)" }}
+          />
+          <div
+            className="absolute bottom-[-10%] left-[-5%] w-[30%] h-[50%] rounded-full blur-[100px]"
+            style={{ backgroundColor: "rgba(26, 68, 128, 0.1)" }}
+          />
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-20">
             <h2
               className="font-bold tracking-widest uppercase text-sm mb-4"
-              style={{ color: C.teal }}
+              style={{ color: C.tealLight }}
             >
               The Team
             </h2>
             <p
-              className="text-4xl md:text-5xl font-bold"
-              style={{ fontFamily: "var(--font-playfair), serif", color: C.textDark }}
+              className="text-4xl md:text-5xl font-bold text-white"
+              style={{ fontFamily: "var(--font-playfair), serif" }}
             >
               The people behind <br />
-              <span className="text-gradient">Articulink</span>
+              <span style={{ background: "linear-gradient(135deg, #3DAFC4, #7DD3E8)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>Articulink</span>
             </p>
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {/* PLACEHOLDER — Replace names, roles, and images with real team info */}
             {[
               { 
                 name: "Avey Macasa", 
@@ -936,10 +947,9 @@ export default function About() {
               >
                 {/* Member Photo */}
                 <div
-                  className="w-full aspect-square rounded-3xl mb-6 flex items-center justify-center group-hover:scale-[1.02] transition-transform shadow-sm overflow-hidden"
+                  className="w-full aspect-square rounded-3xl mb-6 flex items-center justify-center group-hover:scale-[1.02] transition-transform shadow-lg overflow-hidden border border-white/10"
                   style={{
-                    backgroundColor: C.warmWhite,
-                    border: `1px solid ${C.sandMid}40`,
+                    backgroundColor: "rgba(255, 255, 255, 0.03)",
                   }}
                 >
                   {member.image ? (
@@ -962,19 +972,19 @@ export default function About() {
                       )}
                     </div>
                   ) : (
-                    <div className="relative w-full h-full p-8 flex flex-col items-center justify-center">
-                      <Users className="w-12 h-12 mb-3 opacity-20" style={{ color: C.textDark }} />
-                      <div className="w-8 h-1 rounded-full mb-2" style={{ backgroundColor: [C.teal, C.royalBlue, C.tealDark, C.deepNavy][i % 4] }} />
+                    <div className="relative w-full h-full p-8 flex flex-col items-center justify-center bg-white/5">
+                      <Users className="w-12 h-12 mb-3 opacity-20 text-white" />
+                      <div className="w-8 h-1 rounded-full mb-2" style={{ backgroundColor: [C.teal, C.royalBlue, C.tealLight, "#7DD3E8"][i % 4] }} />
                     </div>
                   )}
                 </div>
-                <h3 className="text-xl font-bold mb-1" style={{ color: C.textDark }}>
+                <h3 className="text-xl font-bold mb-1 text-white">
                   {member.name}
                 </h3>
-                <p className="text-sm font-bold uppercase tracking-widest mb-3" style={{ color: C.teal, fontSize: '0.65rem' }}>
+                <p className="text-sm font-bold uppercase tracking-widest mb-3" style={{ color: C.tealLight, fontSize: '0.65rem' }}>
                   {member.role}
                 </p>
-                <p className="text-xs leading-relaxed max-w-[200px] mx-auto" style={{ color: C.textMid }}>
+                <p className="text-xs leading-relaxed max-w-[200px] mx-auto" style={{ color: "rgba(200, 216, 238, 0.7)" }}>
                   {member.desc}
                 </p>
               </motion.div>

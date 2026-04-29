@@ -898,28 +898,32 @@ export default function About() {
                 role: "Project Lead / AI, Mobile & Web Developer",
                 desc: "Lead architect of AI/ML models, cross-platform mobile application, and web ecosystem.",
                 image: "/images/avery.jfif",
-                hoverImage: "/images/averycartoon.png"
+                hoverImage: "/images/averycartoon.png",
+                objectPosition: "center"
               },
               { 
                 name: "Bryan James Batan", 
                 role: "Admin Designer & Backend Developer",
                 desc: "Focused on administrative interface design and core backend services.",
                 image: null,
-                hoverImage: null
+                hoverImage: null,
+                objectPosition: "center"
               },
               { 
                 name: "Gelgin Del Los Santos", 
                 role: "Documentation & Data Specialist",
                 desc: "Handles technical documentation and critical dataset collection.",
-                image: null,
-                hoverImage: null
+                image: "/images/gelgin.jpg",
+                hoverImage: "/images/gelgincartoons.png",
+                objectPosition: "top"
               },
               { 
                 name: "Tyrone Justine Medina", 
                 role: "Documentation & Data Specialist",
                 desc: "Specializes in research documentation and speech dataset management.",
                 image: null,
-                hoverImage: null
+                hoverImage: null,
+                objectPosition: "center"
               },
             ].map((member, i) => (
               <motion.div
@@ -945,6 +949,7 @@ export default function About() {
                         alt={member.name}
                         fill
                         className={`object-cover transition-opacity duration-500 ${member.hoverImage ? 'group-hover:opacity-0' : ''}`}
+                        style={{ objectPosition: member.objectPosition || "center" }}
                       />
                       {member.hoverImage && (
                         <Image
@@ -952,6 +957,7 @@ export default function About() {
                           alt={`${member.name} hover`}
                           fill
                           className="object-cover absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                          style={{ objectPosition: member.objectPosition || "center" }}
                         />
                       )}
                     </div>

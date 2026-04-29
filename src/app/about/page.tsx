@@ -742,18 +742,18 @@ export default function About() {
             >
               {/* Client Image Placeholder */}
               <div
-                className="w-full h-[400px] flex items-center justify-center"
+                className="w-full h-[400px] relative overflow-hidden"
                 style={{
                   backgroundColor: C.sandLight,
                   borderBottom: `1px solid ${C.sandMid}50`,
                 }}
               >
-                <div className="text-center">
-                  <Building2 className="w-10 h-10 mx-auto mb-2" style={{ color: C.sandMid }} />
-                  <p className="text-xs font-semibold" style={{ color: C.sandMid }}>
-                    Client Logo / Photo
-                  </p>
-                </div>
+                <Image
+                  src="/images/cleftfoundation.png"
+                  alt="Cleft Foundation"
+                  fill
+                  className="object-cover"
+                />
               </div>
 
               <div className="p-10">

@@ -1048,9 +1048,9 @@ export default function About() {
                 name: "Tyrone Justine Medina",
                 role: "Documentation & Data Specialist",
                 desc: "Specializes in research documentation and speech dataset management.",
-                image: null,
-                hoverImage: null,
-                objectPosition: "center"
+                image: "/images/tyrone.jpg",
+                hoverImage: "/images/tyrone-cartoon.png",
+                objectPosition: "top"
               },
             ].map((member, i) => (
               <motion.div

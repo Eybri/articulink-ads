@@ -213,6 +213,7 @@ export default function About() {
   const [iconIndex, setIconIndex] = React.useState(0);
   const [foundationIndex, setFoundationIndex] = React.useState(0);
   const [activeFeature, setActiveFeature] = React.useState<number | null>(null);
+  const [isComicMode, setIsComicMode] = React.useState(false);
   const icons = ["/images/app-icon.png", "/images/app-icon-white.png"];
 
   React.useEffect(() => {
@@ -1002,7 +1003,7 @@ export default function About() {
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center mb-20">
+          <div className="text-center mb-10">
             <h2
               className="font-bold tracking-widest uppercase text-sm mb-4"
               style={{ color: C.tealLight }}
@@ -1010,12 +1011,49 @@ export default function About() {
               The Team
             </h2>
             <p
-              className="text-4xl md:text-5xl font-bold text-white"
+              className="text-4xl md:text-5xl font-bold text-white mb-8"
               style={{ fontFamily: "var(--font-playfair), serif" }}
             >
               The people behind <br />
               <span style={{ background: "linear-gradient(135deg, #3DAFC4, #7DD3E8)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>Articulink</span>
             </p>
+
+            {/* Comic Mode Toggle */}
+            <div className="flex justify-center">
+              <button
+                onClick={() => setIsComicMode(!isComicMode)}
+                className="group relative flex items-center gap-4 px-6 py-3 rounded-2xl transition-all duration-500 overflow-hidden"
+                style={{
+                  backgroundColor: isComicMode ? "rgba(61, 175, 196, 0.15)" : "rgba(255, 255, 255, 0.03)",
+                  border: `1px solid ${isComicMode ? `${C.tealLight}50` : "rgba(255, 255, 255, 0.1)"}`,
+                  boxShadow: isComicMode ? `0 0 30px ${C.tealLight}20` : "none",
+                }}
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+
+                <div className="relative flex items-center gap-3">
+                  <div className={`p-1.5 rounded-lg transition-all duration-500 ${isComicMode ? 'bg-teal-500/20' : 'bg-white/5'}`}>
+                    <Sparkles
+                      className={`w-4 h-4 transition-all duration-500 ${isComicMode ? 'text-teal-300 scale-110' : 'text-white/40'}`}
+                    />
+                  </div>
+                  <span className={`text-[10px] font-black uppercase tracking-[0.25em] transition-colors duration-500 ${isComicMode ? 'text-white' : 'text-white/60'}`}>
+                    {isComicMode ? "Comic" : "Reality"}
+                  </span>
+                </div>
+
+                <div
+                  className="w-10 h-5 rounded-full relative transition-colors duration-500 p-1"
+                  style={{ backgroundColor: isComicMode ? C.teal : "rgba(255, 255, 255, 0.1)" }}
+                >
+                  <motion.div
+                    animate={{ x: isComicMode ? 20 : 0 }}
+                    className="w-3 h-3 rounded-full bg-white shadow-lg"
+                    transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                  />
+                </div>
+              </button>
+            </div>
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -1024,9 +1062,9 @@ export default function About() {
                 name: "Avey Macasa",
                 role: "Project Lead / AI, Mobile & Web Developer",
                 desc: "Lead architect of AI/ML models, cross-platform mobile application, and web ecosystem.",
-                image: "/images/avery.png",
-                hoverImage: "/images/averycartoon.png",
-                objectPosition: "center"
+                image: "/images/macasa.jpg",
+                hoverImage: "/images/macasa-cartoon.png",
+                objectPosition: "top"
               },
               {
                 name: "Bryan James Batan",
@@ -1070,22 +1108,33 @@ export default function About() {
                 >
                   {member.image ? (
                     <div className="relative w-full h-full">
-                      <Image
-                        src={member.image}
-                        alt={member.name}
-                        fill
-                        className={`object-cover transition-opacity duration-500 ${member.hoverImage ? 'group-hover:opacity-0' : ''}`}
-                        style={{ objectPosition: member.objectPosition || "center" }}
-                      />
-                      {member.hoverImage && (
-                        <Image
-                          src={member.hoverImage}
-                          alt={`${member.name} hover`}
-                          fill
-                          className="object-cover absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                          style={{ objectPosition: member.objectPosition || "center" }}
-                        />
-                      )}
+                      <AnimatePresence mode="wait">
+                        <motion.div
+                          key={isComicMode ? "comic" : "reality"}
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          exit={{ opacity: 0 }}
+                          transition={{ duration: 0.3 }}
+                          className="relative w-full h-full"
+                        >
+                          <Image
+                            src={isComicMode ? (member.hoverImage || member.image) : member.image}
+                            alt={member.name}
+                            fill
+                            className={`object-cover transition-opacity duration-500 ${((isComicMode && member.hoverImage) || (!isComicMode && member.hoverImage)) ? 'group-hover:opacity-0' : ''}`}
+                            style={{ objectPosition: member.objectPosition || "center" }}
+                          />
+                          {member.hoverImage && (
+                            <Image
+                              src={isComicMode ? member.image : member.hoverImage}
+                              alt={`${member.name} hover`}
+                              fill
+                              className="object-cover absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                              style={{ objectPosition: member.objectPosition || "center" }}
+                            />
+                          )}
+                        </motion.div>
+                      </AnimatePresence>
                     </div>
                   ) : (
                     <div className="relative w-full h-full p-8 flex flex-col items-center justify-center bg-white/5">

@@ -214,7 +214,19 @@ export default function About() {
   const [foundationIndex, setFoundationIndex] = React.useState(0);
   const [activeFeature, setActiveFeature] = React.useState<number | null>(null);
   const [isComicMode, setIsComicMode] = React.useState(false);
+  const [radius, setRadius] = React.useState(260);
+  const [isMounted, setIsMounted] = React.useState(false);
   const icons = ["/images/app-icon.png", "/images/app-icon-white.png"];
+
+  React.useEffect(() => {
+    setIsMounted(true);
+    const handleResize = () => {
+      setRadius(window.innerWidth < 768 ? 160 : 260);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   React.useEffect(() => {
     const timer = setInterval(() => {
@@ -618,10 +630,10 @@ export default function About() {
                 { icon: Lock, color: "#94A3B8", glowColor: "rgba(148, 163, 184, 0.3)" },
               ].map((feature, i) => {
                 const angle = (i * 360) / 8;
-                // Responsive radius: smaller on mobile
-                const radius = typeof window !== 'undefined' && window.innerWidth < 768 ? 160 : 260;
-                const x = Math.cos((angle * Math.PI) / 180) * radius;
-                const y = Math.sin((angle * Math.PI) / 180) * radius;
+                // Responsive radius: handled via state to avoid hydration mismatch
+                const currentRadius = isMounted ? radius : 260;
+                const x = Math.cos((angle * Math.PI) / 180) * currentRadius;
+                const y = Math.sin((angle * Math.PI) / 180) * currentRadius;
 
                 return (
                   <div
@@ -1062,7 +1074,7 @@ export default function About() {
                 name: "Avey Macasa",
                 role: "Project Lead / AI, Mobile & Web Developer",
                 desc: "Lead architect of AI/ML models, cross-platform mobile application, and web ecosystem.",
-                image: "/images/macasa.jpg",
+                image: "/images/macasa.png",
                 hoverImage: "/images/macasa-cartoon.png",
                 objectPosition: "top"
               },
@@ -1070,9 +1082,9 @@ export default function About() {
                 name: "Bryan James Batan",
                 role: "Admin Designer & Backend Developer",
                 desc: "Focused on administrative interface design and core backend services.",
-                image: null,
-                hoverImage: null,
-                objectPosition: "center"
+                image: "/images/batan.jpg",
+                hoverImage: "/images/batan-cartoon.png",
+                objectPosition: "top"
               },
               {
                 name: "Gelgin Del Los Santos",

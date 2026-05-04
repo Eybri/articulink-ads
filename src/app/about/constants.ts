@@ -180,14 +180,18 @@ export const teamMembers = [
   {
     name: "Rommel Dalisay",
     role: "Technical Adviser",
+    badge: "Professor",
+    institution: "TUP",
     desc: "Provides expert technical guidance and mentorship to the Articulink development team.",
     image: "/images/rommeldalisay.png",
-    hoverImage: "/images/rommeldalisay.png", // No cartoon provided yet
+    hoverImage: "/images/dalisay-cartoon.png",
     objectPosition: "top"
   },
   {
     name: "Avey Macasa",
     role: "Project Lead / AI, Mobile & Web Developer",
+    badge: "4th Year Student",
+    institution: "TUP",
     desc: "Lead architect of AI/ML models, cross-platform mobile application, and web ecosystem.",
     image: "/images/macasa.png",
     hoverImage: "/images/macasa-cartoon.png",
@@ -196,6 +200,8 @@ export const teamMembers = [
   {
     name: "Bryan James Batan",
     role: "Admin Designer & Backend Developer",
+    badge: "4th Year Student",
+    institution: "TUP",
     desc: "Focused on administrative interface design and core backend services.",
     image: "/images/batan.jpg",
     hoverImage: "/images/batan-cartoon.png",
@@ -204,6 +210,8 @@ export const teamMembers = [
   {
     name: "Gelgin Del Los Santos",
     role: "Documentation & Data Specialist",
+    badge: "4th Year Student",
+    institution: "TUP",
     desc: "Handles technical documentation and critical dataset collection.",
     image: "/images/gelgin.jpg",
     hoverImage: "/images/gelgincartoons.png",
@@ -212,6 +220,8 @@ export const teamMembers = [
   {
     name: "Tyrone Justine Medina",
     role: "Documentation & Data Specialist",
+    badge: "4th Year Student",
+    institution: "TUP",
     desc: "Specializes in research documentation and speech dataset management.",
     image: "/images/tyrone.jpg",
     hoverImage: "/images/tyrone-cartoon.png",

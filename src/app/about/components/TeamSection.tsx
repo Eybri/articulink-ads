@@ -22,7 +22,7 @@ export default function TeamSection() {
         />
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-16 relative z-10">
         <div className="text-center mb-10">
           <h2 className="font-bold tracking-widest uppercase text-sm mb-4" style={{ color: C.tealLight }}>
             The Team
@@ -125,9 +125,22 @@ export default function TeamSection() {
               <h3 className="text-xl font-bold mb-1 text-white">
                 {member.name}
               </h3>
-              <p className="text-sm font-bold uppercase tracking-widest mb-3" style={{ color: C.tealLight, fontSize: '0.65rem' }}>
+              <p className="text-sm font-bold uppercase tracking-widest mb-2" style={{ color: C.tealLight, fontSize: '0.65rem' }}>
                 {member.role}
               </p>
+
+              {/* Badge Moved Below Role */}
+              <div className="flex justify-center mb-4">
+                <div className="flex items-center gap-2 bg-white/5 border border-white/10 px-3 py-1 rounded-full shadow-sm">
+                  <div className="relative w-3.5 h-3.5">
+                    <Image src="/images/tup-logo.png" alt="TUP" fill className="object-contain" />
+                  </div>
+                  <span className="text-[8px] font-black uppercase tracking-wider text-white/60">
+                    {member.badge}
+                  </span>
+                </div>
+              </div>
+
               <p className="text-xs leading-relaxed max-w-[200px] mx-auto" style={{ color: "rgba(200, 216, 238, 0.7)" }}>
                 {member.desc}
               </p>

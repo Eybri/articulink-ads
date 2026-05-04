@@ -22,7 +22,7 @@ const liveSteps = [
     title: "Enable Live Mode",
     short: "Activate Streaming",
     desc: "Start by toggling the 'Simultaneous' switch in the app. This initializes the live neural engine, preparing Articulink for continuous, real-time audio processing.",
-    color: "#2A8FA0",
+    color: "#2A8FA0", // Teal
     tech: "Step 01"
   },
   {
@@ -30,7 +30,7 @@ const liveSteps = [
     title: "One-Tap Start",
     short: "Hands-Free Flow",
     desc: "Simply tap the microphone icon once to begin. Unlike Phrase mode, you don't need to hold or tap again for every sentence—just speak naturally as you would in a normal conversation.",
-    color: "#1A4480",
+    color: "#FF6B6B", // Coral
     tech: "Step 02"
   },
   {
@@ -38,7 +38,7 @@ const liveSteps = [
     title: "Real-Time Streaming",
     short: "3-Second Intervals",
     desc: "Our AI processes your voice in rapid 3-second segments. You'll see the transcription appear instantly on the screen as the engine captures every phonetic nuance without delay.",
-    color: "#3DAFC4",
+    color: "#1A4480", // Royal Blue
     tech: "Step 03"
   },
   {
@@ -46,7 +46,7 @@ const liveSteps = [
     title: "Bilingual Intelligence",
     short: "Tagalog-English Sync",
     desc: "The system automatically detects whether you're speaking Tagalog or English. It provides fluid, context-aware transcriptions that adapt to your natural code-switching patterns.",
-    color: "#2A8FA0",
+    color: "#FF9F43", // Orange
     tech: "Step 04"
   },
   {
@@ -54,7 +54,7 @@ const liveSteps = [
     title: "End & Save",
     short: "Instant Persistence",
     desc: "Tap the microphone one last time to end the session. Your entire conversation is instantly saved to your history, allowing you to review your clarity metrics later.",
-    color: "#0F2847",
+    color: "#3DAFC4", // Teal Light
     tech: "Step 05"
   }
 ];
@@ -65,7 +65,7 @@ const phraseSteps = [
     title: "Precision Capture",
     short: "Record Full Phrases",
     desc: "Use Phrase Mode for high-accuracy transactions. Tap the microphone and speak a complete sentence or phrase. This mode focuses on maximum phonetic clarity and spelling precision.",
-    color: "#1A4480",
+    color: "#1A4480", // Royal Blue
     tech: "Step 01"
   },
   {
@@ -73,7 +73,7 @@ const phraseSteps = [
     title: "Neural Transcription",
     short: "Whisper Optimization",
     desc: "Tap the mic again to stop recording. Our fine-tuned Whisper Small model then performs a deep analysis of your speech, generating a highly accurate text output in seconds.",
-    color: "#2A8FA0",
+    color: "#FF9F43", // Orange
     tech: "Step 02"
   },
   {
@@ -81,7 +81,7 @@ const phraseSteps = [
     title: "Clarity Feedback",
     short: "WER & Accuracy Metrics",
     desc: "Instantly view your Word Error Rate (WER) and clarity score. The app provides visual feedback on which parts of your phrase were articulated clearly and where you can improve.",
-    color: "#3DAFC4",
+    color: "#2A8FA0", // Teal
     tech: "Step 03"
   },
   {
@@ -89,7 +89,7 @@ const phraseSteps = [
     title: "Audio Synthesis",
     short: "The 'Speak' Button",
     desc: "Once transcribed, click the large 'Speak' button. Articulink will play back your phrase with perfect articulation, acting as your vocal proxy in shops or official appointments.",
-    color: "#1A4480",
+    color: "#FF6B6B", // Coral
     tech: "Step 04"
   },
   {
@@ -97,7 +97,7 @@ const phraseSteps = [
     title: "Dashboard Sync",
     short: "Long-term Tracking",
     desc: "Every phrase is logged into your personal growth dashboard. Track how your accuracy improves over time across different categories like 'Daily Essentials' or 'Medical'.",
-    color: "#0F2847",
+    color: "#0F2847", // Deep Navy
     tech: "Step 05"
   }
 ];
@@ -166,8 +166,11 @@ export default function HowItWorks() {
 
           <div className="grid lg:grid-cols-[2fr_auto_2fr] gap-8 xl:gap-24 items-start">
             {/* Left Column: Live Mode Process */}
-            <div className="space-y-4 order-2 lg:order-1 w-full">
-              <div className="mb-8 px-6">
+            <div className="relative space-y-4 order-2 lg:order-1 w-full">
+              {/* Vertical Progress Line */}
+              <div className="absolute left-[54px] top-40 bottom-20 w-1 bg-slate-100 -z-0 hidden lg:block rounded-full" />
+              
+              <div className="mb-8 px-10">
                 <h3 className="text-sm font-bold uppercase tracking-[0.4em] text-[#2A8FA0]">Live Mode Flow</h3>
                 <p className="text-xs text-slate-400 mt-2">Continuous Real-Time Interaction</p>
               </div>
@@ -176,26 +179,32 @@ export default function HowItWorks() {
                   key={i}
                   onMouseEnter={() => { setActiveSide("live"); setActiveIndex(i); }}
                   onClick={() => { setActiveSide("live"); setActiveIndex(i); }}
-                  className={`relative group cursor-pointer p-8 rounded-[2.5rem] transition-all duration-500 border border-transparent hover:bg-[#0F2847] hover:shadow-2xl ${(activeSide === "live" && activeIndex === i) ? "bg-white border-black/5 shadow-sm" : ""}`}
+                  className={`relative group cursor-pointer p-10 rounded-[3rem] transition-all duration-500 border border-transparent hover:bg-[#0F2847] hover:shadow-2xl ${(activeSide === "live" && activeIndex === i) ? "bg-white border-black/5 shadow-sm" : ""}`}
                 >
                   <div className="relative z-10">
-                    <div className="flex items-center gap-5 mb-4">
-                      <div className="w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-500 bg-gray-100 group-hover:bg-white/10" style={{ backgroundColor: (activeSide === "live" && activeIndex === i) ? step.color : "" }}>
-                        <step.icon className={`w-6 h-6 transition-colors ${(activeSide === "live" && activeIndex === i) ? "text-white" : "text-gray-400 group-hover:text-white"}`} />
+                    <div className="flex items-center gap-6 mb-6">
+                      <div 
+                        className="w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-500 group-hover:bg-white/10 shrink-0 shadow-sm" 
+                        style={{ backgroundColor: (activeSide === "live" && activeIndex === i) ? step.color : `${step.color}15` }}
+                      >
+                        <step.icon 
+                          className="w-7 h-7 transition-colors group-hover:text-white" 
+                          style={{ color: (activeSide === "live" && activeIndex === i) ? "#FFFFFF" : step.color }}
+                        />
                       </div>
                       <div>
                         <span className="text-[10px] font-bold uppercase tracking-[0.3em] opacity-60 text-[#0F2847] group-hover:text-teal-400 transition-colors">Step 0{i + 1}</span>
-                        <h3 className="text-xl font-bold transition-colors duration-500 text-[#0F2847] group-hover:text-white">{step.title}</h3>
+                        <h3 className="text-2xl font-bold transition-colors duration-500 text-[#0F2847] group-hover:text-white">{step.title}</h3>
                       </div>
                     </div>
 
                     <AnimatePresence>
                       {(activeSide === "live" && activeIndex === i) && (
                         <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }} className="overflow-hidden">
-                          <p className="text-sm font-bold mb-3 transition-colors group-hover:!text-teal-400" style={{ color: step.color }}>
+                          <p className="text-base font-bold mb-4 transition-colors group-hover:!text-teal-400" style={{ color: step.color }}>
                             {step.short}
                           </p>
-                          <p className="text-sm leading-relaxed font-medium text-slate-700 group-hover:text-white/90 transition-colors">
+                          <p className="text-base leading-relaxed font-bold text-[#0F2847] group-hover:text-white transition-colors">
                             {step.desc}
                           </p>
                         </motion.div>
@@ -258,8 +267,11 @@ export default function HowItWorks() {
             </div>
 
             {/* Right Column: Phrase Mode Process */}
-            <div className="space-y-4 order-3 lg:text-right w-full">
-              <div className="mb-8 px-6">
+            <div className="relative space-y-4 order-3 lg:text-right w-full">
+              {/* Vertical Progress Line */}
+              <div className="absolute right-[54px] top-40 bottom-20 w-1 bg-slate-100 -z-0 hidden lg:block rounded-full" />
+
+              <div className="mb-8 px-10">
                 <h3 className="text-sm font-bold uppercase tracking-[0.4em] text-[#2A8FA0]">Phrase Mode Flow</h3>
                 <p className="text-xs text-slate-400 mt-2">Precision Capture & Synthesis</p>
               </div>
@@ -268,26 +280,32 @@ export default function HowItWorks() {
                   key={i}
                   onMouseEnter={() => { setActiveSide("phrase"); setActiveIndex(i); }}
                   onClick={() => { setActiveSide("phrase"); setActiveIndex(i); }}
-                  className={`relative group cursor-pointer p-8 rounded-[2.5rem] transition-all duration-500 border border-transparent hover:bg-[#0F2847] hover:shadow-2xl ${(activeSide === "phrase" && activeIndex === i) ? "bg-white border-black/5 shadow-sm" : ""}`}
+                  className={`relative group cursor-pointer p-10 rounded-[3rem] transition-all duration-500 border border-transparent hover:bg-[#0F2847] hover:shadow-2xl ${(activeSide === "phrase" && activeIndex === i) ? "bg-white border-black/5 shadow-sm" : ""}`}
                 >
                   <div className="relative z-10">
-                    <div className="flex items-center lg:flex-row-reverse gap-5 mb-4">
-                      <div className="w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-500 bg-gray-100 group-hover:bg-white/10" style={{ backgroundColor: (activeSide === "phrase" && activeIndex === i) ? step.color : "" }}>
-                        <step.icon className={`w-6 h-6 transition-colors ${(activeSide === "phrase" && activeIndex === i) ? "text-white" : "text-gray-400 group-hover:text-white"}`} />
+                    <div className="flex items-center lg:flex-row-reverse gap-6 mb-6">
+                      <div 
+                        className="w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-500 group-hover:bg-white/10 shrink-0 shadow-sm" 
+                        style={{ backgroundColor: (activeSide === "phrase" && activeIndex === i) ? step.color : `${step.color}15` }}
+                      >
+                        <step.icon 
+                          className="w-7 h-7 transition-colors group-hover:text-white" 
+                          style={{ color: (activeSide === "phrase" && activeIndex === i) ? "#FFFFFF" : step.color }}
+                        />
                       </div>
                       <div>
                         <span className="text-[10px] font-bold uppercase tracking-[0.3em] opacity-60 text-[#0F2847] group-hover:text-teal-400 transition-colors">Step 0{i + 1}</span>
-                        <h3 className="text-xl font-bold transition-colors duration-500 text-[#0F2847] group-hover:text-white">{step.title}</h3>
+                        <h3 className="text-2xl font-bold transition-colors duration-500 text-[#0F2847] group-hover:text-white">{step.title}</h3>
                       </div>
                     </div>
 
                     <AnimatePresence>
                       {(activeSide === "phrase" && activeIndex === i) && (
                         <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }} className="overflow-hidden">
-                          <p className="text-sm font-bold mb-3 transition-colors group-hover:!text-teal-400" style={{ color: step.color }}>
+                          <p className="text-base font-bold mb-4 transition-colors group-hover:!text-teal-400" style={{ color: step.color }}>
                             {step.short}
                           </p>
-                          <p className="text-sm leading-relaxed font-medium text-slate-700 group-hover:text-white/90 transition-colors">
+                          <p className="text-base leading-relaxed font-bold text-[#0F2847] group-hover:text-white transition-colors">
                             {step.desc}
                           </p>
                         </motion.div>

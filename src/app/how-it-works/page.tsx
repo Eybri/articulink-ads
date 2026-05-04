@@ -412,7 +412,7 @@ export default function HowItWorks() {
                       <h3 className="text-2xl font-bold text-[#0F2847] group-hover:text-white transition-colors duration-500">{feat.title}</h3>
                     </div>
 
-                    <motion.div 
+                    <motion.div
                       variants={{
                         initial: { height: 0, opacity: 0 },
                         hover: { height: "auto", opacity: 1 }
@@ -425,7 +425,7 @@ export default function HowItWorks() {
                       </p>
                     </motion.div>
                   </div>
-                  
+
                   <div className="absolute inset-0 bg-gradient-to-br from-[#1A4480] to-[#0F2847] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 </motion.div>
               ))}
@@ -436,7 +436,6 @@ export default function HowItWorks() {
               <div className="relative group scale-110 lg:scale-110 mb-12">
                 <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-full text-center mb-6">
                   <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#2A8FA0] mb-2 block">App Demonstration</span>
-                  <h2 className="text-3xl font-bold text-[#0F2847]">Watch it <span className="text-[#2A8FA0] italic">Work</span></h2>
                 </div>
 
                 <motion.div
@@ -497,7 +496,7 @@ export default function HowItWorks() {
                       <h3 className="text-2xl font-bold text-[#0F2847] group-hover:text-white transition-colors duration-500">{feat.title}</h3>
                     </div>
 
-                    <motion.div 
+                    <motion.div
                       variants={{
                         initial: { height: 0, opacity: 0 },
                         hover: { height: "auto", opacity: 1 }
@@ -510,7 +509,7 @@ export default function HowItWorks() {
                       </p>
                     </motion.div>
                   </div>
-                  
+
                   <div className="absolute inset-0 bg-gradient-to-bl from-[#1A4480] to-[#0F2847] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 </motion.div>
               ))}

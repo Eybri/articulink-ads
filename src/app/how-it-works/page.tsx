@@ -184,7 +184,7 @@ export default function HowItWorks() {
                         <step.icon className={`w-6 h-6 transition-colors ${(activeSide === "live" && activeIndex === i) ? "text-white" : "text-gray-400 group-hover:text-white"}`} />
                       </div>
                       <div>
-                        <span className="text-[10px] font-bold uppercase tracking-[0.3em] opacity-30 text-[#0F2847] group-hover:text-white transition-colors">Step 0{i + 1}</span>
+                        <span className="text-[10px] font-bold uppercase tracking-[0.3em] opacity-60 text-[#0F2847] group-hover:text-teal-400 transition-colors">Step 0{i + 1}</span>
                         <h3 className="text-xl font-bold transition-colors duration-500 text-[#0F2847] group-hover:text-white">{step.title}</h3>
                       </div>
                     </div>
@@ -192,8 +192,10 @@ export default function HowItWorks() {
                     <AnimatePresence>
                       {(activeSide === "live" && activeIndex === i) && (
                         <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }} className="overflow-hidden">
-                          <p className={`text-sm font-medium mb-3 group-hover:text-teal-400 transition-colors`} style={{ color: step.color }}>{step.short}</p>
-                          <p className="text-sm leading-relaxed font-medium text-slate-600 group-hover:text-white/80 transition-colors">
+                          <p className="text-sm font-bold mb-3 transition-colors group-hover:!text-teal-400" style={{ color: step.color }}>
+                            {step.short}
+                          </p>
+                          <p className="text-sm leading-relaxed font-medium text-slate-700 group-hover:text-white/90 transition-colors">
                             {step.desc}
                           </p>
                         </motion.div>
@@ -205,7 +207,7 @@ export default function HowItWorks() {
             </div>
 
             {/* Center Column: Immersive Phone Stage */}
-            <div className="flex flex-col items-center order-1 lg:order-2 lg:sticky lg:top-40">
+            <div className="flex flex-col items-center order-1 lg:order-2 lg:sticky lg:top-[20rem] mt-31">
               <div className="relative group scale-100 lg:scale-100">
                 <motion.div
                   animate={{
@@ -274,7 +276,7 @@ export default function HowItWorks() {
                         <step.icon className={`w-6 h-6 transition-colors ${(activeSide === "phrase" && activeIndex === i) ? "text-white" : "text-gray-400 group-hover:text-white"}`} />
                       </div>
                       <div>
-                        <span className="text-[10px] font-bold uppercase tracking-[0.3em] opacity-30 text-[#0F2847] group-hover:text-white transition-colors">Step 0{i + 1}</span>
+                        <span className="text-[10px] font-bold uppercase tracking-[0.3em] opacity-60 text-[#0F2847] group-hover:text-teal-400 transition-colors">Step 0{i + 1}</span>
                         <h3 className="text-xl font-bold transition-colors duration-500 text-[#0F2847] group-hover:text-white">{step.title}</h3>
                       </div>
                     </div>
@@ -282,8 +284,10 @@ export default function HowItWorks() {
                     <AnimatePresence>
                       {(activeSide === "phrase" && activeIndex === i) && (
                         <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }} className="overflow-hidden">
-                          <p className={`text-sm font-medium mb-3 group-hover:text-teal-400 transition-colors`} style={{ color: step.color }}>{step.short}</p>
-                          <p className="text-sm leading-relaxed font-medium text-slate-600 group-hover:text-white/80 transition-colors">
+                          <p className="text-sm font-bold mb-3 transition-colors group-hover:!text-teal-400" style={{ color: step.color }}>
+                            {step.short}
+                          </p>
+                          <p className="text-sm leading-relaxed font-medium text-slate-700 group-hover:text-white/90 transition-colors">
                             {step.desc}
                           </p>
                         </motion.div>
@@ -297,15 +301,15 @@ export default function HowItWorks() {
         </div>
       </section>
 
-      {/* Designed for Growth Section */}
+      {/* Designed for Communication Section */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6" style={{ fontFamily: "var(--font-playfair), serif", color: C.textDark }}>
-              Designed for <span style={{ color: C.teal }}>Your Growth</span>
+            <h2 className="text-4xl md:text-6xl font-bold mb-6" style={{ fontFamily: "var(--font-playfair), serif", color: C.textDark }}>
+              Designed for <span style={{ color: C.teal }}>Communication</span>
             </h2>
-            <p className="text-xl max-w-2xl mx-auto" style={{ color: C.textMid }}>
-              Articulink isn&apos;t just a tool; it&apos;s a companion in your journey to clearer, more confident communication.
+            <p className="text-xl md:text-2xl max-w-3xl mx-auto font-light leading-relaxed" style={{ color: C.textMid }}>
+              Articulink isn&apos;t just a tool; it&apos;s a companion in your journey to clearer, more confident communication and meaningful connection.
             </p>
           </div>
 

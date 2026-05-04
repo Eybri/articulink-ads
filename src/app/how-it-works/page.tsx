@@ -16,61 +16,107 @@ const C = {
   accent: "#FF6B6B",
 };
 
-const steps = [
+const liveSteps = [
+  {
+    icon: Zap,
+    title: "Enable Live Mode",
+    short: "Activate Streaming",
+    desc: "Start by toggling the 'Simultaneous' switch in the app. This initializes the live neural engine, preparing Articulink for continuous, real-time audio processing.",
+    color: "#2A8FA0",
+    tech: "Step 01"
+  },
   {
     icon: Mic2,
-    title: "Capture & Select",
-    short: "Two Ways to Communicate",
-    desc: "Choose between 'Normal Mode' for high-precision translations or 'Simultaneous Mode' for real-time, continuous speech streaming.",
-    image: "/images/step1.png",
+    title: "One-Tap Start",
+    short: "Hands-Free Flow",
+    desc: "Simply tap the microphone icon once to begin. Unlike Phrase mode, you don't need to hold or tap again for every sentence—just speak naturally as you would in a normal conversation.",
+    color: "#1A4480",
+    tech: "Step 02"
+  },
+  {
+    icon: Activity,
+    title: "Real-Time Streaming",
+    short: "3-Second Intervals",
+    desc: "Our AI processes your voice in rapid 3-second segments. You'll see the transcription appear instantly on the screen as the engine captures every phonetic nuance without delay.",
+    color: "#3DAFC4",
+    tech: "Step 03"
+  },
+  {
+    icon: Globe,
+    title: "Bilingual Intelligence",
+    short: "Tagalog-English Sync",
+    desc: "The system automatically detects whether you're speaking Tagalog or English. It provides fluid, context-aware transcriptions that adapt to your natural code-switching patterns.",
     color: "#2A8FA0",
-    tech: "Dual-Mode Input"
+    tech: "Step 04"
+  },
+  {
+    icon: CheckCircle2,
+    title: "End & Save",
+    short: "Instant Persistence",
+    desc: "Tap the microphone one last time to end the session. Your entire conversation is instantly saved to your history, allowing you to review your clarity metrics later.",
+    color: "#0F2847",
+    tech: "Step 05"
+  }
+];
+
+const phraseSteps = [
+  {
+    icon: Layers,
+    title: "Precision Capture",
+    short: "Record Full Phrases",
+    desc: "Use Phrase Mode for high-accuracy transactions. Tap the microphone and speak a complete sentence or phrase. This mode focuses on maximum phonetic clarity and spelling precision.",
+    color: "#1A4480",
+    tech: "Step 01"
   },
   {
     icon: Cpu,
-    title: "AI Neural Processing",
-    short: "Fine-tuned Whisper Small",
-    desc: "Our backend leverages a fine-tuned Whisper Small model optimized for ASR, providing rapid and precise phonetic transcription for any speaker.",
-    image: "/images/step2.png",
-    color: "#1A4480",
-    tech: "Optimized ASR"
+    title: "Neural Transcription",
+    short: "Whisper Optimization",
+    desc: "Tap the mic again to stop recording. Our fine-tuned Whisper Small model then performs a deep analysis of your speech, generating a highly accurate text output in seconds.",
+    color: "#2A8FA0",
+    tech: "Step 02"
   },
   {
     icon: BarChart3,
-    title: "Intelligent Interaction",
-    short: "Gemini-Powered Chatbot",
-    desc: "Engage with our Gemini-powered chatbot to translate text or refine your communication. Click 'Speak' in Normal mode to master pronunciation.",
-    image: "/images/step3.png",
+    title: "Clarity Feedback",
+    short: "WER & Accuracy Metrics",
+    desc: "Instantly view your Word Error Rate (WER) and clarity score. The app provides visual feedback on which parts of your phrase were articulated clearly and where you can improve.",
     color: "#3DAFC4",
-    tech: "Dynamic Feedback"
+    tech: "Step 03"
+  },
+  {
+    icon: Play,
+    title: "Audio Synthesis",
+    short: "The 'Speak' Button",
+    desc: "Once transcribed, click the large 'Speak' button. Articulink will play back your phrase with perfect articulation, acting as your vocal proxy in shops or official appointments.",
+    color: "#1A4480",
+    tech: "Step 04"
   },
   {
     icon: Cloud,
-    title: "Data Persistence",
-    short: "Visualizing Your Growth",
-    desc: "Every session is securely saved, allowing the AI to learn your speech patterns and provide personalized clarity metrics over time.",
-    image: "/images/step4.png",
+    title: "Dashboard Sync",
+    short: "Long-term Tracking",
+    desc: "Every phrase is logged into your personal growth dashboard. Track how your accuracy improves over time across different categories like 'Daily Essentials' or 'Medical'.",
     color: "#0F2847",
-    tech: "Smart History"
+    tech: "Step 05"
   }
 ];
 
 
 export default function HowItWorks() {
-  const [activeStep, setActiveStep] = useState(0);
+  const [activeSide, setActiveSide] = useState<"live" | "phrase">("live");
+  const [activeIndex, setActiveIndex] = useState(0);
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
     setIsMounted(true);
-    const interval = setInterval(() => {
-      // Auto-advance or some interaction? Let's leave it manual for now but maybe add a subtle hint.
-    }, 5000);
-    return () => clearInterval(interval);
   }, []);
+
+  const activeStep = activeSide === "live" ? liveSteps[activeIndex] : phraseSteps[activeIndex];
 
   return (
     <main className="min-h-screen pt-20 overflow-hidden" style={{ backgroundColor: C.cream }}>
-      {/* Hero Section with Dynamic Background */}
+      {/* Hero Section */}
       <section className="relative py-32 overflow-hidden" style={{ backgroundColor: C.deepNavy }}>
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,#3DAFC4,transparent_70%)]" />
@@ -99,7 +145,6 @@ export default function HowItWorks() {
           </motion.div>
         </div>
 
-        {/* Decorative Wave at Bottom */}
         <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-[0]">
           <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="relative block w-[calc(100%+1.3px)] h-20 fill-[#FAF8F4]">
             <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C58.47,106.34,124.93,103,184.7,93,243.83,83.1,289.44,68.45,321.39,56.44Z"></path>
@@ -107,158 +152,151 @@ export default function HowItWorks() {
         </div>
       </section>
 
-      {/* The Journey Section */}
-      <section className="py-32 relative mb-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col lg:flex-row gap-16 items-start">
+      {/* The Journey Section - Full Width Immersive Tutorial */}
+      <section className="py-32 relative mb-20 overflow-visible">
+        <div className="w-full px-6 sm:px-12 lg:px-24">
+          <div className="text-center mb-24">
+            <h2 className="text-4xl md:text-8xl font-bold text-[#0F2847] mb-8" style={{ fontFamily: "var(--font-playfair), serif" }}>
+              How to Use <span className="text-[#2A8FA0]">Articulink</span>
+            </h2>
+            <p className="text-xl md:text-3xl text-slate-500 max-w-4xl mx-auto font-light leading-relaxed">
+              Follow our detailed step-by-step guide to master the two primary communication modes.
+            </p>
+          </div>
 
-            {/* Left: The Roadmap */}
-            <div className="w-full lg:w-1/2 sticky top-32">
-              <div className="relative pl-12 border-l-2 border-black/5 space-y-12">
-                {steps.map((step, i) => (
-                  <motion.div
-                    key={i}
-                    onMouseEnter={() => setActiveStep(i)}
-                    onClick={() => setActiveStep(i)}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.1 }}
-                    className={`relative group cursor-pointer transition-all duration-500`}
-                  >
-                    {/* Circle Indicator on Line */}
-                    <div className={`absolute -left-[3.75rem] top-0 w-10 h-10 rounded-full border-4 border-white flex items-center justify-center transition-all duration-500 shadow-sm ${activeStep === i ? "scale-125 z-10" : "scale-100 bg-gray-100"
-                      }`}
-                      style={{ backgroundColor: activeStep === i ? step.color : "#E5E7EB" }}
-                    >
-                      <step.icon className={`w-4 h-4 transition-colors ${activeStep === i ? "text-white" : "text-gray-400"}`} />
-                    </div>
-
-                    <div className={`transition-all duration-500 ${activeStep === i ? "translate-x-2" : "opacity-60 group-hover:opacity-100"}`}>
-                      <div className="flex items-center gap-4 mb-2">
-                        <span className="text-xs font-bold uppercase tracking-[0.2em] opacity-40">Step 0{i + 1}</span>
-                        <div className="h-px w-8 bg-black/10" />
-                        <span className="text-xs font-medium px-2 py-0.5 rounded bg-black/5" style={{ color: step.color }}>{step.tech}</span>
-                      </div>
-                      <h3 className={`text-2xl md:text-3xl font-bold mb-4 ${C.textDark}`}>
-                        {step.title}
-                      </h3>
-                      <p className="text-lg font-medium mb-4" style={{ color: step.color }}>
-                        {step.short}
-                      </p>
-
-                      <AnimatePresence>
-                        {activeStep === i && (
-                          <motion.div
-                            initial={{ opacity: 0, height: 0 }}
-                            animate={{ opacity: 1, height: "auto" }}
-                            exit={{ opacity: 0, height: 0 }}
-                            className="overflow-hidden"
-                          >
-                            <p className="text-lg leading-relaxed" style={{ color: C.textMid }}>
-                              {step.desc}
-                            </p>
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
-                    </div>
-                  </motion.div>
-                ))}
+          <div className="grid lg:grid-cols-[2fr_auto_2fr] gap-8 xl:gap-24 items-start">
+            {/* Left Column: Live Mode Process */}
+            <div className="space-y-4 order-2 lg:order-1 w-full">
+              <div className="mb-8 px-6">
+                <h3 className="text-sm font-bold uppercase tracking-[0.4em] text-[#2A8FA0]">Live Mode Flow</h3>
+                <p className="text-xs text-slate-400 mt-2">Continuous Real-Time Interaction</p>
               </div>
+              {liveSteps.map((step, i) => (
+                <motion.div
+                  key={i}
+                  onMouseEnter={() => { setActiveSide("live"); setActiveIndex(i); }}
+                  onClick={() => { setActiveSide("live"); setActiveIndex(i); }}
+                  className={`relative group cursor-pointer p-8 rounded-[2.5rem] transition-all duration-500 border border-transparent hover:bg-[#0F2847] hover:shadow-2xl ${(activeSide === "live" && activeIndex === i) ? "bg-white border-black/5 shadow-sm" : ""}`}
+                >
+                  <div className="relative z-10">
+                    <div className="flex items-center gap-5 mb-4">
+                      <div className="w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-500 bg-gray-100 group-hover:bg-white/10" style={{ backgroundColor: (activeSide === "live" && activeIndex === i) ? step.color : "" }}>
+                        <step.icon className={`w-6 h-6 transition-colors ${(activeSide === "live" && activeIndex === i) ? "text-white" : "text-gray-400 group-hover:text-white"}`} />
+                      </div>
+                      <div>
+                        <span className="text-[10px] font-bold uppercase tracking-[0.3em] opacity-30 text-[#0F2847] group-hover:text-white transition-colors">Step 0{i + 1}</span>
+                        <h3 className="text-xl font-bold transition-colors duration-500 text-[#0F2847] group-hover:text-white">{step.title}</h3>
+                      </div>
+                    </div>
+
+                    <AnimatePresence>
+                      {(activeSide === "live" && activeIndex === i) && (
+                        <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }} className="overflow-hidden">
+                          <p className={`text-sm font-medium mb-3 group-hover:text-teal-400 transition-colors`} style={{ color: step.color }}>{step.short}</p>
+                          <p className="text-sm leading-relaxed font-medium text-slate-600 group-hover:text-white/80 transition-colors">
+                            {step.desc}
+                          </p>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                </motion.div>
+              ))}
             </div>
 
-            {/* Right: Immersive Mockup */}
-            <div className="w-full lg:w-1/2 relative h-[600px] flex items-center justify-center">
-              {/* Main Phone Stage */}
-              <div className="relative group">
+            {/* Center Column: Immersive Phone Stage */}
+            <div className="flex flex-col items-center order-1 lg:order-2 lg:sticky lg:top-40">
+              <div className="relative group scale-100 lg:scale-100">
                 <motion.div
                   animate={{
-                    boxShadow: `0 50px 100px -20px ${steps[activeStep].color}33`,
+                    boxShadow: `0 50px 100px -20px ${activeStep.color}33`,
                     y: [0, -10, 0]
                   }}
                   transition={{
                     boxShadow: { duration: 0.5 },
                     y: { duration: 4, repeat: Infinity, ease: "easeInOut" }
                   }}
-                  className="relative w-[300px] aspect-[9/19] border-[12px] border-[#1C2B3A] rounded-[3rem] bg-white overflow-hidden z-10"
+                  className="relative w-[340px] aspect-[9/19] border-[14px] border-[#1C2B3A] rounded-[3.5rem] bg-white overflow-hidden z-10 shadow-2xl"
                 >
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-28 h-6 bg-[#1C2B3A] rounded-b-2xl z-30" />
-
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-[#1C2B3A] rounded-b-2xl z-30" />
                   <AnimatePresence mode="wait">
                     <motion.div
-                      key={activeStep}
+                      key={`${activeSide}-${activeIndex}`}
                       initial={{ opacity: 0, scale: 1.1 }}
                       animate={{ opacity: 1, scale: 1 }}
                       exit={{ opacity: 0, scale: 0.9 }}
                       transition={{ duration: 0.6 }}
-                      className="relative w-full h-full bg-gray-50"
+                      className="relative w-full h-full bg-gray-50 flex items-center justify-center p-8"
                     >
-                      <Image
-                        src={steps[activeStep].image}
-                        alt={steps[activeStep].title}
-                        fill
-                        className="object-cover"
-                        priority
-                      />
+                      <div className="text-center">
+                        <activeStep.icon className="w-20 h-20 mx-auto mb-6 opacity-20" style={{ color: activeStep.color }} />
+                        <p className="text-xs font-bold uppercase tracking-widest text-gray-300 mb-2">{activeSide} Mode Mockup</p>
+                        <h4 className="text-lg font-bold text-gray-400">{activeStep.title}</h4>
+                      </div>
                     </motion.div>
                   </AnimatePresence>
                 </motion.div>
 
-                {/* Floating Holographic Elements */}
                 <AnimatePresence>
                   <motion.div
-                    key={`floating-${activeStep}`}
+                    key={`floating-${activeSide}-${activeIndex}`}
                     initial={{ opacity: 0, x: 50 }}
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: 50 }}
-                    className="absolute -right-24 top-1/4 z-20 w-48 p-4 rounded-2xl bg-white/80 backdrop-blur-xl shadow-2xl border border-white/50"
+                    className="absolute -right-16 top-1/4 z-20 w-40 p-4 rounded-2xl bg-white/80 backdrop-blur-xl shadow-2xl border border-white/50"
                   >
                     <div className="flex items-center gap-2 mb-2">
-                      <Activity className="w-4 h-4" style={{ color: steps[activeStep].color }} />
-                      <span className="text-[10px] font-bold uppercase tracking-widest text-gray-400">Live Metric</span>
+                      <Activity className="w-4 h-4" style={{ color: activeStep.color }} />
+                      <span className="text-[10px] font-bold uppercase tracking-widest text-gray-400">Live Status</span>
                     </div>
-                    <p className="text-sm font-bold text-gray-800">{steps[activeStep].short}</p>
-                    <div className="mt-2 w-full h-1 bg-gray-100 rounded-full overflow-hidden">
-                      <motion.div
-                        initial={{ width: 0 }}
-                        animate={{ width: "85%" }}
-                        className="h-full"
-                        style={{ backgroundColor: steps[activeStep].color }}
-                      />
-                    </div>
-                  </motion.div>
-
-                  <motion.div
-                    key={`floating-2-${activeStep}`}
-                    initial={{ opacity: 0, x: -50 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -50 }}
-                    className="absolute -left-20 bottom-1/4 z-20 w-40 p-4 rounded-2xl bg-[#0F2847] text-white shadow-2xl"
-                  >
-                    <Layers className="w-4 h-4 mb-2 text-teal-400" />
-                    <p className="text-[10px] font-medium opacity-60">Engine State</p>
-                    <p className="text-xs font-bold truncate">Syncing AI Node...</p>
-                    <div className="mt-2 flex gap-1">
-                      {[1, 2, 3, 4].map(b => (
-                        <div key={b} className="w-full h-1 rounded-full bg-white/20 overflow-hidden">
-                          <motion.div
-                            animate={{ opacity: [0.3, 1, 0.3] }}
-                            transition={{ duration: 1, repeat: Infinity, delay: b * 0.2 }}
-                            className="w-full h-full bg-teal-400"
-                          />
-                        </div>
-                      ))}
-                    </div>
+                    <div className="text-xl font-bold text-[#0F2847]">98.2% <span className="text-[10px] font-medium text-green-500 ml-1">Accuracy</span></div>
                   </motion.div>
                 </AnimatePresence>
-
-                {/* Perspective Shadows */}
-                <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-4/5 h-10 bg-black/10 blur-2xl rounded-full -z-10" />
               </div>
             </div>
 
+            {/* Right Column: Phrase Mode Process */}
+            <div className="space-y-4 order-3 lg:text-right w-full">
+              <div className="mb-8 px-6">
+                <h3 className="text-sm font-bold uppercase tracking-[0.4em] text-[#2A8FA0]">Phrase Mode Flow</h3>
+                <p className="text-xs text-slate-400 mt-2">Precision Capture & Synthesis</p>
+              </div>
+              {phraseSteps.map((step, i) => (
+                <motion.div
+                  key={i}
+                  onMouseEnter={() => { setActiveSide("phrase"); setActiveIndex(i); }}
+                  onClick={() => { setActiveSide("phrase"); setActiveIndex(i); }}
+                  className={`relative group cursor-pointer p-8 rounded-[2.5rem] transition-all duration-500 border border-transparent hover:bg-[#0F2847] hover:shadow-2xl ${(activeSide === "phrase" && activeIndex === i) ? "bg-white border-black/5 shadow-sm" : ""}`}
+                >
+                  <div className="relative z-10">
+                    <div className="flex items-center lg:flex-row-reverse gap-5 mb-4">
+                      <div className="w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-500 bg-gray-100 group-hover:bg-white/10" style={{ backgroundColor: (activeSide === "phrase" && activeIndex === i) ? step.color : "" }}>
+                        <step.icon className={`w-6 h-6 transition-colors ${(activeSide === "phrase" && activeIndex === i) ? "text-white" : "text-gray-400 group-hover:text-white"}`} />
+                      </div>
+                      <div>
+                        <span className="text-[10px] font-bold uppercase tracking-[0.3em] opacity-30 text-[#0F2847] group-hover:text-white transition-colors">Step 0{i + 1}</span>
+                        <h3 className="text-xl font-bold transition-colors duration-500 text-[#0F2847] group-hover:text-white">{step.title}</h3>
+                      </div>
+                    </div>
+
+                    <AnimatePresence>
+                      {(activeSide === "phrase" && activeIndex === i) && (
+                        <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }} className="overflow-hidden">
+                          <p className={`text-sm font-medium mb-3 group-hover:text-teal-400 transition-colors`} style={{ color: step.color }}>{step.short}</p>
+                          <p className="text-sm leading-relaxed font-medium text-slate-600 group-hover:text-white/80 transition-colors">
+                            {step.desc}
+                          </p>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
+
       {/* Designed for Growth Section */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -275,13 +313,13 @@ export default function HowItWorks() {
             {[
               {
                 title: "Precision Articulation",
-                desc: "Our 'Normal Mode' allows you to perfect every syllable with instant text-to-speech playback.",
+                desc: "Our 'Phrase Mode' allows you to perfect every syllable with instant text-to-speech playback.",
                 icon: Zap,
                 label: "Mastery"
               },
               {
                 title: "Natural Conversation",
-                desc: "Use 'Simultaneous Mode' to keep the flow in real-world meetings and social gatherings.",
+                desc: "Use 'Live Mode' to keep the flow in real-world meetings and social gatherings.",
                 icon: Activity,
                 label: "Real-time"
               },
@@ -343,7 +381,6 @@ export default function HowItWorks() {
               </div>
             </div>
 
-            {/* Placeholder for Technical Diagram */}
             <div className="relative aspect-square rounded-[3rem] bg-white/5 border border-white/10 flex items-center justify-center overflow-hidden">
               <div className="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]" />
               <motion.div
@@ -363,6 +400,7 @@ export default function HowItWorks() {
           </div>
         </div>
       </section>
+
       {/* Mastery Suite Section */}
       <section className="py-32 bg-white relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -169,7 +169,7 @@ export default function HowItWorks() {
             <div className="relative space-y-2 order-2 lg:order-1 w-full">
               {/* Vertical Progress Line */}
               <div className="absolute left-[60px] top-40 bottom-20 w-1.5 bg-[#0F2847]/10 -z-0 hidden lg:block rounded-full" />
-              
+
               <div className="mb-8 px-8">
                 <h3 className="text-sm font-bold uppercase tracking-[0.4em] text-[#2A8FA0]">Live Mode Flow</h3>
                 <p className="text-xs text-slate-400 mt-2">Continuous Real-Time Interaction</p>
@@ -182,13 +182,13 @@ export default function HowItWorks() {
                   className={`relative group cursor-pointer p-8 rounded-[2.5rem] transition-all duration-500 border border-transparent hover:bg-[#0F2847] hover:shadow-2xl ${(activeSide === "live" && activeIndex === i) ? "bg-white border-black/5 shadow-sm" : ""}`}
                 >
                   <div className="relative z-10">
-                    <div className="flex items-center gap-6 mb-6">
-                      <div 
-                        className="w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-500 group-hover:bg-white/10 shrink-0 shadow-sm" 
+                    <div className={`flex items-center gap-6 transition-all duration-500 ${(activeSide === "live" && activeIndex === i) ? "mb-6" : "mb-0"}`}>
+                      <div
+                        className="w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-500 group-hover:bg-white/10 shrink-0 shadow-sm"
                         style={{ backgroundColor: (activeSide === "live" && activeIndex === i) ? step.color : `${step.color}15` }}
                       >
-                        <step.icon 
-                          className="w-7 h-7 transition-colors group-hover:text-white" 
+                        <step.icon
+                          className="w-7 h-7 transition-colors group-hover:text-white"
                           style={{ color: (activeSide === "live" && activeIndex === i) ? "#FFFFFF" : step.color }}
                         />
                       </div>
@@ -204,7 +204,7 @@ export default function HowItWorks() {
                           <p className="text-base font-bold mb-4 text-[#0F2847] group-hover:text-teal-400 transition-colors">
                             {step.short}
                           </p>
-                          <p className="text-base leading-relaxed font-bold text-[#0F2847] group-hover:text-white transition-colors">
+                          <p className="text-base leading-relaxed font-normal text-[#0F2847] group-hover:text-white transition-colors">
                             {step.desc}
                           </p>
                         </motion.div>
@@ -283,13 +283,13 @@ export default function HowItWorks() {
                   className={`relative group cursor-pointer p-8 rounded-[2.5rem] transition-all duration-500 border border-transparent hover:bg-[#0F2847] hover:shadow-2xl ${(activeSide === "phrase" && activeIndex === i) ? "bg-white border-black/5 shadow-sm" : ""}`}
                 >
                   <div className="relative z-10">
-                    <div className="flex items-center lg:flex-row-reverse gap-6 mb-6">
-                      <div 
-                        className="w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-500 group-hover:bg-white/10 shrink-0 shadow-sm" 
+                    <div className={`flex items-center lg:flex-row-reverse gap-6 transition-all duration-500 ${(activeSide === "phrase" && activeIndex === i) ? "mb-6" : "mb-0"}`}>
+                      <div
+                        className="w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-500 group-hover:bg-white/10 shrink-0 shadow-sm"
                         style={{ backgroundColor: (activeSide === "phrase" && activeIndex === i) ? step.color : `${step.color}15` }}
                       >
-                        <step.icon 
-                          className="w-7 h-7 transition-colors group-hover:text-white" 
+                        <step.icon
+                          className="w-7 h-7 transition-colors group-hover:text-white"
                           style={{ color: (activeSide === "phrase" && activeIndex === i) ? "#FFFFFF" : step.color }}
                         />
                       </div>
@@ -305,7 +305,7 @@ export default function HowItWorks() {
                           <p className="text-base font-bold mb-4 text-[#0F2847] group-hover:text-teal-400 transition-colors">
                             {step.short}
                           </p>
-                          <p className="text-base leading-relaxed font-bold text-[#0F2847] group-hover:text-white transition-colors">
+                          <p className="text-base leading-relaxed font-normal text-[#0F2847] group-hover:text-white transition-colors">
                             {step.desc}
                           </p>
                         </motion.div>
@@ -334,35 +334,45 @@ export default function HowItWorks() {
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
-                title: "Precision Articulation",
-                desc: "Our 'Phrase Mode' allows you to perfect every syllable with instant text-to-speech playback.",
+                title: "Live Interaction",
+                desc: "Real-time transcription for meetings, classes, and social events.",
                 icon: Zap,
-                label: "Mastery"
+                color: "#2A8FA0", // Teal
+                accent: "#3DAFC4"
               },
               {
-                title: "Natural Conversation",
-                desc: "Use 'Live Mode' to keep the flow in real-world meetings and social gatherings.",
-                icon: Activity,
-                label: "Real-time"
+                title: "Phrase Precision",
+                desc: "Record specific sentences for high-accuracy vocal proxies.",
+                icon: Mic2,
+                color: "#FF6B6B", // Coral
+                accent: "#FF8E8E"
               },
               {
-                title: "Intelligent Insights",
-                desc: "Visualize your progress with data-driven metrics that track your clarity over weeks and months.",
+                title: "Progress Tracking",
+                desc: "Visualize your journey to clearer speech with data-driven insights.",
                 icon: BarChart3,
-                label: "Analysis"
-              }
+                color: "#1A4480", // Royal Blue
+                accent: "#60A5FA"
+              },
             ].map((feature, i) => (
               <motion.div
                 key={i}
-                whileHover={{ y: -5 }}
-                className="p-8 rounded-[2.5rem] bg-[#FAF8F4] border border-black/5 hover:shadow-xl transition-all"
+                whileHover={{ y: -10 }}
+                className="group relative p-10 rounded-[3rem] transition-all duration-500 bg-white border border-black/5 hover:bg-[#0F2847] hover:shadow-2xl cursor-default"
+                style={{ "--hover-accent": feature.accent } as React.CSSProperties}
               >
-                <div className="w-12 h-12 rounded-2xl bg-white shadow-sm flex items-center justify-center mb-6">
-                  <feature.icon className="w-6 h-6" style={{ color: C.teal }} />
+                <div className="relative z-10">
+                  <div
+                    className="w-16 h-16 rounded-2xl flex items-center justify-center mb-8 transition-all duration-500 group-hover:bg-white/10 shadow-sm"
+                    style={{ backgroundColor: `${feature.color}15` }}
+                  >
+                    <feature.icon className="w-8 h-8 transition-colors group-hover:text-[var(--hover-accent)]" style={{ color: feature.color }} />
+                  </div>
+                  <h3 className="text-2xl font-bold mb-4 text-[#0F2847] group-hover:text-[var(--hover-accent)] transition-colors duration-500">{feature.title}</h3>
+                  <p className="text-lg leading-relaxed font-normal text-[#0F2847] group-hover:text-white transition-colors duration-500 opacity-70 group-hover:opacity-100">
+                    {feature.desc}
+                  </p>
                 </div>
-                <span className="text-[10px] font-bold uppercase tracking-widest opacity-40 mb-2 block">{feature.label}</span>
-                <h3 className="text-xl font-bold mb-4">{feature.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{feature.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -443,33 +453,40 @@ export default function HowItWorks() {
                   icon: Mic2,
                   title: "Voice to Text",
                   desc: "Turn your speech into text instantly. Choose between High Precision for perfect spelling or Real-Time for fast, live conversations.",
-                  color: "#1A4480"
+                  color: "#1A4480", // Royal Blue
+                  accent: "#60A5FA"
                 },
                 {
                   icon: Zap,
                   title: "AI Chat Assistant",
                   desc: "Use our smart chatbot powered by Google Gemini to help you find the right words or translate thoughts between Tagalog and English.",
-                  color: "#2A8FA0"
+                  color: "#2A8FA0", // Teal
+                  accent: "#3DAFC4"
                 },
                 {
                   icon: MapPin,
                   title: "Find a Clinic",
                   desc: "Easily find and contact speech clinics and specialists near you across the Philippines with our built-in interactive map.",
-                  color: "#1A4480"
+                  color: "#FF6B6B", // Coral
+                  accent: "#FF8E8E"
                 }
               ].map((feat, i) => (
                 <motion.div
                   key={i}
                   initial="initial"
                   whileHover="hover"
-                  className="group relative p-10 rounded-[3rem] bg-[#FAF8F4] border border-black/5 hover:bg-[#0F2847] transition-all duration-500 cursor-pointer overflow-hidden shadow-sm hover:shadow-2xl"
+                  className="group relative p-10 rounded-[3rem] bg-white border border-black/5 hover:bg-[#0F2847] transition-all duration-500 cursor-pointer overflow-hidden shadow-sm hover:shadow-2xl"
+                  style={{ "--hover-accent": feat.accent } as React.CSSProperties}
                 >
                   <div className="relative z-10">
                     <div className="flex items-center gap-6 mb-6">
-                      <div className="w-16 h-16 rounded-3xl bg-white group-hover:bg-white/10 flex items-center justify-center shrink-0 border border-black/5 group-hover:border-white/20 transition-all duration-500">
-                        <feat.icon className="w-8 h-8 group-hover:text-teal-400 transition-colors" style={{ color: feat.color }} />
+                      <div
+                        className="w-16 h-16 rounded-3xl flex items-center justify-center shrink-0 transition-all duration-500 group-hover:bg-white/10 shadow-sm"
+                        style={{ backgroundColor: `${feat.color}15` }}
+                      >
+                        <feat.icon className="w-8 h-8 transition-colors group-hover:text-[var(--hover-accent)]" style={{ color: feat.color }} />
                       </div>
-                      <h3 className="text-2xl font-bold text-[#0F2847] group-hover:text-white transition-colors duration-500">{feat.title}</h3>
+                      <h3 className="text-2xl font-bold text-[#0F2847] group-hover:text-[var(--hover-accent)] transition-colors duration-500">{feat.title}</h3>
                     </div>
 
                     <motion.div
@@ -480,13 +497,11 @@ export default function HowItWorks() {
                       transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
                       className="overflow-hidden"
                     >
-                      <p className="text-base leading-relaxed text-slate-600 group-hover:text-white/80 transition-colors duration-500 pt-2">
+                      <p className="text-lg leading-relaxed font-normal text-[#0F2847] group-hover:text-white transition-colors duration-500 pt-2 opacity-70 group-hover:opacity-100">
                         {feat.desc}
                       </p>
                     </motion.div>
                   </div>
-
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#1A4480] to-[#0F2847] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 </motion.div>
               ))}
             </div>
@@ -527,33 +542,40 @@ export default function HowItWorks() {
                   icon: BarChart3,
                   title: "Track Progress",
                   desc: "See how much you've improved. Our app automatically records your speech clarity and speed so you can celebrate your milestones.",
-                  color: "#3DAFC4"
+                  color: "#FF9F43", // Orange
+                  accent: "#FFB347"
                 },
                 {
                   icon: Globe,
                   title: "English & Tagalog",
                   desc: "Speak naturally in both English and Tagalog. Articulink is specially designed to understand and translate between both languages smoothly.",
-                  color: "#2A8FA0"
+                  color: "#2A8FA0", // Teal
+                  accent: "#3DAFC4"
                 },
                 {
                   icon: Cloud,
                   title: "Safe & Private",
                   desc: "Your data is always protected. All your recordings and history are securely saved and encrypted, so only you can access them.",
-                  color: "#0F2847"
+                  color: "#3DAFC4", // Teal Light
+                  accent: "#7EE7F7"
                 }
               ].map((feat, i) => (
                 <motion.div
                   key={i}
                   initial="initial"
                   whileHover="hover"
-                  className="group relative p-10 rounded-[3rem] bg-[#FAF8F4] border border-black/5 hover:bg-[#0F2847] transition-all duration-500 cursor-pointer overflow-hidden shadow-sm hover:shadow-2xl lg:text-right"
+                  className="group relative p-10 rounded-[3rem] bg-white border border-black/5 hover:bg-[#0F2847] transition-all duration-500 cursor-pointer overflow-hidden shadow-sm hover:shadow-2xl lg:text-right"
+                  style={{ "--hover-accent": feat.accent } as React.CSSProperties}
                 >
                   <div className="relative z-10">
                     <div className="flex items-center lg:flex-row-reverse gap-6 mb-6">
-                      <div className="w-16 h-16 rounded-3xl bg-white group-hover:bg-white/10 flex items-center justify-center shrink-0 border border-black/5 group-hover:border-white/20 transition-all duration-500">
-                        <feat.icon className="w-8 h-8 group-hover:text-teal-400 transition-colors" style={{ color: feat.color }} />
+                      <div
+                        className="w-16 h-16 rounded-3xl flex items-center justify-center shrink-0 transition-all duration-500 group-hover:bg-white/10 shadow-sm"
+                        style={{ backgroundColor: `${feat.color}15` }}
+                      >
+                        <feat.icon className="w-8 h-8 transition-colors group-hover:text-[var(--hover-accent)]" style={{ color: feat.color }} />
                       </div>
-                      <h3 className="text-2xl font-bold text-[#0F2847] group-hover:text-white transition-colors duration-500">{feat.title}</h3>
+                      <h3 className="text-2xl font-bold text-[#0F2847] group-hover:text-[var(--hover-accent)] transition-colors duration-500">{feat.title}</h3>
                     </div>
 
                     <motion.div
@@ -564,13 +586,11 @@ export default function HowItWorks() {
                       transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
                       className="overflow-hidden"
                     >
-                      <p className="text-base leading-relaxed text-slate-600 group-hover:text-white/80 transition-colors duration-500 pt-2">
+                      <p className="text-lg leading-relaxed font-medium text-[#0F2847] group-hover:text-white transition-colors duration-500 pt-2 opacity-70 group-hover:opacity-100">
                         {feat.desc}
                       </p>
                     </motion.div>
                   </div>
-
-                  <div className="absolute inset-0 bg-gradient-to-bl from-[#1A4480] to-[#0F2847] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 </motion.div>
               ))}
             </div>

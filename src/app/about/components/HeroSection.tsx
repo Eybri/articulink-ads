@@ -61,6 +61,27 @@ export default function HeroSection() {
               Articulink exists to give a voice to those who struggle to be understood.
               We turn uncertainty into confidence and silence into meaningful conversations.
             </p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 }}
+              className="flex items-center gap-4 p-4 rounded-2xl border backdrop-blur-md shadow-xl max-w-sm"
+              style={{
+                backgroundColor: "rgba(15, 40, 71, 0.95)", // Deep Navy Dark
+                borderColor: "rgba(61, 175, 196, 0.3)" // Teal-ish border
+              }}
+            >
+              <div className="relative w-10 h-10 shrink-0 bg-white/10 rounded-xl p-1.5 border border-white/10">
+                <Image src="/images/tup-logo.png" alt="TUP Logo" fill className="object-contain p-0.5" />
+              </div>
+              <div>
+                <p className="text-[10px] font-black uppercase tracking-[0.2em] text-teal-400 mb-0.5">Research Hub</p>
+                <p className="text-sm font-bold text-white">
+                  TUP Taguig
+                </p>
+              </div>
+            </motion.div>
           </motion.div>
 
           <motion.div

@@ -80,7 +80,7 @@ export default function TeamSection() {
               className="text-center group"
             >
               <div
-                className="w-full aspect-square rounded-3xl mb-6 flex items-center justify-center group-hover:scale-[1.02] transition-transform shadow-lg overflow-hidden border border-white/10"
+                className="w-full aspect-square rounded-3xl mb-8 flex items-center justify-center group-hover:scale-[1.02] transition-transform shadow-lg overflow-hidden border border-white/10 relative"
                 style={{
                   backgroundColor: "rgba(255, 255, 255, 0.03)",
                 }}
@@ -121,27 +121,35 @@ export default function TeamSection() {
                     <div className="w-8 h-1 rounded-full mb-2" style={{ backgroundColor: [C.teal, C.royalBlue, C.tealLight, "#7DD3E8"][i % 4] }} />
                   </div>
                 )}
-              </div>
-              <h3 className="text-xl font-bold mb-1 text-white">
-                {member.name}
-              </h3>
-              <p className="text-sm font-bold uppercase tracking-widest mb-2" style={{ color: C.tealLight, fontSize: '0.65rem' }}>
-                {member.role}
-              </p>
 
-              {/* Badge Moved Below Role */}
-              <div className="flex justify-center mb-4">
-                <div className="flex items-center gap-2 bg-white/5 border border-white/10 px-3 py-1 rounded-full shadow-sm">
-                  <div className="relative w-3.5 h-3.5">
-                    <Image src="/images/tup-logo.png" alt="TUP" fill className="object-contain" />
+                {/* Overlapping Badge Pill */}
+                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-30">
+                  <div
+                    className="flex items-center gap-2 px-3 py-1.5 rounded-full shadow-[0_8px_20px_rgba(0,0,0,0.4)] border backdrop-blur-md transition-all duration-300 group-hover:scale-110"
+                    style={{
+                      backgroundColor: member.badge === "Professor" ? "rgba(42, 143, 160, 0.9)" : "rgba(26, 68, 128, 0.9)",
+                      borderColor: member.badge === "Professor" ? "rgba(190, 228, 236, 0.4)" : "rgba(200, 216, 238, 0.4)",
+                    }}
+                  >
+                    <div className="relative w-3.5 h-3.5">
+                      <Image src="/images/tup-logo.png" alt="TUP" fill className="object-contain" />
+                    </div>
+                    <div className="w-[1px] h-3 bg-white/20 mx-0.5" />
+                    <span className="text-[9px] font-black uppercase tracking-widest text-white whitespace-nowrap">
+                      {member.badge}
+                    </span>
                   </div>
-                  <span className="text-[8px] font-black uppercase tracking-wider text-white/60">
-                    {member.badge}
-                  </span>
                 </div>
               </div>
 
-              <p className="text-xs leading-relaxed max-w-[200px] mx-auto" style={{ color: "rgba(200, 216, 238, 0.7)" }}>
+              <h3 className="text-xl font-bold mb-1 text-white">
+                {member.name}
+              </h3>
+              <p className="text-sm font-bold uppercase tracking-widest mb-4" style={{ color: C.tealLight, fontSize: '0.65rem' }}>
+                {member.role}
+              </p>
+
+              <p className="text-xs leading-relaxed max-w-[220px] mx-auto" style={{ color: "rgba(200, 216, 238, 0.7)" }}>
                 {member.desc}
               </p>
             </motion.div>

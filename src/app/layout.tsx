@@ -18,6 +18,10 @@ export const metadata: Metadata = {
   title: "Articulink — AI-Powered Speech Clarity",
   description:
     "Reclaim your voice with Articulink. The only app that uses advanced AI to analyze, clarify, and track your speech journey in real-time.",
+  icons: {
+    icon: "/images/favicon-zoomed.png",
+    apple: "/images/favicon-zoomed.png",
+  },
 };
 
 import Navbar from "@/components/Navbar";

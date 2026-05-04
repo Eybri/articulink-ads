@@ -51,9 +51,9 @@ const liveSteps = [
   },
   {
     icon: CheckCircle2,
-    title: "End & Save",
-    short: "Instant Persistence",
-    desc: "Tap the microphone one last time to end the session. Your entire conversation is instantly saved to your history, allowing you to review your clarity metrics later.",
+    title: "End Session",
+    short: "Session Close",
+    desc: "Tap the microphone one last time to end the session. Live mode is built for real-time, immediate communication and does not persist data to your history, keeping your interactions lightweight.",
     color: "#3DAFC4", // Teal Light
     tech: "Step 05"
   }
@@ -166,11 +166,11 @@ export default function HowItWorks() {
 
           <div className="grid lg:grid-cols-[2fr_auto_2fr] gap-8 xl:gap-24 items-start">
             {/* Left Column: Live Mode Process */}
-            <div className="relative space-y-4 order-2 lg:order-1 w-full">
+            <div className="relative space-y-2 order-2 lg:order-1 w-full">
               {/* Vertical Progress Line */}
-              <div className="absolute left-[54px] top-40 bottom-20 w-1 bg-slate-100 -z-0 hidden lg:block rounded-full" />
+              <div className="absolute left-[60px] top-40 bottom-20 w-1.5 bg-[#0F2847]/10 -z-0 hidden lg:block rounded-full" />
               
-              <div className="mb-8 px-10">
+              <div className="mb-8 px-8">
                 <h3 className="text-sm font-bold uppercase tracking-[0.4em] text-[#2A8FA0]">Live Mode Flow</h3>
                 <p className="text-xs text-slate-400 mt-2">Continuous Real-Time Interaction</p>
               </div>
@@ -179,7 +179,7 @@ export default function HowItWorks() {
                   key={i}
                   onMouseEnter={() => { setActiveSide("live"); setActiveIndex(i); }}
                   onClick={() => { setActiveSide("live"); setActiveIndex(i); }}
-                  className={`relative group cursor-pointer p-10 rounded-[3rem] transition-all duration-500 border border-transparent hover:bg-[#0F2847] hover:shadow-2xl ${(activeSide === "live" && activeIndex === i) ? "bg-white border-black/5 shadow-sm" : ""}`}
+                  className={`relative group cursor-pointer p-8 rounded-[2.5rem] transition-all duration-500 border border-transparent hover:bg-[#0F2847] hover:shadow-2xl ${(activeSide === "live" && activeIndex === i) ? "bg-white border-black/5 shadow-sm" : ""}`}
                 >
                   <div className="relative z-10">
                     <div className="flex items-center gap-6 mb-6">
@@ -201,7 +201,7 @@ export default function HowItWorks() {
                     <AnimatePresence>
                       {(activeSide === "live" && activeIndex === i) && (
                         <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }} className="overflow-hidden">
-                          <p className="text-base font-bold mb-4 transition-colors group-hover:!text-teal-400" style={{ color: step.color }}>
+                          <p className="text-base font-bold mb-4 text-[#0F2847] group-hover:text-teal-400 transition-colors">
                             {step.short}
                           </p>
                           <p className="text-base leading-relaxed font-bold text-[#0F2847] group-hover:text-white transition-colors">
@@ -267,11 +267,11 @@ export default function HowItWorks() {
             </div>
 
             {/* Right Column: Phrase Mode Process */}
-            <div className="relative space-y-4 order-3 lg:text-right w-full">
+            <div className="relative space-y-2 order-3 lg:text-right w-full">
               {/* Vertical Progress Line */}
-              <div className="absolute right-[54px] top-40 bottom-20 w-1 bg-slate-100 -z-0 hidden lg:block rounded-full" />
+              <div className="absolute right-[60px] top-40 bottom-20 w-1.5 bg-[#0F2847]/10 -z-0 hidden lg:block rounded-full" />
 
-              <div className="mb-8 px-10">
+              <div className="mb-8 px-8">
                 <h3 className="text-sm font-bold uppercase tracking-[0.4em] text-[#2A8FA0]">Phrase Mode Flow</h3>
                 <p className="text-xs text-slate-400 mt-2">Precision Capture & Synthesis</p>
               </div>
@@ -280,7 +280,7 @@ export default function HowItWorks() {
                   key={i}
                   onMouseEnter={() => { setActiveSide("phrase"); setActiveIndex(i); }}
                   onClick={() => { setActiveSide("phrase"); setActiveIndex(i); }}
-                  className={`relative group cursor-pointer p-10 rounded-[3rem] transition-all duration-500 border border-transparent hover:bg-[#0F2847] hover:shadow-2xl ${(activeSide === "phrase" && activeIndex === i) ? "bg-white border-black/5 shadow-sm" : ""}`}
+                  className={`relative group cursor-pointer p-8 rounded-[2.5rem] transition-all duration-500 border border-transparent hover:bg-[#0F2847] hover:shadow-2xl ${(activeSide === "phrase" && activeIndex === i) ? "bg-white border-black/5 shadow-sm" : ""}`}
                 >
                   <div className="relative z-10">
                     <div className="flex items-center lg:flex-row-reverse gap-6 mb-6">
@@ -302,7 +302,7 @@ export default function HowItWorks() {
                     <AnimatePresence>
                       {(activeSide === "phrase" && activeIndex === i) && (
                         <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }} className="overflow-hidden">
-                          <p className="text-base font-bold mb-4 transition-colors group-hover:!text-teal-400" style={{ color: step.color }}>
+                          <p className="text-base font-bold mb-4 text-[#0F2847] group-hover:text-teal-400 transition-colors">
                             {step.short}
                           </p>
                           <p className="text-base leading-relaxed font-bold text-[#0F2847] group-hover:text-white transition-colors">

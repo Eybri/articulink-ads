@@ -27,8 +27,8 @@ export default function Footer() {
   return (
     <footer style={{ backgroundColor: "#0F2847" }} className="text-white py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid md:grid-cols-3 gap-12 mb-20">
-          <div className="col-span-1 md:col-span-1">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
+          <div className="col-span-1 lg:col-span-1">
             <Link href="/" className="flex items-center gap-3 mb-6">
               <Image
                 src="/whitelogo.png"
@@ -62,6 +62,32 @@ export default function Footer() {
               <li><Link href="/features" className="hover:text-white transition-colors">Features</Link></li>
               <li><Link href="/how-it-works" className="hover:text-white transition-colors">How it Works</Link></li>
               <li><Link href="/about" className="hover:text-white transition-colors">About Us</Link></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="font-bold text-lg mb-6 text-white">Technical Stack</h4>
+            <ul className="space-y-4 text-sm" style={{ color: "#C8D8EE" }}>
+              <li className="flex items-center gap-2">
+                <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: "#2A8FA0" }} />
+                <span>FastAPI & MongoDB Backend</span>
+              </li>
+              <li className="flex items-center gap-2">
+                <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: "#2A8FA0" }} />
+                <span>Next.js 16 (React 19) Web</span>
+              </li>
+              <li className="flex items-center gap-2">
+                <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: "#2A8FA0" }} />
+                <span>React Native (Expo) Mobile</span>
+              </li>
+              <li className="flex items-center gap-2">
+                <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: "#2A8FA0" }} />
+                <span>Whisper & Google Gemini AI</span>
+              </li>
+              <li className="flex items-center gap-2">
+                <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: "#2A8FA0" }} />
+                <span>Supabase & Cloudinary Cloud</span>
+              </li>
             </ul>
           </div>
 

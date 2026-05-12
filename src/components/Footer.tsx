@@ -31,7 +31,7 @@ export default function Footer() {
           <div className="col-span-1 lg:col-span-1">
             <Link href="/" className="flex items-center gap-3 mb-6">
               <Image
-                src="/whitelogo.png"
+                src="/images/icon-white.png"
                 alt="Articulink Logo"
                 width={44}
                 height={44}
@@ -41,7 +41,7 @@ export default function Footer() {
               </span>
             </Link>
             <p style={{ color: "#C8D8EE" }} className="leading-relaxed mb-8">
-              Revolutionizing speech therapy with AI. We help people find their voice and reconnect with the world.
+              Empowering communication with AI. We provide assistive tools to help people connect and be understood in their daily lives.
             </p>
             <div className="flex gap-4">
               <Link href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors text-white">

@@ -23,7 +23,7 @@ export const foundationData = [
     title: "Purpose",
     icon: Waves,
     color: C.teal,
-    desc: "Articulink exists to give a voice to those who struggle to be understood. For individuals with hypernasality caused by cleft palate, everyday conversations can feel isolating. We transform speech into clearer communication—helping users connect and belong without hesitation."
+    desc: "Articulink exists to give a voice to those who struggle to be understood. We transform speech into clearer communication—helping users connect and belong without hesitation. As an assistive communication tool, we focus on daily interactions and social connection."
   },
   {
     label: "Mission",
@@ -48,31 +48,31 @@ export const foundationData = [
 
 export const featuresData = [
   {
-    title: "Real-Time Transcription",
-    desc: "Record your voice and get instant speech-to-text transcription powered by advanced AI recognition.",
+    title: "Phrase Mode",
+    desc: "Record a specific phrase and let our AI clarify it for instant playback. Perfect for ensuring your message is heard exactly as intended.",
     icon: Mic,
     color: "#4DD8E8",
     glowColor: "rgba(77, 216, 232, 0.3)",
     bgColor: C.teal,
-    label: "Transcription"
+    label: "Phrase Mode"
   },
   {
-    title: "AI Clarity Engine",
-    desc: "Your speech is analyzed and enhanced using OpenAI's Whisper Small model, correcting misarticulations and producing clearer text.",
+    title: "Live Mode",
+    desc: "Continuous real-time speech enhancement using advanced AI to facilitate natural, fluid conversations in any setting.",
     icon: Sparkles,
     color: "#6B9AFF",
     glowColor: "rgba(107, 154, 255, 0.3)",
     bgColor: C.royalBlue,
-    label: "AI Engine"
+    label: "Live Mode"
   },
   {
-    title: "Interactive Clinic Map",
-    desc: "Find nearby speech therapy clinics, cleft care centers, and support facilities with real-time routing.",
+    title: "Support Resource Map",
+    desc: "Find nearby assistive facilities, support centers, and resources within your community to help you on your journey.",
     icon: Map,
     color: "#34D399",
     glowColor: "rgba(52, 211, 153, 0.3)",
     bgColor: "#059669",
-    label: "Clinic Map"
+    label: "Support Map"
   },
   {
     title: "AI Chatbot Assistant",

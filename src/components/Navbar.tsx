@@ -36,7 +36,7 @@ export default function Navbar() {
               alt="Articulink Logo"
               width={44}
               height={44}
-              className="transition-transform group-hover:scale-105"
+              className="transition-transform group-hover:scale-105 rounded-xl"
             />
             <span className="text-2xl font-bold tracking-tight text-white">
               Articu

@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Sparkles, ArrowRight, Zap } from "lucide-react";
+import { Sparkles, ArrowRight, Zap, Mic } from "lucide-react";
 
 export default function Hero() {
   return (
@@ -49,17 +49,17 @@ export default function Hero() {
                 color: "#1C2B3A",
               }}
             >
-              Speak with <br />
-              <span className="text-gradient">Confidence</span> Again.
+              Communicate with <br />
+              <span className="text-gradient">Confidence</span>.
             </h1>
 
             <p
               className="text-xl mb-10 max-w-lg leading-relaxed"
               style={{ color: "#4A5A6A" }}
             >
-              The only app that uses advanced AI to analyze, clarify, and track
-              your speech journey in real-time. Built for therapists, patients,
-              and survivors.
+              Articulink uses advanced AI to clarify and transcribe speech in real-time. 
+              Designed as an <strong>assistive communication tool</strong> for daily life, 
+              not for clinical diagnosis.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
@@ -129,11 +129,11 @@ export default function Hero() {
               >
                 <div className="flex items-center gap-3">
                   <div className="w-8 h-8 rounded-full bg-teal-500/20 flex items-center justify-center">
-                    <Sparkles className="w-4 h-4 text-teal-600" />
+                    <Mic className="w-4 h-4 text-teal-600" />
                   </div>
                   <div>
-                    <p className="text-[10px] uppercase tracking-wider font-bold text-teal-800">AI Analysis</p>
-                    <p className="text-sm font-bold text-[#1C2B3A]">98.2% Accuracy</p>
+                    <p className="text-[10px] uppercase tracking-wider font-bold text-teal-800">Phrase Mode</p>
+                    <p className="text-sm font-bold text-[#1C2B3A]">Clear Playback</p>
                   </div>
                 </div>
               </motion.div>
@@ -148,8 +148,8 @@ export default function Hero() {
                     <Zap className="w-4 h-4 text-blue-600" />
                   </div>
                   <div>
-                    <p className="text-[10px] uppercase tracking-wider font-bold text-blue-800">Real-time</p>
-                    <p className="text-sm font-bold text-[#1C2B3A]">Instant Feedback</p>
+                    <p className="text-[10px] uppercase tracking-wider font-bold text-blue-800">Live Mode</p>
+                    <p className="text-sm font-bold text-[#1C2B3A]">Real-time Enhancement</p>
                   </div>
                 </div>
               </motion.div>

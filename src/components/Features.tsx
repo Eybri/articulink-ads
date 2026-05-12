@@ -20,39 +20,39 @@ const COLORS = {
 const features = [
   {
     icon: Mic2,
-    title: "AI Clarity Engine",
-    description: "Our Clarity Engine uses OpenAI's Whisper Small model to analyze speech patterns in real-time, providing instant feedback and enhancement.",
+    title: "Phrase Mode",
+    description: "Record a single phrase and let our AI clarify it instantly. Perfect for ensuring your message is heard exactly as intended.",
     color: COLORS.teal,
   },
   {
-    icon: LineChart,
-    title: "Progress Analytics",
-    description: "Track your improvement over weeks and months with detailed visualization of your speech milestones.",
-    color: COLORS.royalBlue,
+    icon: Zap,
+    title: "Live Mode",
+    description: "Experience continuous real-time speech enhancement for fluid, natural conversations in any setting.",
+    color: COLORS.tealLight,
   },
   {
     icon: MapPin,
-    title: "Facility Locator",
-    description: "Connect with the nearest certified clinical facilities and speech-language pathologists in your area.",
+    title: "Support Map",
+    description: "Find nearby speech resources, support centers, and assistive facilities within your community.",
     color: COLORS.mediumBlue,
   },
   {
-    icon: ShieldCheck,
-    title: "Privacy Protected",
-    description: "Your data is handled securely and responsibly. We are fully compliant with the Data Privacy Act of 2012 (NPC).",
-    color: COLORS.tealDark,
-  },
-  {
-    icon: Zap,
-    title: "Instant Feedback",
-    description: "Get real-time visual cues on pronunciation, rhythm, and volume to adjust your speech on the fly.",
-    color: COLORS.tealLight,
+    icon: LineChart,
+    title: "Clarity Analytics",
+    description: "Monitor your communication progress with real-time word-level confidence scores and clarity percentages.",
+    color: COLORS.royalBlue,
   },
   {
     icon: Globe,
     title: "Bilingual Support",
-    description: "Seamlessly switch between English and Tagalog in seconds. Talk naturally in either language without friction.",
+    description: "Seamlessly switch between English and Tagalog. Talk naturally in either language with full AI support.",
     color: COLORS.deepNavy,
+  },
+  {
+    icon: ShieldCheck,
+    title: "Privacy Protected",
+    description: "Your voice and data are yours. We are fully compliant with the Data Privacy Act of 2012 (NPC).",
+    color: COLORS.tealDark,
   },
 ];
 

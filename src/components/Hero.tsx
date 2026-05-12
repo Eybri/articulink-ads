@@ -144,12 +144,18 @@ export default function Hero() {
                 className="absolute -left-12 bottom-1/4 z-20 bg-white/80 backdrop-blur-md p-4 rounded-2xl shadow-xl border border-white/20 hidden sm:block"
               >
                 <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center">
-                    <Zap className="w-4 h-4 text-blue-600" />
+                  <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center overflow-hidden border border-gray-100">
+                    <Image
+                      src="/images/tup-logo.png"
+                      alt="TUP Logo"
+                      width={32}
+                      height={32}
+                      className="object-contain"
+                    />
                   </div>
                   <div>
-                    <p className="text-[10px] uppercase tracking-wider font-bold text-blue-800">Live Mode</p>
-                    <p className="text-sm font-bold text-[#1C2B3A]">Real-time Enhancement</p>
+                    <p className="text-[10px] uppercase tracking-wider font-bold text-gray-500">Research Partner</p>
+                    <p className="text-sm font-bold text-[#1C2B3A]">TUP Manila</p>
                   </div>
                 </div>
               </motion.div>
@@ -161,17 +167,10 @@ export default function Hero() {
                 
                 <div className="relative w-40 h-40 sm:w-48 sm:h-48 rounded-[2rem] overflow-hidden">
                   <Image
-                    src="/app-icon.png"
+                    src="/images/icon-new.png"
                     alt="Articulink App Icon"
                     fill
-                    className="object-contain group-hover:opacity-0 transition-all duration-700 group-hover:scale-110"
-                    priority
-                  />
-                  <Image
-                    src="/images/app-icon-white.png"
-                    alt="Articulink App Icon Light"
-                    fill
-                    className="object-contain opacity-0 group-hover:opacity-100 transition-all duration-700 group-hover:scale-110"
+                    className="object-contain transition-all duration-700 group-hover:scale-110"
                     priority
                   />
                 </div>

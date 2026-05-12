@@ -31,7 +31,7 @@ export default function Footer() {
           <div className="col-span-1 lg:col-span-1">
             <Link href="/" className="flex items-center gap-3 mb-6">
               <Image
-                src="/whitelogo.png"
+                src="/images/icon-white.png"
                 alt="Articulink Logo"
                 width={44}
                 height={44}

@@ -32,7 +32,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 group">
             <Image
-              src="/whitelogo.png"
+              src="/images/icon-white.png"
               alt="Articulink Logo"
               width={44}
               height={44}

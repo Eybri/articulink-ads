@@ -60,7 +60,7 @@ export default function InstallationSection() {
 
                 <p className="text-lg mb-10 max-w-lg leading-relaxed" style={{ color: C.orbBlue }}>
                   Scan the QR code with your device to download the ARTICULINK application directly.
-                  No Play Store required for Android — just scan, install, and start your speech journey.
+                  No Play Store required for Android — just scan, install, and start communicating with clarity.
                 </p>
 
                 <div className="space-y-4">

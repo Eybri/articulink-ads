@@ -31,8 +31,8 @@ export default function Home() {
             className="text-3xl md:text-5xl font-bold mb-16"
             style={{ fontFamily: "var(--font-playfair), serif", color: C.textDark }}
           >
-            Trusted by clinicians and <br />
-            <span style={{ color: C.teal }}>patients worldwide</span>
+            Helping people communicate <br />
+            <span style={{ color: C.teal }}>with clarity and confidence</span>
           </h2>
 
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
@@ -45,13 +45,13 @@ export default function Home() {
               }}
             >
               <p className="text-xl italic mb-8 leading-relaxed" style={{ color: C.textMid }}>
-                &ldquo;Articulink has been a game-changer for my patients. The real-time clarity score motivates them to practice more often, and the progress tracking is invaluable.&rdquo;
+                &ldquo;Articulink has been a wonderful tool for my son. The Phrase Mode gives him the confidence to be understood at school, and he loves seeing his clarity scores improve.&rdquo;
               </p>
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 rounded-full" style={{ backgroundColor: C.orbSand }} />
                 <div>
-                  <p className="font-bold" style={{ color: C.textDark }}>Dr. Sarah Chen</p>
-                  <p className="text-sm" style={{ color: C.textMid }}>Senior Speech Pathologist</p>
+                  <p className="font-bold" style={{ color: C.textDark }}>Maria Santos</p>
+                  <p className="text-sm" style={{ color: C.textMid }}>Parent of Articulink User</p>
                 </div>
               </div>
             </div>
@@ -65,13 +65,13 @@ export default function Home() {
               }}
             >
               <p className="text-xl italic mb-8 leading-relaxed" style={{ color: C.textMid }}>
-                &ldquo;After my stroke, I felt disconnected. This app gave me the tools to practice at home and see real results. I can finally talk to my grandkids again.&rdquo;
+                &ldquo;I use the Live Mode when I'm out with friends. It's not a medical device, but it makes a huge difference in how easily I can join the conversation.&rdquo;
               </p>
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 rounded-full" style={{ backgroundColor: C.orbBlue }} />
                 <div>
                   <p className="font-bold" style={{ color: C.textDark }}>James Wilson</p>
-                  <p className="text-sm" style={{ color: C.textMid }}>Stroke Survivor</p>
+                  <p className="text-sm" style={{ color: C.textMid }}>Articulink User</p>
                 </div>
               </div>
             </div>

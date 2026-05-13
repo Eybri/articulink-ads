@@ -73,9 +73,9 @@ export const phraseSteps = [
   },
   {
     icon: BarChart3,
-    title: "Clarity Feedback",
-    short: "WER & Accuracy Metrics",
-    desc: "Instantly view your Word Error Rate (WER) and clarity score. The app provides visual feedback on which parts of your phrase were articulated clearly and where you can improve.",
+    title: "WER Feedback",
+    short: "Error Rate Tracking",
+    desc: "Instantly view your Word Error Rate (WER). The app provides visual feedback on transcription precision, helping you identify exactly where phonetic clarity can be improved toward a 0% error goal.",
     color: "#2A8FA0", // Teal
     tech: "Step 03"
   },

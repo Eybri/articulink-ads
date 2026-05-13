@@ -95,7 +95,7 @@ export default function AppFeaturesSection() {
                   className="flex flex-col items-center"
                 >
                   <div className="relative w-24 h-24 mb-4 rounded-3xl overflow-hidden" style={{ boxShadow: "0 0 30px rgba(42, 143, 160, 0.2)" }}>
-                    <Image src="/images/app-icon.png" alt="Articulink" fill className="object-contain" />
+                    <Image src="/images/icon-new.png" alt="Articulink" fill className="object-contain" />
                   </div>
                   <p className="text-sm font-bold uppercase tracking-widest mb-1" style={{ color: C.tealLight }}>
                     Explore Features

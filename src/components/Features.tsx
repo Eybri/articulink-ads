@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Mic2, LineChart, MapPin, ShieldCheck, Zap, Globe } from "lucide-react";
+import { Mic2, BarChart3, MapPin, ShieldCheck, Zap, Globe } from "lucide-react";
 
 const COLORS = {
   teal: "#2A8FA0",
@@ -20,39 +20,39 @@ const COLORS = {
 const features = [
   {
     icon: Mic2,
-    title: "Phrase Mode",
-    description: "Record a single phrase and let our AI clarify it instantly. Perfect for ensuring your message is heard exactly as intended.",
+    title: "Precision Phrase Capture",
+    description: "Record complete sentences with forensic accuracy. Our AI analyzes every phoneme to ensure your message is transcribed and clarified with zero ambiguity.",
     color: COLORS.teal,
   },
   {
     icon: Zap,
-    title: "Live Mode",
-    description: "Experience continuous real-time speech enhancement for fluid, natural conversations in any setting.",
+    title: "Live Neural Streaming",
+    description: "Low-latency audio processing for fluid face-to-face interactions. The app listens and transcribes in real-time segments for near-instant feedback.",
     color: COLORS.tealLight,
   },
   {
-    icon: MapPin,
-    title: "Support Map",
-    description: "Find nearby speech resources, support centers, and assistive facilities within your community.",
-    color: COLORS.mediumBlue,
-  },
-  {
-    icon: LineChart,
-    title: "Clarity Analytics",
-    description: "Monitor your communication progress with real-time word-level confidence scores and clarity percentages.",
+    icon: Globe,
+    title: "Bilingual Intelligence",
+    description: "Specialized models for Tagalog-English (Taglish) phonetic patterns. Speak naturally in either language without losing context or clarity.",
     color: COLORS.royalBlue,
   },
   {
-    icon: Globe,
-    title: "Bilingual Support",
-    description: "Seamlessly switch between English and Tagalog. Talk naturally in either language with full AI support.",
-    color: COLORS.deepNavy,
+    icon: MapPin,
+    title: "Geographic Support Map",
+    description: "Discover a curated ecosystem of speech clinics and specialists across the Philippines. Connect with professional help right from your current location.",
+    color: COLORS.mediumBlue,
+  },
+  {
+    icon: BarChart3,
+    title: "WER Analytics Suite",
+    description: "Track your Word Error Rate (WER) progress. Visualize your journey toward 0% error with detailed phonetic breakdowns and historical performance data.",
+    color: COLORS.tealDark,
   },
   {
     icon: ShieldCheck,
-    title: "Privacy Protected",
-    description: "Your voice and data are yours. We are fully compliant with the Data Privacy Act of 2012 (NPC).",
-    color: COLORS.tealDark,
+    title: "Privacy-First Vault",
+    description: "Built with military-grade encryption and NPC compliance. Your recordings are fully encrypted and stored in a secure, private environment.",
+    color: COLORS.deepNavy,
   },
 ];
 

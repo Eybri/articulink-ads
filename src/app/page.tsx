@@ -45,7 +45,7 @@ export default function Home() {
               }}
             >
               <p className="text-xl italic mb-8 leading-relaxed" style={{ color: C.textMid }}>
-                &ldquo;Articulink has been a wonderful tool for my son. The Phrase Mode gives him the confidence to be understood at school, and he loves seeing his clarity scores improve.&rdquo;
+                &ldquo;Articulink has been a wonderful tool for my son. The Phrase Mode gives him the confidence to be understood at school, and he loves tracking his progress toward a 0% error rate.&rdquo;
               </p>
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 rounded-full" style={{ backgroundColor: C.orbSand }} />

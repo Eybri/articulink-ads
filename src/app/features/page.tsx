@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Features from "@/components/Features";
-import { Brain, Zap, Shield, Globe, Mic2, BarChart3 } from "lucide-react";
+import { Brain, Zap, Shield, Globe, Mic2, BarChart3, Trash2, Send } from "lucide-react";
 
 const C = {
   cream: "#FAF8F4",
@@ -116,39 +116,89 @@ export default function FeaturesPage() {
         </div>
       </section>
 
-      {/* Updated Section: Ariya AI Companion */}
+      {/* Updated Section: Ariya AI Companion (Mobile Interface) */}
       <section className="py-24" style={{ backgroundColor: "white" }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-16 items-center flex-row-reverse">
+            {/* Mobile Phone Frame */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
+              initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="order-2 md:order-1 relative p-8 rounded-[3rem] bg-gradient-to-br from-[#1E6B78] to-[#0F2847] shadow-2xl min-h-[400px] flex flex-col justify-center overflow-hidden"
+              className="order-2 md:order-1 relative mx-auto w-[320px] h-[650px] border-[12px] border-[#1C2B3A] rounded-[3rem] bg-[#FAF8F4] shadow-[0_50px_100px_-20px_rgba(15,40,71,0.3)] overflow-hidden flex flex-col"
             >
-              <div className="absolute top-[-20%] right-[-10%] w-64 h-64 bg-white/10 rounded-full blur-3xl" />
-              <div className="relative z-10 space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-white/20 shrink-0 shadow-lg">
-                    <Image src="/images/ariya.png" alt="Ariya" width={40} height={40} className="object-cover" />
-                  </div>
-                  <div className="bg-white/10 backdrop-blur-md p-4 rounded-2xl rounded-tl-none max-w-[80%] border border-white/20">
-                    <p className="text-white text-sm leading-relaxed">Hello! I&apos;m <strong>Ariya</strong>, your Articulink companion. Ready to practice some phrases today?</p>
-                  </div>
+              {/* Phone Status Bar Mockup */}
+              <div className="h-10 w-full flex items-center justify-between px-8 pt-4">
+                <span className="text-[10px] font-bold">9:41</span>
+                <div className="flex gap-1">
+                  <div className="w-3 h-3 rounded-full bg-black/10" />
+                  <div className="w-3 h-3 rounded-full bg-black/10" />
                 </div>
-                
-                <div className="bg-[#2A8FA0] p-4 rounded-2xl rounded-br-none max-w-[80%] self-end ml-auto shadow-lg">
-                  <p className="text-white text-sm font-medium">I want to practice ordering coffee.</p>
+              </div>
+
+              {/* Chat Header */}
+              <div className="px-6 py-4 flex items-center justify-between border-b border-[#DDD6C8]/50">
+                <div className="flex items-center gap-2 bg-[#2A8FA0]/10 px-3 py-1.5 rounded-xl">
+                  <div className="w-2 h-2 rounded-full bg-[#34C759] shadow-[0_0_8px_#34C759]" />
+                  <span className="text-[10px] font-bold text-[#2A8FA0] uppercase tracking-wider">Online</span>
+                </div>
+                <div className="w-8 h-8 rounded-full bg-rose-50 flex items-center justify-center border border-rose-100 shadow-sm">
+                  <Trash2 className="w-4 h-4 text-rose-500 opacity-70" />
+                </div>
+              </div>
+
+              {/* Chat Body */}
+              <div className="flex-1 p-4 space-y-6 relative overflow-hidden">
+                {/* Background Watermark */}
+                <div className="absolute inset-0 flex items-center justify-center opacity-[0.03] pointer-events-none scale-150">
+                  <Image src="/images/ariya.png" alt="" width={300} height={300} />
                 </div>
 
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-white/20 shrink-0 shadow-lg">
-                    <Image src="/images/ariya.png" alt="Ariya" width={40} height={40} className="object-cover" />
+                {/* Ariya Message */}
+                <div className="flex items-end gap-2 relative z-10">
+                  <div className="w-10 h-10 rounded-full overflow-hidden border border-[#2A8FA0]/20 bg-white shrink-0 shadow-sm">
+                    <Image src="/images/ariya.png" alt="Ariya" width={40} height={40} className="object-contain" />
                   </div>
-                  <div className="bg-white/10 backdrop-blur-md p-4 rounded-2xl rounded-tl-none max-w-[80%] border border-white/20">
-                    <p className="text-white text-sm leading-relaxed">Great choice! Let&apos;s start with: &quot;I would like a large latte, please.&quot;</p>
+                  <div className="bg-white p-3.5 rounded-2xl rounded-bl-none shadow-sm border border-[#DDD6C8]/30 max-w-[85%]">
+                    <p className="text-[13px] text-[#1C2B3A] leading-relaxed">
+                      Hello! I&apos;m <strong>Ariya</strong>, your Articulink companion. Ready to practice some phrases today?
+                    </p>
                   </div>
                 </div>
+
+                {/* User Message */}
+                <div className="flex justify-end relative z-10">
+                  <div className="bg-[#2A8FA0] p-3.5 rounded-2xl rounded-br-none shadow-md max-w-[80%]">
+                    <p className="text-[13px] text-white font-medium">I want to practice ordering coffee.</p>
+                  </div>
+                </div>
+
+                {/* Ariya Response */}
+                <div className="flex items-end gap-2 relative z-10">
+                  <div className="w-10 h-10 rounded-full overflow-hidden border border-[#2A8FA0]/20 bg-white shrink-0 shadow-sm">
+                    <Image src="/images/ariya.png" alt="Ariya" width={40} height={40} className="object-contain" />
+                  </div>
+                  <div className="bg-white p-3.5 rounded-2xl rounded-bl-none shadow-sm border border-[#DDD6C8]/30 max-w-[85%]">
+                    <p className="text-[13px] text-[#1C2B3A] leading-relaxed">
+                      Great choice! Let&apos;s start with: &quot;I would like a large latte, please.&quot;
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Chat Input Area Mockup */}
+              <div className="p-4 bg-white border-t border-[#DDD6C8]/50 flex items-center gap-3">
+                <div className="flex-1 bg-[#F5F1EA] h-10 rounded-full px-4 flex items-center border border-[#DDD6C8]">
+                  <span className="text-[11px] text-[#4A5A6A]">Type your message...</span>
+                </div>
+                <div className="w-10 h-10 rounded-full bg-[#2A8FA0] flex items-center justify-center shadow-lg">
+                  <Send className="w-4 h-4 text-white" />
+                </div>
+              </div>
+
+              {/* Home Indicator */}
+              <div className="h-6 w-full flex justify-center pb-2">
+                <div className="w-24 h-1 bg-black/10 rounded-full" />
               </div>
             </motion.div>
 

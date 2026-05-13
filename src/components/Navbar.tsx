@@ -3,17 +3,26 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
+import { motion } from "framer-motion";
 import { MoveRight, Menu, X } from "lucide-react";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const navLinks = [
+    { href: "/features", label: "Features" },
+    { href: "/how-it-works", label: "How it Works" },
+    { href: "/about", label: "About" },
+  ];
 
   return (
     <nav
@@ -46,26 +55,28 @@ export default function Navbar() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-10 text-sm font-medium">
-            {[
-              { href: "/features", label: "Features" },
-              { href: "/how-it-works", label: "How it Works" },
-              { href: "/about", label: "About" },
-            ].map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="relative py-2 transition-colors"
-                style={{ color: "rgba(255,255,255,0.75)" }}
-                onMouseEnter={(e) =>
-                  (e.currentTarget.style.color = "#3DAFC4")
-                }
-                onMouseLeave={(e) =>
-                  (e.currentTarget.style.color = "rgba(255,255,255,0.75)")
-                }
-              >
-                {link.label}
-              </Link>
-            ))}
+            {navLinks.map((link) => {
+              const isActive = pathname === link.href;
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="relative py-2 transition-all group flex flex-col items-center"
+                  style={{ color: isActive ? "#3DAFC4" : "rgba(255,255,255,0.75)" }}
+                >
+                  <span className="group-hover:text-[#3DAFC4] transition-colors">
+                    {link.label}
+                  </span>
+                  {isActive && (
+                    <motion.div
+                      layoutId="nav-active"
+                      className="absolute -bottom-0.5 w-full h-[2px] bg-[#3DAFC4]"
+                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                    />
+                  )}
+                </Link>
+              );
+            })}
           </div>
 
           {/* CTA Button */}
@@ -103,20 +114,24 @@ export default function Navbar() {
           }}
         >
           <div className="flex flex-col gap-4">
-            {[
-              { href: "/features", label: "Features" },
-              { href: "/how-it-works", label: "How it Works" },
-              { href: "/about", label: "About" },
-            ].map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={() => setMenuOpen(false)}
-                className="text-white/75 hover:text-white py-2 text-base font-medium transition-colors"
-              >
-                {link.label}
-              </Link>
-            ))}
+            {navLinks.map((link) => {
+              const isActive = pathname === link.href;
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setMenuOpen(false)}
+                  className="py-3 text-base font-medium transition-colors flex items-center border-l-2 border-transparent"
+                  style={{ 
+                    color: isActive ? "#3DAFC4" : "rgba(255,255,255,0.75)",
+                    borderColor: isActive ? "#3DAFC4" : "transparent",
+                    paddingLeft: isActive ? "1rem" : "0"
+                  }}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
             <Link
               href="#download"
               onClick={() => setMenuOpen(false)}

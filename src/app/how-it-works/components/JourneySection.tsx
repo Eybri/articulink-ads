@@ -158,9 +158,9 @@ export default function JourneySection() {
                           </div>
                           <span className="text-[10px] font-extrabold text-[#1C2B3A]">{activeSide === "live" ? "Live Transcript" : "Phrase Transcript"}</span>
                           <div className="flex-1 h-px bg-gray-100 ml-2" />
-                          {activeStep.mockup?.confidence > 0 && (
+                          {(activeStep.mockup as any)?.confidence > 0 && (
                             <div className="px-1.5 py-0.5 rounded bg-[#2A8FA010] text-[#2A8FA0] text-[7px] font-black uppercase">
-                              {activeStep.mockup.confidence}% CLARITY
+                              {(activeStep.mockup as any).confidence}% CLARITY
                             </div>
                           )}
                         </div>

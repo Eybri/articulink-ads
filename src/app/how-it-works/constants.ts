@@ -24,7 +24,10 @@ export const liveSteps = [
       transcript: "",
       isRecording: false,
       isSpeaking: false,
-      words: []
+      confidence: 0,
+      isLoading: false,
+      isSynced: false,
+      words: [] as string[]
     }
   },
   {
@@ -39,7 +42,10 @@ export const liveSteps = [
       transcript: "",
       isRecording: true,
       isSpeaking: false,
-      words: []
+      confidence: 0,
+      isLoading: false,
+      isSynced: false,
+      words: [] as string[]
     }
   },
   {
@@ -54,6 +60,9 @@ export const liveSteps = [
       transcript: "I'm happy to see you",
       isRecording: true,
       isSpeaking: false,
+      confidence: 0,
+      isLoading: false,
+      isSynced: false,
       words: ["I'm", "happy", "to", "see", "you"]
     }
   },
@@ -69,6 +78,9 @@ export const liveSteps = [
       transcript: "I'm happy to see you",
       isRecording: true,
       isSpeaking: true,
+      confidence: 0,
+      isLoading: false,
+      isSynced: false,
       words: ["I'm", "happy", "to", "see", "you"]
     }
   },
@@ -84,6 +96,9 @@ export const liveSteps = [
       transcript: "I'm happy to see you. How have you been?",
       isRecording: false,
       isSpeaking: false,
+      confidence: 0,
+      isLoading: false,
+      isSynced: false,
       words: ["I'm", "happy", "to", "see", "you.", "How", "have", "you", "been?"]
     }
   }
@@ -102,7 +117,10 @@ export const phraseSteps = [
       transcript: "",
       isRecording: false,
       isSpeaking: false,
-      confidence: 0
+      confidence: 0,
+      isLoading: false,
+      isSynced: false,
+      words: [] as any[]
     }
   },
   {
@@ -118,7 +136,9 @@ export const phraseSteps = [
       isRecording: false,
       isLoading: true,
       isSpeaking: false,
-      confidence: 0
+      confidence: 0,
+      isSynced: false,
+      words: [] as any[]
     }
   },
   {
@@ -134,6 +154,8 @@ export const phraseSteps = [
       isRecording: false,
       isSpeaking: false,
       confidence: 98,
+      isLoading: false,
+      isSynced: false,
       words: [
         { word: "I", confidence: 99 },
         { word: "would", confidence: 98 },
@@ -159,7 +181,10 @@ export const phraseSteps = [
       transcript: "I would like to order one chicken adobo please.",
       isRecording: false,
       isSpeaking: true,
-      confidence: 98
+      confidence: 98,
+      isLoading: false,
+      isSynced: false,
+      words: [] as any[]
     }
   },
   {
@@ -175,7 +200,9 @@ export const phraseSteps = [
       isRecording: false,
       isSpeaking: false,
       confidence: 98,
-      isSynced: true
+      isLoading: false,
+      isSynced: true,
+      words: [] as any[]
     }
   }
 ];

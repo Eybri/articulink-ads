@@ -13,6 +13,17 @@ export default function JourneySection() {
 
   return (
     <section className="py-32 relative mb-20 overflow-visible">
+      {/* Background Aesthetic Waves */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <svg className="absolute w-full h-full opacity-[0.03]" viewBox="0 0 100 100" preserveAspectRatio="none">
+          <motion.path
+            d="M0,50 Q25,30 50,50 T100,50 V100 H0 Z"
+            fill="#2A8FA0"
+            animate={{ d: ["M0,50 Q25,30 50,50 T100,50 V100 H0 Z", "M0,50 Q25,70 50,50 T100,50 V100 H0 Z", "M0,50 Q25,30 50,50 T100,50 V100 H0 Z"] }}
+            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+          />
+        </svg>
+      </div>
       <div className="w-full px-6 sm:px-12 lg:px-24">
         <div className="text-center mb-24">
           <h2 className="text-4xl md:text-8xl font-bold text-[#0F2847] mb-8" style={{ fontFamily: "var(--font-playfair), serif" }}>
@@ -73,7 +84,7 @@ export default function JourneySection() {
           </div>
 
           {/* Center Column: Immersive Phone Stage */}
-          <div className="flex flex-col items-center order-1 lg:order-2 lg:sticky lg:top-[20rem] mt-31">
+          <div className="flex flex-col items-center order-1 lg:order-2 lg:sticky lg:top-[12rem] mt-2">
             <div className="relative group scale-100 lg:scale-100">
               <motion.div
                 animate={{
@@ -228,9 +239,18 @@ export default function JourneySection() {
                 >
                   <div className="flex items-center gap-2 mb-2">
                     <Activity className="w-4 h-4" style={{ color: activeStep.color }} />
-                    <span className="text-[10px] font-bold uppercase tracking-widest text-gray-400">Live Status</span>
+                    <span className="text-[10px] font-bold uppercase tracking-widest text-gray-400">
+                      {activeSide === "live" ? "System Health" : "Transcription"}
+                    </span>
                   </div>
-                  <div className="text-xl font-bold text-[#0F2847]">98.2% <span className="text-[10px] font-medium text-green-500 ml-1">Accuracy</span></div>
+                  <div className="text-xl font-bold text-[#0F2847]">
+                    {(activeStep.mockup as any)?.confidence > 0 
+                      ? `${(activeStep.mockup as any).confidence}%` 
+                      : (activeStep.mockup?.isRecording ? "Live" : "Optimal")}
+                    <span className="text-[10px] font-medium text-green-500 ml-1">
+                      {(activeStep.mockup as any)?.confidence > 0 ? "Clarity" : "Active"}
+                    </span>
+                  </div>
                 </motion.div>
               </AnimatePresence>
             </div>

@@ -111,7 +111,7 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="relative"
           >
-            <div className="relative z-10 w-full max-w-[280px] sm:max-w-[320px] mx-auto">
+            <div className="relative z-10 w-full max-w-[17.5rem] sm:max-w-[20rem] mx-auto">
               {/* Outer Glow */}
               <div
                 className="absolute inset-0 rounded-[3rem] blur-3xl -z-10"

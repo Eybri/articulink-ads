@@ -7,6 +7,21 @@ import { C } from "../constants";
 export default function HeroSection() {
   return (
     <section className="relative py-32 overflow-hidden" style={{ backgroundColor: C.deepNavy }}>
+      {/* Premium Background Orbs */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <motion.div 
+          animate={{ x: [0, 50, 0], y: [0, 30, 0] }}
+          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute -top-20 -left-20 w-96 h-96 rounded-full blur-[100px]" 
+          style={{ backgroundColor: `${C.teal}15` }} 
+        />
+        <motion.div 
+          animate={{ x: [0, -40, 0], y: [0, 50, 0] }}
+          transition={{ duration: 18, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+          className="absolute top-1/2 -right-20 w-[500px] h-[500px] rounded-full blur-[120px]" 
+          style={{ backgroundColor: `${C.royalBlue}10` }} 
+        />
+      </div>
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,#3DAFC4,transparent_70%)]" />
       </div>

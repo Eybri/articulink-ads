@@ -14,86 +14,169 @@ export const C = {
 export const liveSteps = [
   {
     icon: Zap,
-    title: "Enable Live Mode",
-    short: "Activate Streaming",
-    desc: "Start by toggling the 'Simultaneous' switch in the app. This initializes the live neural engine, preparing Articulink for continuous, real-time audio processing.",
+    title: "Switch to Live Mode",
+    short: "Activate Neural Streaming",
+    desc: "Start by selecting 'Live Mode' on the top toggle. This prepares the app for continuous, real-time audio processing using our neural streaming engine.",
     color: "#2A8FA0", // Teal
-    tech: "Step 01"
+    tech: "Step 01",
+    mockup: {
+      status: "Tap to start live listening",
+      transcript: "",
+      isRecording: false,
+      isSpeaking: false,
+      words: []
+    }
   },
   {
     icon: Mic2,
     title: "One-Tap Start",
-    short: "Hands-Free Flow",
-    desc: "Simply tap the microphone icon once to begin. Unlike Phrase mode, you don't need to hold or tap again for every sentence—just speak naturally as you would in a normal conversation.",
+    short: "Continuous Listening",
+    desc: "Tap the microphone once to begin. Unlike Phrase mode, you don't need to hold or tap again for every sentence—just speak naturally and let Articulink handle the rest.",
     color: "#FF6B6B", // Coral
-    tech: "Step 02"
+    tech: "Step 02",
+    mockup: {
+      status: "Listening...",
+      transcript: "",
+      isRecording: true,
+      isSpeaking: false,
+      words: []
+    }
   },
   {
     icon: Activity,
     title: "Real-Time Streaming",
-    short: "3-Second Intervals",
-    desc: "Our AI processes your voice in rapid 3-second segments. You'll see the transcription appear instantly on the screen as the engine captures every phonetic nuance without delay.",
+    short: "3-Second Neural Loops",
+    desc: "Our AI processes your voice in rapid 3-second segments. Words appear instantly on screen, providing immediate visual confirmation of your speech.",
     color: "#1A4480", // Royal Blue
-    tech: "Step 03"
+    tech: "Step 03",
+    mockup: {
+      status: "Listening...",
+      transcript: "I'm happy to see you",
+      isRecording: true,
+      isSpeaking: false,
+      words: ["I'm", "happy", "to", "see", "you"]
+    }
   },
   {
     icon: Globe,
-    title: "Bilingual Intelligence",
-    short: "Tagalog-English Sync",
-    desc: "The system automatically detects whether you're speaking Tagalog or English. It provides fluid, context-aware transcriptions that adapt to your natural code-switching patterns.",
+    title: "Simultaneous Playback",
+    short: "Your Voice, Clarified",
+    desc: "Articulink automatically plays back your clarified speech in real-time. This 'Simultaneous Mode' ensures your listener hears a clear, articulated version of your thoughts without delay.",
     color: "#FF9F43", // Orange
-    tech: "Step 04"
+    tech: "Step 04",
+    mockup: {
+      status: "Simultaneous Playback",
+      transcript: "I'm happy to see you",
+      isRecording: true,
+      isSpeaking: true,
+      words: ["I'm", "happy", "to", "see", "you"]
+    }
   },
   {
     icon: CheckCircle2,
-    title: "End Session",
-    short: "Session Close",
-    desc: "Tap the microphone one last time to end the session. Live mode is built for real-time, immediate communication and does not persist data to your history, keeping your interactions lightweight.",
+    title: "Session Wrap-up",
+    short: "Easy Stop & Review",
+    desc: "Tap the stop button whenever you're done. Your live session remains on screen for review, ensuring you never lose track of the conversation flow.",
     color: "#3DAFC4", // Teal Light
-    tech: "Step 05"
+    tech: "Step 05",
+    mockup: {
+      status: "Session Ended",
+      transcript: "I'm happy to see you. How have you been?",
+      isRecording: false,
+      isSpeaking: false,
+      words: ["I'm", "happy", "to", "see", "you.", "How", "have", "you", "been?"]
+    }
   }
 ];
 
 export const phraseSteps = [
   {
     icon: Layers,
-    title: "Precision Capture",
-    short: "Record Full Phrases",
-    desc: "Use Phrase Mode for high-accuracy transactions. Tap the microphone and speak a complete sentence or phrase. This mode focuses on maximum phonetic clarity and spelling precision.",
+    title: "Targeted Capture",
+    short: "Record Specific Phrases",
+    desc: "Use Phrase Mode for high-precision needs like ordering food or medical consultations. Tap the mic and record a single, complete sentence for maximum accuracy.",
     color: "#1A4480", // Royal Blue
-    tech: "Step 01"
+    tech: "Step 01",
+    mockup: {
+      status: "Tap to record a phrase",
+      transcript: "",
+      isRecording: false,
+      isSpeaking: false,
+      confidence: 0
+    }
   },
   {
     icon: Cpu,
-    title: "Neural Transcription",
+    title: "Deep Analysis",
     short: "Whisper Optimization",
-    desc: "Tap the mic again to stop recording. Our fine-tuned Whisper Small model then performs a deep analysis of your speech, generating a highly accurate text output in seconds.",
+    desc: "Once you tap stop, our fine-tuned Whisper model performs a deep phonetic analysis, ensuring every word is transcribed with extreme precision.",
     color: "#FF9F43", // Orange
-    tech: "Step 02"
+    tech: "Step 02",
+    mockup: {
+      status: "Processing speech...",
+      transcript: "",
+      isRecording: false,
+      isLoading: true,
+      isSpeaking: false,
+      confidence: 0
+    }
   },
   {
     icon: BarChart3,
-    title: "WER Feedback",
-    short: "Error Rate Tracking",
-    desc: "Instantly view your Word Error Rate (WER). The app provides visual feedback on transcription precision, helping you identify exactly where phonetic clarity can be improved toward a 0% error goal.",
+    title: "Clarity Scoring",
+    short: "Word-Level Feedback",
+    desc: "Instantly see your Word Error Rate (WER). Low-confidence words are highlighted in red or orange, helping you identify exactly where your phonetic clarity can be improved.",
     color: "#2A8FA0", // Teal
-    tech: "Step 03"
+    tech: "Step 03",
+    mockup: {
+      status: "Analysis Complete",
+      transcript: "I would like to order one chicken adobo please.",
+      isRecording: false,
+      isSpeaking: false,
+      confidence: 98,
+      words: [
+        { word: "I", confidence: 99 },
+        { word: "would", confidence: 98 },
+        { word: "like", confidence: 99 },
+        { word: "to", confidence: 99 },
+        { word: "order", confidence: 97 },
+        { word: "one", confidence: 99 },
+        { word: "chicken", confidence: 98 },
+        { word: "adobo", confidence: 85 },
+        { word: "please.", confidence: 99 }
+      ]
+    }
   },
   {
     icon: Play,
-    title: "Audio Synthesis",
-    short: "The 'Speak' Button",
-    desc: "Once transcribed, click the large 'Speak' button. Articulink will play back your phrase with perfect articulation, acting as your vocal proxy in shops or official appointments.",
+    title: "The 'Speak' Proxy",
+    short: "Manual Vocal Playback",
+    desc: "Click the 'Play Clarity Voice' button. Articulink acts as your vocal proxy, speaking your phrase with perfect articulation to ensure you are understood every time.",
     color: "#FF6B6B", // Coral
-    tech: "Step 04"
+    tech: "Step 04",
+    mockup: {
+      status: "Speaking phrase...",
+      transcript: "I would like to order one chicken adobo please.",
+      isRecording: false,
+      isSpeaking: true,
+      confidence: 98
+    }
   },
   {
     icon: Cloud,
-    title: "Dashboard Sync",
-    short: "Long-term Tracking",
-    desc: "Every phrase is logged into your personal growth dashboard. Track how your accuracy improves over time across different categories like 'Daily Essentials' or 'Medical'.",
+    title: "Growth Tracking",
+    short: "Sync to Dashboard",
+    desc: "Every recorded phrase is automatically synced to your history. Monitor your improvement over time and celebrate your milestones as your clarity percentage grows.",
     color: "#0F2847", // Deep Navy
-    tech: "Step 05"
+    tech: "Step 05",
+    mockup: {
+      status: "Synced to History",
+      transcript: "I would like to order one chicken adobo please.",
+      isRecording: false,
+      isSpeaking: false,
+      confidence: 98,
+      isSynced: true
+    }
   }
 ];
 

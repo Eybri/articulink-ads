@@ -54,7 +54,7 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-10 text-sm font-medium">
+          <div className="hidden md:flex items-center gap-8 text-sm font-medium">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
               return (
@@ -80,7 +80,7 @@ export default function Navbar() {
           </div>
 
           {/* CTA Button */}
-          <div className="hidden md:flex items-center gap-4">
+          <div className="hidden md:flex items-center gap-3">
             <Link
               href="#download"
               className="text-white px-7 py-2.5 rounded-full text-sm font-semibold transition-all flex items-center gap-2 group hover:opacity-90"

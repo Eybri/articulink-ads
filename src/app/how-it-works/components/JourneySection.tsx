@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Activity } from "lucide-react";
+import { Activity, Mic2, Play } from "lucide-react";
 import { liveSteps, phraseSteps } from "../constants";
 
 export default function JourneySection() {
@@ -13,6 +13,17 @@ export default function JourneySection() {
 
   return (
     <section className="py-32 relative mb-20 overflow-visible">
+      {/* Background Aesthetic Waves */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <svg className="absolute w-full h-full opacity-[0.03]" viewBox="0 0 100 100" preserveAspectRatio="none">
+          <motion.path
+            d="M0,50 Q25,30 50,50 T100,50 V100 H0 Z"
+            fill="#2A8FA0"
+            animate={{ d: ["M0,50 Q25,30 50,50 T100,50 V100 H0 Z", "M0,50 Q25,70 50,50 T100,50 V100 H0 Z", "M0,50 Q25,30 50,50 T100,50 V100 H0 Z"] }}
+            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+          />
+        </svg>
+      </div>
       <div className="w-full px-6 sm:px-12 lg:px-24">
         <div className="text-center mb-24">
           <h2 className="text-4xl md:text-8xl font-bold text-[#0F2847] mb-8" style={{ fontFamily: "var(--font-playfair), serif" }}>
@@ -73,7 +84,7 @@ export default function JourneySection() {
           </div>
 
           {/* Center Column: Immersive Phone Stage */}
-          <div className="flex flex-col items-center order-1 lg:order-2 lg:sticky lg:top-[20rem] mt-31">
+          <div className="flex flex-col items-center order-1 lg:order-2 lg:sticky lg:top-[12rem] mt-2">
             <div className="relative group scale-100 lg:scale-100">
               <motion.div
                 animate={{
@@ -88,20 +99,133 @@ export default function JourneySection() {
               >
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-[#1C2B3A] rounded-b-2xl z-30" />
                 <AnimatePresence mode="wait">
-                  <motion.div
-                    key={`${activeSide}-${activeIndex}`}
-                    initial={{ opacity: 0, scale: 1.1 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.9 }}
-                    transition={{ duration: 0.6 }}
-                    className="relative w-full h-full bg-gray-50 flex items-center justify-center p-8"
-                  >
-                    <div className="text-center">
-                      <activeStep.icon className="w-20 h-20 mx-auto mb-6 opacity-20" style={{ color: activeStep.color }} />
-                      <p className="text-xs font-bold uppercase tracking-widest text-gray-300 mb-2">{activeSide} Mode Mockup</p>
-                      <h4 className="text-lg font-bold text-gray-400">{activeStep.title}</h4>
-                    </div>
-                  </motion.div>
+                    <motion.div
+                      key={`${activeSide}-${activeIndex}`}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -20 }}
+                      transition={{ duration: 0.4 }}
+                      className="relative w-full h-full bg-[#FAF8F4] flex flex-col p-4 pt-10"
+                    >
+                      {/* Status Badge */}
+                      <div className="flex flex-col items-center gap-1 mb-4">
+                        <div 
+                          className="px-3 py-1 rounded-full border text-[10px] font-black uppercase tracking-widest"
+                          style={{ 
+                            backgroundColor: activeSide === "live" ? "#2A8FA010" : "#1A448010",
+                            borderColor: activeSide === "live" ? "#2A8FA020" : "#1A448020",
+                            color: activeSide === "live" ? "#2A8FA0" : "#1A4480"
+                          }}
+                        >
+                          {activeSide === "live" ? "Live Mode Active" : "Phrase Mode Active"}
+                        </div>
+                      </div>
+
+                      {/* Mode Toggle Mockup */}
+                      <div className="bg-white p-1 rounded-full border border-[#DDD6C8]/40 shadow-sm flex relative mb-6">
+                        <div 
+                          className="absolute top-1 bottom-1 rounded-full transition-all duration-500"
+                          style={{ 
+                            left: activeSide === "phrase" ? "4px" : "calc(50% + 0px)",
+                            right: activeSide === "phrase" ? "calc(50% + 0px)" : "4px",
+                            backgroundColor: activeSide === "phrase" ? "#1A4480" : "#2A8FA0"
+                          }}
+                        />
+                        <div className={`flex-1 py-2 text-center text-[10px] font-bold z-10 ${activeSide === "phrase" ? "text-white" : "text-[#4A5A6A]"}`}>Phrase Mode</div>
+                        <div className={`flex-1 py-2 text-center text-[10px] font-bold z-10 ${activeSide === "live" ? "text-white" : "text-[#4A5A6A]"}`}>Live Mode</div>
+                      </div>
+
+                      {/* Mic Section */}
+                      <div className="flex flex-col items-center gap-4 mb-6">
+                        <div className="relative w-20 h-20 flex items-center justify-center">
+                          {/* Pulse Ring effect */}
+                          {activeStep.mockup?.isRecording && (
+                            <motion.div 
+                              animate={{ scale: [1, 1.5, 1], opacity: [0.3, 0, 0.3] }}
+                              transition={{ duration: 2, repeat: Infinity }}
+                              className="absolute inset-0 rounded-full"
+                              style={{ backgroundColor: activeSide === "live" ? "#2A8FA0" : "#1A4480" }}
+                            />
+                          )}
+                          <div 
+                            className="w-16 h-16 rounded-full flex items-center justify-center shadow-lg z-10 transition-colors duration-500"
+                            style={{ 
+                              backgroundColor: activeStep.mockup?.isRecording ? "#DC2626" : (activeSide === "live" ? "#2A8FA0" : "#1A4480") 
+                            }}
+                          >
+                            <Mic2 className="w-8 h-8 text-white" />
+                          </div>
+                        </div>
+                        <span className="text-[10px] font-bold text-[#1C2B3A] text-center px-4">
+                          {activeStep.mockup?.status}
+                        </span>
+                      </div>
+
+                      {/* Transcript Card */}
+                      <div className="bg-white rounded-3xl p-4 shadow-md border border-[#DDD6C8]/40 flex-1 flex flex-col overflow-hidden">
+                        <div className="flex items-center gap-2 mb-3">
+                          <div className="w-6 h-6 rounded-lg flex items-center justify-center" style={{ backgroundColor: activeSide === "live" ? "#2A8FA010" : "#1A448010" }}>
+                            <Activity className="w-3 h-3" style={{ color: activeSide === "live" ? "#2A8FA0" : "#1A4480" }} />
+                          </div>
+                          <span className="text-[10px] font-extrabold text-[#1C2B3A]">{activeSide === "live" ? "Live Transcript" : "Phrase Transcript"}</span>
+                          <div className="flex-1 h-px bg-gray-100 ml-2" />
+                          {(activeStep.mockup as any)?.confidence > 0 && (
+                            <div className="px-1.5 py-0.5 rounded bg-[#2A8FA010] text-[#2A8FA0] text-[7px] font-black uppercase">
+                              {(activeStep.mockup as any).confidence}% CLARITY
+                            </div>
+                          )}
+                        </div>
+                        
+                        <div className="flex-1 text-[13px] text-[#4A5A6A] font-medium leading-relaxed">
+                          {activeStep.mockup?.isLoading ? (
+                            <div className="flex items-center justify-center h-full">
+                              <div className="w-6 h-6 border-2 border-[#2A8FA0] border-t-transparent rounded-full animate-spin" />
+                            </div>
+                          ) : activeStep.mockup?.words?.length > 0 ? (
+                            <div className="flex flex-wrap gap-1.5">
+                              {activeStep.mockup.words.map((w: any, i: number) => {
+                                const wordText = typeof w === "string" ? w : w.word;
+                                const confidence = typeof w === "string" ? 100 : w.confidence;
+                                return (
+                                  <span 
+                                    key={i} 
+                                    className="px-1.5 py-0.5 rounded transition-colors duration-500"
+                                    style={{ 
+                                      backgroundColor: confidence > 90 ? (activeSide === "live" ? "#2A8FA010" : "#1A448010") : confidence > 70 ? "#F59E0B10" : "#EF444410",
+                                      border: `1px solid ${confidence > 90 ? (activeSide === "live" ? "#2A8FA020" : "#1A448020") : confidence > 70 ? "#F59E0B20" : "#EF444420"}`,
+                                      color: confidence > 90 ? "#1C2B3A" : confidence > 70 ? "#B45309" : "#B91C1C"
+                                    }}
+                                  >
+                                    {wordText}
+                                  </span>
+                                );
+                              })}
+                              {activeStep.mockup.isRecording && <span className="animate-pulse">|</span>}
+                            </div>
+                          ) : (
+                            <p className="opacity-40 italic">
+                              {activeStep.mockup?.transcript || (activeStep.mockup?.isRecording ? "Listening..." : "Start speaking...")}
+                            </p>
+                          )}
+                        </div>
+
+                        {/* Action Buttons */}
+                        <div className="mt-4 flex flex-col gap-2">
+                          <motion.div 
+                            animate={activeStep.mockup?.isSpeaking ? { scale: [1, 1.02, 1] } : {}}
+                            transition={{ duration: 1, repeat: Infinity }}
+                            className="w-full py-2.5 rounded-xl flex items-center justify-center gap-2 transition-all duration-500"
+                            style={{ 
+                              backgroundColor: activeSide === "live" ? "#2A8FA0" : "#1A4480",
+                              opacity: (activeStep.mockup?.transcript || activeStep.mockup?.words?.length > 0) ? 1 : 0.3
+                            }}
+                          >
+                            <Play className="w-3 h-3 text-white fill-white" />
+                            <span className="text-[10px] font-black text-white uppercase tracking-wider">Play Clarity Voice</span>
+                          </motion.div>
+                        </div>
+                      </div>
+                    </motion.div>
                 </AnimatePresence>
               </motion.div>
 
@@ -115,9 +239,18 @@ export default function JourneySection() {
                 >
                   <div className="flex items-center gap-2 mb-2">
                     <Activity className="w-4 h-4" style={{ color: activeStep.color }} />
-                    <span className="text-[10px] font-bold uppercase tracking-widest text-gray-400">Live Status</span>
+                    <span className="text-[10px] font-bold uppercase tracking-widest text-gray-400">
+                      {activeSide === "live" ? "System Health" : "Transcription"}
+                    </span>
                   </div>
-                  <div className="text-xl font-bold text-[#0F2847]">98.2% <span className="text-[10px] font-medium text-green-500 ml-1">Accuracy</span></div>
+                  <div className="text-xl font-bold text-[#0F2847]">
+                    {(activeStep.mockup as any)?.confidence > 0 
+                      ? `${(activeStep.mockup as any).confidence}%` 
+                      : (activeStep.mockup?.isRecording ? "Live" : "Optimal")}
+                    <span className="text-[10px] font-medium text-green-500 ml-1">
+                      {(activeStep.mockup as any)?.confidence > 0 ? "Clarity" : "Active"}
+                    </span>
+                  </div>
                 </motion.div>
               </AnimatePresence>
             </div>

@@ -37,6 +37,49 @@
   --foreground: #1C2B3A;
 }
 
+/* 
+  Aggressive scaling to achieve a "zoomed out" look as requested.
+  This makes the whole app feel more dense and professional on laptops.
+*/
+html {
+  font-size: 14.5px; /* Base for mobile - slightly smaller than standard */
+  scroll-behavior: smooth;
+}
+
+/* Tablet range */
+@media (min-width: 768px) {
+  html {
+    font-size: 14px; 
+  }
+}
+
+/* 
+  Small Laptops (13-14 inch) often feel crowded.
+  We scale down to 13px here to "zoom out" the UI.
+*/
+@media (min-width: 1024px) {
+  html {
+    font-size: 13px; 
+  }
+}
+
+/* 
+  Standard Laptops & Desktop (15-24 inch).
+  This is where the user most likely wants the "90% zoom" look.
+*/
+@media (min-width: 1440px) {
+  html {
+    font-size: 13px; 
+  }
+}
+
+/* Ultra-wide screens can handle a bit more size but still stay compact */
+@media (min-width: 1920px) {
+  html {
+    font-size: 14.5px;
+  }
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0F2847;
@@ -49,7 +92,7 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans);
   transition: background-color 0.3s ease, color 0.3s ease;
-  scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 .glass {

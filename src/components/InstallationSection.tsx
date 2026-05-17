@@ -94,7 +94,7 @@ export default function InstallationSection() {
                 <div className="absolute inset-0 bg-gradient-to-br from-teal-500/20 to-blue-600/20 rounded-[2.5rem] blur-xl -z-10" />
                 <div className="relative w-64 h-64 md:w-80 md:h-80">
                   <Image
-                    src="/images/qr-code.png"
+                    src="/images/QR.png"
                     alt="App Download QR Code"
                     fill
                     className="object-contain p-2"

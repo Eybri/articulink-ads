@@ -1,8 +1,8 @@
 "use client";
 
-import React from "react";
-import Image from "next/image";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { QRCodeSVG } from "qrcode.react";
 import { QrCode, Smartphone, CheckCircle2 } from "lucide-react";
 
 const C = {
@@ -14,6 +14,14 @@ const C = {
 };
 
 export default function InstallationSection() {
+  const [downloadUrl, setDownloadUrl] = useState("https://articulink.com/downloads/articulink.apk");
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setDownloadUrl(`${window.location.origin}/downloads/articulink.apk`);
+    }
+  }, []);
+
   const steps = [
     { id: 1, text: "Scan the QR code with your phone camera" },
     { id: 2, text: "Allow installation from unknown sources if prompted" },
@@ -92,12 +100,13 @@ export default function InstallationSection() {
             >
               <div className="relative p-6 bg-white rounded-[2.5rem] shadow-2xl">
                 <div className="absolute inset-0 bg-gradient-to-br from-teal-500/20 to-blue-600/20 rounded-[2.5rem] blur-xl -z-10" />
-                <div className="relative w-64 h-64 md:w-80 md:h-80">
-                  <Image
-                    src="/images/QR.png"
-                    alt="App Download QR Code"
-                    fill
-                    className="object-contain p-2"
+                <div className="relative w-64 h-64 md:w-80 md:h-80 flex items-center justify-center p-2">
+                  <QRCodeSVG
+                    value={downloadUrl}
+                    size={280}
+                    level="H"
+                    includeMargin={true}
+                    style={{ width: "100%", height: "100%" }}
                   />
                 </div>
 

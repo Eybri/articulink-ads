@@ -107,18 +107,12 @@ export default function InstallationSection() {
                 </div>
               </div>
 
-              <div className="mt-12 flex items-center gap-8 opacity-60">
+              <div className="mt-12 flex items-center opacity-60">
                 <div className="flex flex-col items-center gap-2">
                   <div className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center">
                     <CheckCircle2 className="w-5 h-5" style={{ color: C.tealLight }} />
                   </div>
                   <span className="text-[10px] text-white uppercase font-bold tracking-widest">Android APK</span>
-                </div>
-                <div className="flex flex-col items-center gap-2">
-                  <div className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center">
-                    <CheckCircle2 className="w-5 h-5" style={{ color: C.tealLight }} />
-                  </div>
-                  <span className="text-[10px] text-white uppercase font-bold tracking-widest">iOS Support</span>
                 </div>
               </div>
             </motion.div>

@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Sparkles, ArrowRight, Zap, Mic } from "lucide-react";
@@ -63,13 +64,14 @@ export default function Hero() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <button
+              <Link
+                href="#download"
                 style={{ backgroundColor: "#2A8FA0" }}
                 className="hover:opacity-90 text-white px-8 py-4 rounded-2xl font-bold transition-all shadow-xl flex items-center justify-center gap-2 group"
               >
                 Download Now
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </button>
+              </Link>
               <button
                 style={{
                   backgroundColor: "#F5F1EA",

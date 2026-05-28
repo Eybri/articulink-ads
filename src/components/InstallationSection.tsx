@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { QRCodeSVG } from "qrcode.react";
-import { QrCode, Smartphone, CheckCircle2 } from "lucide-react";
+import { QrCode, Smartphone, CheckCircle2, Download } from "lucide-react";
 
 const C = {
   deepNavy: "#0F2847",
@@ -116,7 +116,20 @@ export default function InstallationSection() {
                 </div>
               </div>
 
-              <div className="mt-12 flex items-center opacity-60">
+              <a
+                href={downloadUrl}
+                download="articulink.apk"
+                className="mt-10 px-8 py-3.5 rounded-2xl font-bold transition-all flex items-center gap-2.5 text-white hover:opacity-90 shadow-xl"
+                style={{
+                  background: "linear-gradient(135deg, #2A8FA0 0%, #1A4480 100%)",
+                  border: "1px solid rgba(255,255,255,0.1)",
+                }}
+              >
+                <Download className="w-5 h-5" />
+                Download Articulink
+              </a>
+
+              <div className="mt-8 flex items-center opacity-60">
                 <div className="flex flex-col items-center gap-2">
                   <div className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center">
                     <CheckCircle2 className="w-5 h-5" style={{ color: C.tealLight }} />

@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Handshake, Users, ArrowRight, Brain, Mic } from "lucide-react";
+import { Users, ArrowRight, Brain, Mic } from "lucide-react";
 import { C } from "../constants";
 
 export default function PartnersSection() {
@@ -19,71 +19,7 @@ export default function PartnersSection() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-          {/* Client — Cleft Foundation */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="rounded-[2rem] overflow-hidden shadow-xl"
-            style={{
-              backgroundColor: C.cream,
-              border: `1px solid ${C.sandLight}`,
-              boxShadow: `0 10px 40px ${C.sandMid}50`,
-            }}
-          >
-            <div
-              className="w-full h-[320px] relative overflow-hidden"
-              style={{
-                backgroundColor: C.sandLight,
-                borderBottom: `1px solid ${C.sandMid}50`,
-              }}
-            >
-              <Image
-                src="/images/cleftfoundation.png"
-                alt="Cleft Foundation"
-                fill
-                className="object-cover"
-              />
-            </div>
-
-            <div className="p-8">
-              <div className="flex items-center gap-3 mb-2">
-                <span
-                  className="text-[9px] font-extrabold uppercase tracking-widest px-3 py-1 rounded-md"
-                  style={{ backgroundColor: `${C.teal}12`, color: C.teal }}
-                >
-                  Client Partner
-                </span>
-              </div>
-              <h3 className="text-xl font-bold mb-4" style={{ color: C.textDark }}>
-                Cleft Foundation
-              </h3>
-              <p className="text-sm leading-relaxed mb-6" style={{ color: C.textMid }}>
-                Our validation partner, ensuring Articulink meets the real-world needs
-                of individuals with cleft lip and palate conditions through clinical
-                guidance.
-              </p>
-              <div className="space-y-3">
-                <div className="flex items-center gap-3">
-                  <Handshake className="w-4 h-4" style={{ color: C.teal }} />
-                  <span className="text-xs font-medium" style={{ color: C.textDark }}>
-                    Clinical Validation
-                  </span>
-                </div>
-                <a
-                  href="http://cleft-foundation.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 mt-3 text-xs font-semibold transition-opacity hover:opacity-70"
-                  style={{ color: C.teal }}
-                >
-                  Visit Website
-                  <ArrowRight className="w-4 h-4" />
-                </a>
-              </div>
-            </div>
-          </motion.div>
+        <div className="grid md:grid-cols-2 gap-10 max-w-4xl mx-auto">
 
           {/* Academic Partner — TUP */}
           <motion.div

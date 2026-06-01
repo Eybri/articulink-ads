@@ -219,11 +219,6 @@ export default function FeaturesPage() {
                     desc: "Locate specialized centers for hypernasality, cleft palate, and pediatric speech therapy."
                   },
                   {
-                    icon: Search,
-                    title: "Therapist Registry",
-                    desc: "Access a verified list of specialists vetted for their experience with assistive communication."
-                  },
-                  {
                     icon: Phone,
                     title: "One-Tap Connection",
                     desc: "Bridge the gap between technology and therapy with direct contact options for every facility."

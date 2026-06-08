@@ -91,77 +91,88 @@ export function LivePhraseMode() {
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="relative flex justify-center"
+            className="relative flex justify-center perspective-1000"
           >
-             <div className="w-[320px] bg-white rounded-[2.5rem] shadow-2xl border border-gray-100 p-6 flex flex-col gap-6 relative overflow-hidden">
-                {/* Mockup Status Bar */}
-                <div className="w-full flex justify-between items-center px-2">
-                  <span className="text-xs font-bold text-gray-800">9:41</span>
+             {/* Phone Frame */}
+             <div 
+                className="relative w-[300px] h-[600px] border-[12px] border-[#0F2847] rounded-[3rem] bg-[#FAF8F4] shadow-2xl flex flex-col relative overflow-hidden"
+                style={{ isolation: 'isolate' }}
+             >
+                {/* Phone Status Bar */}
+                <div className="h-8 w-full flex items-center justify-between px-6 pt-4 shrink-0">
+                  <span className="text-[10px] font-bold text-[#0F2847]">9:41</span>
                   <div className="flex gap-1.5">
-                    <div className="w-3 h-3 bg-gray-200 rounded-full" />
-                    <div className="w-1.5 h-1.5 bg-gray-200 rounded-full" />
+                    <div className="w-3 h-3 rounded-full bg-[#0F2847]/20" />
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#0F2847]/20" />
                   </div>
                 </div>
 
-                {/* Mode Toggle UI */}
-                <div className="bg-[#FAF8F4] p-1.5 rounded-full flex relative">
-                  <motion.div 
-                    layout
-                    className="absolute top-1.5 bottom-1.5 w-[calc(50%-6px)] rounded-full shadow-sm"
-                    style={{ backgroundColor: activeMode === "live" ? C.teal : C.royalBlue }}
-                    animate={{ x: activeMode === "live" ? "calc(100% + 12px)" : "0%" }}
-                    transition={{ type: "spring", stiffness: 300, damping: 25 }}
-                  />
-                  <div className="flex-1 text-center py-2 z-10 font-bold text-sm cursor-pointer" style={{ color: activeMode === "phrase" ? "white" : C.textMid }} onClick={() => setActiveMode("phrase")}>Phrase Mode</div>
-                  <div className="flex-1 text-center py-2 z-10 font-bold text-sm cursor-pointer" style={{ color: activeMode === "live" ? "white" : C.textMid }} onClick={() => setActiveMode("live")}>Live Mode</div>
+                <div className="flex-1 p-5 flex flex-col gap-6 mt-4">
+                  {/* Mode Toggle UI */}
+                  <div className="bg-white p-1.5 rounded-full flex relative shadow-sm border border-gray-100">
+                    <motion.div 
+                      layout
+                      className="absolute top-1.5 bottom-1.5 w-[calc(50%-6px)] rounded-full shadow-sm"
+                      style={{ backgroundColor: activeMode === "live" ? C.teal : C.royalBlue }}
+                      animate={{ x: activeMode === "live" ? "calc(100% + 12px)" : "0%" }}
+                      transition={{ type: "spring", stiffness: 300, damping: 25 }}
+                    />
+                    <div className="flex-1 text-center py-2.5 z-10 font-bold text-xs cursor-pointer" style={{ color: activeMode === "phrase" ? "white" : C.textMid }} onClick={() => setActiveMode("phrase")}>Phrase Mode</div>
+                    <div className="flex-1 text-center py-2.5 z-10 font-bold text-xs cursor-pointer" style={{ color: activeMode === "live" ? "white" : C.textMid }} onClick={() => setActiveMode("live")}>Live Mode</div>
+                  </div>
+
+                  {/* Mic Button Area */}
+                  <div className="flex-1 flex flex-col items-center justify-center relative min-h-[160px]">
+                    {activeMode === "live" && (
+                       <motion.div 
+                          initial={{ scale: 0.8, opacity: 0 }}
+                          animate={{ scale: [1, 1.3, 1], opacity: [0.2, 0.05, 0.2] }}
+                          transition={{ duration: 2, repeat: Infinity }}
+                          className="absolute w-40 h-40 rounded-full"
+                          style={{ backgroundColor: C.teal }}
+                       />
+                    )}
+                    <motion.div 
+                      layout
+                      className="w-24 h-24 rounded-full flex items-center justify-center shadow-lg relative z-10 text-white"
+                      style={{ backgroundColor: activeMode === "live" ? C.teal : C.royalBlue }}
+                    >
+                       {activeMode === "live" ? <Radio className="w-10 h-10" /> : <Mic className="w-10 h-10" />}
+                    </motion.div>
+                    <p className="mt-6 font-bold text-sm" style={{ color: activeMode === "live" ? C.teal : C.royalBlue }}>
+                       {activeMode === "live" ? "Listening seamlessly..." : "Tap to record phrase"}
+                    </p>
+                  </div>
+
+                  {/* Transcript Card Mockup */}
+                  <div className="bg-white rounded-2xl border border-gray-100 shadow-md p-4 flex flex-col gap-3 shrink-0 mb-4">
+                     <div className="flex justify-between items-center pb-2 border-b border-gray-50">
+                       <div className="flex items-center gap-2">
+                          <FileText className="w-4 h-4" style={{ color: activeMode === "live" ? C.teal : C.royalBlue }} />
+                          <span className="text-[10px] font-bold text-gray-500 uppercase tracking-wider">
+                             {activeMode === "live" ? "Live Transcript" : "Phrase Transcript"}
+                          </span>
+                       </div>
+                       <div className="px-2 py-0.5 rounded border font-bold text-[9px]" style={{ color: activeMode === "live" ? C.teal : C.royalBlue, borderColor: activeMode === "live" ? `${C.teal}30` : `${C.royalBlue}30`, backgroundColor: activeMode === "live" ? `${C.teal}10` : `${C.royalBlue}10` }}>
+                          98% CLARITY
+                       </div>
+                     </div>
+                     
+                     <p className="text-sm font-medium text-gray-800 leading-relaxed min-h-[50px]">
+                        {activeMode === "live" 
+                          ? "I'd like to order the grilled salmon with a side of roasted vegetables, please." 
+                          : "Could you tell me where the nearest train station is located?"}
+                     </p>
+                     
+                     <div className="w-full mt-3 h-11 rounded-xl flex items-center justify-center gap-2 text-white font-bold text-sm cursor-pointer shadow-sm" style={{ backgroundColor: activeMode === "live" ? C.teal : C.royalBlue }}>
+                        <Play className="w-4 h-4 fill-current" /> Play Clarity Voice
+                     </div>
+                  </div>
                 </div>
 
-                {/* Mic Button Area */}
-                <div className="py-8 flex flex-col items-center justify-center relative">
-                  {activeMode === "live" && (
-                     <motion.div 
-                        initial={{ scale: 0.8, opacity: 0 }}
-                        animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.1, 0.3] }}
-                        transition={{ duration: 2, repeat: Infinity }}
-                        className="absolute w-32 h-32 rounded-full"
-                        style={{ backgroundColor: C.teal }}
-                     />
-                  )}
-                  <motion.div 
-                    layout
-                    className="w-20 h-20 rounded-full flex items-center justify-center shadow-lg relative z-10 text-white"
-                    style={{ backgroundColor: activeMode === "live" ? C.teal : C.royalBlue }}
-                  >
-                     {activeMode === "live" ? <Radio className="w-8 h-8" /> : <Mic className="w-8 h-8" />}
-                  </motion.div>
-                  <p className="mt-4 font-bold text-sm" style={{ color: activeMode === "live" ? C.teal : C.royalBlue }}>
-                     {activeMode === "live" ? "Listening seamlessly..." : "Tap to record phrase"}
-                  </p>
-                </div>
-
-                {/* Transcript Card Mockup */}
-                <div className="bg-white rounded-2xl border border-gray-100 shadow-md p-4 flex flex-col gap-3">
-                   <div className="flex justify-between items-center pb-2 border-b border-gray-50">
-                     <div className="flex items-center gap-2">
-                        <FileText className="w-4 h-4" style={{ color: activeMode === "live" ? C.teal : C.royalBlue }} />
-                        <span className="text-xs font-bold text-gray-600 uppercase tracking-wider">
-                           {activeMode === "live" ? "Live Transcript" : "Phrase Transcript"}
-                        </span>
-                     </div>
-                     <div className="px-2 py-0.5 rounded border font-bold text-[10px]" style={{ color: activeMode === "live" ? C.teal : C.royalBlue, borderColor: activeMode === "live" ? `${C.teal}30` : `${C.royalBlue}30`, backgroundColor: activeMode === "live" ? `${C.teal}10` : `${C.royalBlue}10` }}>
-                        98% CLARITY
-                     </div>
-                   </div>
-                   
-                   <p className="text-sm font-medium text-gray-800 leading-relaxed min-h-[60px]">
-                      {activeMode === "live" 
-                        ? "I'd like to order the grilled salmon with a side of roasted vegetables, please." 
-                        : "Could you tell me where the nearest train station is located?"}
-                   </p>
-                   
-                   <div className="w-full mt-2 h-10 rounded-xl flex items-center justify-center gap-2 text-white font-bold text-sm cursor-pointer transition-transform hover:scale-[0.98]" style={{ backgroundColor: activeMode === "live" ? C.teal : C.royalBlue }}>
-                      <Play className="w-4 h-4 fill-current" /> Play Clarity Voice
-                   </div>
+                {/* Home Indicator */}
+                <div className="h-6 w-full flex justify-center pb-3 bg-white/80 shrink-0 absolute bottom-0">
+                  <div className="w-24 h-1 bg-[#0F2847]/20 rounded-full" />
                 </div>
              </div>
           </motion.div>

@@ -199,10 +199,10 @@ export const teamMembers = [
   },
   {
     name: "Bryan James Batan",
-    role: "Admin Designer & Backend Developer",
+    role: "Dataset Collector",
     badge: "4th Year Student",
     institution: "TUP-Taguig",
-    desc: "Focused on administrative interface design and core backend services.",
+    desc: "Focused on collecting and curating datasets for the AI models.",
     image: "/images/batan.jpg",
     hoverImage: "/images/batan-cartoon.png",
     objectPosition: "top"

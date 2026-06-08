@@ -1,6 +1,7 @@
 import React from "react";
 import Features from "@/components/Features";
 import { HeroSection } from "./components/HeroSection";
+import { LivePhraseMode } from "./components/LivePhraseMode";
 import { WERAnalytics } from "./components/WERAnalytics";
 import { SupportMap } from "./components/SupportMap";
 import { AriyaCompanion } from "./components/AriyaCompanion";
@@ -15,6 +16,9 @@ export default function FeaturesPage() {
 
       {/* Main Features Grid (Summary) */}
       <Features />
+
+      {/* Core Feature: Live and Phrase Mode */}
+      <LivePhraseMode />
 
       {/* Deep Dive 1: WER Analytics */}
       <WERAnalytics />

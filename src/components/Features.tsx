@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Mic2, BarChart3, MapPin, ShieldCheck, Zap, Globe } from "lucide-react";
+import { Mic2, BarChart3, MapPin, Volume2, Zap, Globe } from "lucide-react";
 
 const COLORS = {
   teal: "#2A8FA0",
@@ -21,13 +21,13 @@ const features = [
   {
     icon: Mic2,
     title: "Precision Phrase Capture",
-    description: "Record complete sentences with forensic accuracy. Our AI analyzes every phoneme to ensure your message is transcribed and clarified with zero ambiguity.",
+    description: "Advanced speech analysis captures your words with clarity and precision for more reliable transcription.",
     color: COLORS.teal,
   },
   {
     icon: Zap,
     title: "Live Neural Streaming",
-    description: "Low-latency audio processing for fluid face-to-face interactions. The app listens and transcribes in real-time segments for near-instant feedback.",
+    description: "Low-latency audio processing for fluid face-to-face interactions. The app listens and transcribes in real-time segments for fast, helpful feedback.",
     color: COLORS.tealLight,
   },
   {
@@ -45,13 +45,13 @@ const features = [
   {
     icon: BarChart3,
     title: "WER Analytics Suite",
-    description: "Track your Word Error Rate (WER) progress. Visualize your journey toward 0% error with detailed phonetic breakdowns and historical performance data.",
+    description: "Track your Word Error Rate (WER) progress. Visualize your communication journey with detailed phonetic breakdowns and historical performance data.",
     color: COLORS.tealDark,
   },
   {
-    icon: ShieldCheck,
-    title: "Privacy-First Vault",
-    description: "Built with military-grade encryption and NPC compliance. Your recordings are fully encrypted and stored in a secure, private environment.",
+    icon: Volume2,
+    title: "Customizable Voice Output",
+    description: "Choose from a variety of natural-sounding voices or personalize the tone and pitch to match your unique identity and preferences.",
     color: COLORS.deepNavy,
   },
 ];

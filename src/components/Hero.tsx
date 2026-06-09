@@ -58,9 +58,9 @@ export default function Hero() {
               className="text-xl mb-10 max-w-lg leading-relaxed"
               style={{ color: "#4A5A6A" }}
             >
-              Articulink uses advanced AI to clarify and transcribe speech in real-time. 
-              Designed as an <strong>assistive communication tool</strong> for daily life, 
-              not for clinical diagnosis.
+              Articulink uses advanced AI to enhance speech intelligibility and provide real-time transcription.
+              Designed as an <strong>assistive communication tool</strong> for daily life,
+              specifically for individuals with cleft-related speech differences, not for clinical diagnosis.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
@@ -122,7 +122,7 @@ export default function Hero() {
                     "linear-gradient(to top right, rgba(190,228,236,0.6), rgba(42,143,160,0.3))",
                 }}
               />
-              
+
               {/* Floating Badges */}
               <motion.div
                 animate={{ y: [0, -10, 0] }}
@@ -155,12 +155,12 @@ export default function Hero() {
                   </div>
                 </div>
               </motion.div>
-              
+
               {/* Mobile Device Frame */}
               <div className="relative w-full aspect-[9/19.5] border-[12px] sm:border-[16px] border-[#1C2B3A] rounded-[2.5rem] sm:rounded-[3rem] bg-white shadow-2xl overflow-hidden group flex items-center justify-center">
                 {/* Top Notch */}
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-28 sm:w-32 h-6 sm:h-7 bg-[#1C2B3A] rounded-b-2xl z-20" />
-                
+
                 <div className="relative w-40 h-40 sm:w-48 sm:h-48">
                   <Image
                     src="/images/icon-new.png"

@@ -11,17 +11,17 @@ const scenarios = [
     label: "History & Progress",
     messages: [
       { type: "user", text: "Ariya, can you show me my progress from last week?" },
-      { type: "ariya", text: "Of course! Analyzing your recent sessions... Your average Word Error Rate (WER) has dropped from 8.2% to 5.4%. You're making great progress!" },
-      { type: "user", text: "That's great! Which areas should I focus on next?" },
-      { type: "ariya", text: "Based on your data, your 'Plosive' sounds are much clearer. Let's focus on 'Sibilants' this week. I've prepared some custom drills for you!" }
+      { type: "ariya", text: "Of course! Analyzing your recent sessions... You successfully communicated 42 phrases today. Your interactions are becoming much smoother!" },
+      { type: "user", text: "What should I try next?" },
+      { type: "ariya", text: "Your live transcripts have been very accurate today! If you have important meetings tomorrow, you can pre-save key sentences in Phrase Mode." }
     ]
   },
   {
     id: 1,
     label: "Support & Clarification",
     messages: [
-      { type: "user", text: "Will Articulink heal my speech disorder?" },
-      { type: "ariya", text: "Articulink is an assistive tool powered by Gemini AI, not a medical cure. I'm here to help you communicate more clearly in your daily life." },
+      { type: "user", text: "Is Articulink a speech therapy tool?" },
+      { type: "ariya", text: "Articulink is an assistive communication bridge powered by Gemini AI. I'm not a clinical therapy app, but a companion to help you interact seamlessly and confidently every day." },
       { type: "user", text: "So how exactly does it help me talk better?" },
       { type: "ariya", text: "I provide real-time transcription and phoneme feedback. By seeing your speech converted to text instantly, you can adjust your articulation and build confidence!" }
     ]

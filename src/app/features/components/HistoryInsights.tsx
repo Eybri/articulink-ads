@@ -31,15 +31,15 @@ export function HistoryInsights() {
             </h2>
             <p className="text-lg leading-relaxed mb-8" style={{ color: C.textMid }}>
               Every word you speak is analyzed to give you tailored, actionable feedback. 
-              Ariya monitors your historical records, highlighting improvements in accuracy 
-              and guiding your future practice sessions.
+              Ariya monitors your conversational history, highlighting your successful interactions 
+              and offering personalized encouragement for your daily communication.
             </p>
             
             <div className="space-y-4">
               {[
-                "Track long-term accuracy improvements",
-                "Identify specific phoneme challenges",
-                "Receive AI-driven motivational feedback"
+                "Track successful communication trends",
+                "Review frequently used phrases",
+                "Receive supportive, AI-driven feedback"
               ].map((point, i) => (
                 <div key={i} className="flex items-center gap-3">
                   <div className="w-2 h-2 rounded-full" style={{ backgroundColor: C.teal }} />
@@ -91,7 +91,7 @@ export function HistoryInsights() {
                   style={{ backgroundColor: C.royalBlue }}
                 >
                   <p className="text-base font-semibold leading-relaxed">
-                    &quot;I&apos;ve noticed your clarity on &apos;S&apos; sounds has improved by 15% this week. Keep up the great work! Every word brings you closer to your goal.&quot;
+                    &quot;You successfully used Articulink 15 times today in live conversations. Your confidence is inspiring—keep sharing your voice with the world!&quot;
                   </p>
                 </motion.div>
               </div>

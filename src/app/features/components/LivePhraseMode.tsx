@@ -34,7 +34,7 @@ export function LivePhraseMode() {
             </h2>
             
             <p className="text-lg leading-relaxed mb-10" style={{ color: C.textMid }}>
-              Whether you are in a fast-paced meeting or practicing specific sentences, Articulink adapts to your needs with two powerful listening modes designed for distinct communication scenarios.
+              Whether you are in a fast-paced meeting or preparing essential sentences, Articulink adapts to your needs with two powerful listening modes designed for distinct communication scenarios.
             </p>
             
             <div className="space-y-6">
@@ -78,7 +78,7 @@ export function LivePhraseMode() {
                   <div>
                     <h4 className="font-bold text-xl mb-2" style={{ color: C.textDark }}>Phrase Mode</h4>
                     <p className="text-base leading-relaxed" style={{ color: C.textMid }}>
-                      Record distinct phrases and play them back with perfect clarity. Ideal for ordering at restaurants, saving essential phrases to your vault, and targeted practice.
+                      Record distinct phrases and play them back with perfect clarity. Ideal for preparing important phrases in advance, saving essential requests to your vault, and ensuring you are always understood clearly.
                     </p>
                   </div>
                 </div>

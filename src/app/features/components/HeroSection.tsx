@@ -30,8 +30,8 @@ export function HeroSection() {
           className="text-xl max-w-3xl mx-auto"
           style={{ color: "rgba(200, 216, 238, 0.8)" }}
         >
-          Articulink combines state-of-the-art AI with clinical expertise to provide 
-          a comprehensive toolkit for speech improvement.
+          Articulink uses state-of-the-art AI to bridge communication gaps for individuals 
+          with cleft conditions, empowering clear and confident daily interactions.
         </motion.p>
       </div>
     </section>

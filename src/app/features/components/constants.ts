@@ -6,4 +6,7 @@ export const C = {
   royalBlue: "#1A4480",
   textDark: "#1C2B3A",
   textMid: "#4A5A6A",
+  orbBlue: "#C8D8EE",
+  orbTeal: "#BEE4EC",
+  sandMid: "#DDD6C8",
 };

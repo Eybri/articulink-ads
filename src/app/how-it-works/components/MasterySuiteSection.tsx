@@ -13,7 +13,7 @@ export default function MasterySuiteSection() {
             The Full <span style={{ color: C.teal }}>Articulink Experience</span>
           </h2>
           <p className="text-xl md:text-2xl max-w-3xl mx-auto font-light leading-relaxed text-slate-500">
-            See how our app works to help you speak clearer and connect with others more easily.
+            See how our app works to help you connect with others more easily and communicate with confidence.
           </p>
         </div>
 

@@ -29,7 +29,7 @@ export function WERAnalytics() {
                 />
               </div>
               <p className="mt-8 text-sm text-white/50 text-center italic font-medium">
-                Approaching 0% (Optimal Goal)
+                Enhancing Real-Time Understanding
               </p>
             </div>
           </motion.div>
@@ -45,9 +45,7 @@ export function WERAnalytics() {
               <span style={{ color: C.teal }}>WER Analytics</span>
             </h2>
             <p className="text-lg leading-relaxed mb-8" style={{ color: C.textMid }}>
-              Articulink uses Word Error Rate (WER) to measure transcription accuracy. 
-              In speech recognition, WER is the gold standard—where a score of 0% represents 
-              a perfect match between spoken words and text. 
+              Articulink leverages Word Error Rate (WER) to ensure our AI accurately captures your unique speech patterns. This metric drives our real-time transcription engine, constantly adapting to bridge the gap and deliver perfectly clear text to your listeners.
             </p>
             <div className="space-y-4">
               {[

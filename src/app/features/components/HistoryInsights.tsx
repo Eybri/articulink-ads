@@ -59,8 +59,8 @@ export function HistoryInsights() {
             style={{ isolation: 'isolate' }}
           >
             {/* Feedback Bubble UI */}
-            <div className="flex items-end gap-6 mb-10">
-              <div className="relative w-28 h-28 shrink-0 drop-shadow-md">
+            <div className="flex flex-col sm:flex-row items-center sm:items-end gap-6 mb-10 text-center sm:text-left">
+              <div className="relative w-24 h-24 sm:w-28 sm:h-28 shrink-0 drop-shadow-md">
                 <Image 
                   src="/images/ariya.png" 
                   alt="Ariya" 
@@ -69,19 +69,25 @@ export function HistoryInsights() {
                 />
               </div>
               <div className="flex-1 relative pb-4">
-                {/* Speech Bubble Tail */}
+                {/* Speech Bubble Tail (Desktop) */}
                 <div 
-                  className="absolute left-[-10px] bottom-[30px] w-5 h-5 rounded-sm transform rotate-45"
+                  className="hidden sm:block absolute left-[-10px] bottom-[30px] w-5 h-5 rounded-sm transform rotate-45"
                   style={{ backgroundColor: C.royalBlue }}
                 />
                 
+                {/* Speech Bubble Tail (Mobile) */}
+                <div 
+                  className="sm:hidden absolute top-[-10px] left-[50%] -translate-x-1/2 w-5 h-5 rounded-sm transform rotate-45"
+                  style={{ backgroundColor: C.royalBlue }}
+                />
+
                 {/* Main Message Box */}
                 <motion.div 
                   initial={{ opacity: 0, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.4 }}
-                  className="relative p-5 rounded-2xl rounded-bl-sm shadow-lg text-white"
+                  className="relative p-5 rounded-2xl sm:rounded-bl-sm shadow-lg text-white"
                   style={{ backgroundColor: C.royalBlue }}
                 >
                   <p className="text-base font-semibold leading-relaxed">
@@ -92,7 +98,7 @@ export function HistoryInsights() {
             </div>
 
             {/* Stats Cards */}
-            <div className="grid grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               {/* Accuracy Stat */}
               <motion.div 
                 whileHover={{ y: -4 }}

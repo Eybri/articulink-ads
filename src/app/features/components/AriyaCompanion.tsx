@@ -187,9 +187,9 @@ export function AriyaCompanion() {
   return (
     <section className="py-24" style={{ backgroundColor: "#F5F1EA" }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid md:grid-cols-2 gap-24 items-center">
+        <div className="grid md:grid-cols-2 gap-12 sm:gap-24 items-center">
           {/* Multi-Phone Stack Carousel */}
-          <div className="relative h-[700px] flex items-center justify-center perspective-1000">
+          <div className="relative h-[550px] sm:h-[700px] flex items-center justify-center perspective-1000 scale-[0.8] sm:scale-100 origin-center -ml-8 sm:ml-0 overflow-hidden sm:overflow-visible">
             <PhoneStack />
           </div>
 

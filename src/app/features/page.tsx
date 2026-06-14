@@ -15,11 +15,11 @@ export default function FeaturesPage() {
       {/* Hero Section */}
       <HeroSection />
 
-      {/* Main Features Grid (Summary) */}
-      <Features />
-
       {/* Core Feature: Live and Phrase Mode */}
       <LivePhraseMode />
+
+      {/* Main Features Grid (Summary) */}
+      <Features />
 
       {/* Deep Dive 1: WER Analytics */}
       <WERAnalytics />

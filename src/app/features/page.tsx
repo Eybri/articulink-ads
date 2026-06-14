@@ -5,6 +5,7 @@ import { LivePhraseMode } from "./components/LivePhraseMode";
 import { WERAnalytics } from "./components/WERAnalytics";
 import { SupportMap } from "./components/SupportMap";
 import { AriyaCompanion } from "./components/AriyaCompanion";
+import { HistoryInsights } from "./components/HistoryInsights";
 import { VoiceCustomization } from "./components/VoiceCustomization";
 import { C } from "./components/constants";
 
@@ -14,11 +15,11 @@ export default function FeaturesPage() {
       {/* Hero Section */}
       <HeroSection />
 
-      {/* Main Features Grid (Summary) */}
-      <Features />
-
       {/* Core Feature: Live and Phrase Mode */}
       <LivePhraseMode />
+
+      {/* Main Features Grid (Summary) */}
+      <Features />
 
       {/* Deep Dive 1: WER Analytics */}
       <WERAnalytics />
@@ -29,7 +30,10 @@ export default function FeaturesPage() {
       {/* Deep Dive 3: Ariya AI Companion */}
       <AriyaCompanion />
 
-      {/* Deep Dive 4: Voice Customization */}
+      {/* Deep Dive 4: History Insights */}
+      <HistoryInsights />
+
+      {/* Deep Dive 5: Voice Customization */}
       <VoiceCustomization />
     </main>
   );

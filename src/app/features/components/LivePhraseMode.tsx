@@ -34,7 +34,7 @@ export function LivePhraseMode() {
             </h2>
             
             <p className="text-lg leading-relaxed mb-10" style={{ color: C.textMid }}>
-              Whether you are in a fast-paced meeting or practicing specific sentences, Articulink adapts to your needs with two powerful listening modes designed for distinct communication scenarios.
+              Whether you are in a fast-paced meeting or preparing essential sentences, Articulink adapts to your needs with two powerful listening modes designed for distinct communication scenarios.
             </p>
             
             <div className="space-y-6">
@@ -78,7 +78,7 @@ export function LivePhraseMode() {
                   <div>
                     <h4 className="font-bold text-xl mb-2" style={{ color: C.textDark }}>Phrase Mode</h4>
                     <p className="text-base leading-relaxed" style={{ color: C.textMid }}>
-                      Record distinct phrases and play them back with perfect clarity. Ideal for ordering at restaurants, saving essential phrases to your vault, and targeted practice.
+                      Record distinct phrases and play them back with perfect clarity. Ideal for preparing important phrases in advance, saving essential requests to your vault, and ensuring you are always understood clearly.
                     </p>
                   </div>
                 </div>
@@ -95,11 +95,11 @@ export function LivePhraseMode() {
           >
              {/* Phone Frame */}
              <div 
-                className="relative w-[300px] h-[600px] border-[12px] border-[#0F2847] rounded-[3rem] bg-[#FAF8F4] shadow-2xl flex flex-col relative overflow-hidden"
+                className="relative w-[280px] sm:w-[300px] h-[560px] sm:h-[600px] border-[8px] sm:border-[12px] border-[#0F2847] rounded-[2.5rem] sm:rounded-[3rem] bg-[#FAF8F4] shadow-2xl flex flex-col overflow-hidden shrink-0"
                 style={{ isolation: 'isolate' }}
              >
                 {/* Phone Status Bar */}
-                <div className="h-8 w-full flex items-center justify-between px-6 pt-4 shrink-0">
+                <div className="h-8 w-full flex items-center justify-between px-6 pt-3 sm:pt-4 shrink-0">
                   <span className="text-[10px] font-bold text-[#0F2847]">9:41</span>
                   <div className="flex gap-1.5">
                     <div className="w-3 h-3 rounded-full bg-[#0F2847]/20" />
@@ -112,9 +112,9 @@ export function LivePhraseMode() {
                   <div className="bg-white p-1.5 rounded-full flex relative shadow-sm border border-gray-100">
                     <motion.div 
                       layout
-                      className="absolute top-1.5 bottom-1.5 w-[calc(50%-6px)] rounded-full shadow-sm"
+                      className="absolute top-1.5 bottom-1.5 left-1.5 w-[calc(50%-6px)] rounded-full shadow-sm"
                       style={{ backgroundColor: activeMode === "live" ? C.teal : C.royalBlue }}
-                      animate={{ x: activeMode === "live" ? "calc(100% + 12px)" : "0%" }}
+                      animate={{ x: activeMode === "live" ? "100%" : "0%" }}
                       transition={{ type: "spring", stiffness: 300, damping: 25 }}
                     />
                     <div className="flex-1 text-center py-2.5 z-10 font-bold text-xs cursor-pointer" style={{ color: activeMode === "phrase" ? "white" : C.textMid }} onClick={() => setActiveMode("phrase")}>Phrase Mode</div>

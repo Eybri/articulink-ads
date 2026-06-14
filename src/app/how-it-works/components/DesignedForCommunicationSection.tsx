@@ -12,7 +12,7 @@ export default function DesignedForCommunicationSection() {
             Designed for <span style={{ color: C.teal }}>Communication</span>
           </h2>
           <p className="text-xl md:text-2xl max-w-3xl mx-auto font-light leading-relaxed" style={{ color: C.textMid }}>
-            Articulink isn&apos;t just a tool; it&apos;s a companion in your journey to clearer, more confident communication and meaningful connection.
+            Articulink isn&apos;t just a tool; it&apos;s a companion in your daily life, enabling confident communication and meaningful connection.
           </p>
         </div>
 

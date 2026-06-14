@@ -41,10 +41,10 @@ export default function HeroSection() {
             style={{ fontFamily: "var(--font-playfair), serif" }}
           >
             Simple steps to <br />
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#3DAFC4] via-[#2A8FA0] to-[#FAF8F4] animate-gradient-x">clearer speech</span>
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#3DAFC4] via-[#2A8FA0] to-[#FAF8F4] animate-gradient-x">seamless communication</span>
           </h1>
           <p className="text-xl md:text-2xl max-w-3xl mx-auto font-light leading-relaxed" style={{ color: "rgba(200, 216, 238, 0.7)" }}>
-            Experience the Articulink journey. Switch between precise translations and real-time streaming to master your communication in any environment.
+            Experience the Articulink journey. Switch between precise translations and real-time streaming to master your interactions in any environment.
           </p>
         </motion.div>
       </div>

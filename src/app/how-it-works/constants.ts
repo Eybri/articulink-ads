@@ -109,7 +109,7 @@ export const phraseSteps = [
     icon: Layers,
     title: "Targeted Capture",
     short: "Record Specific Phrases",
-    desc: "Use Phrase Mode for high-precision needs like ordering food or medical consultations. Tap the mic and record a single, complete sentence for maximum accuracy.",
+    desc: "Use Phrase Mode for high-precision needs like important meetings or preparing essential requests. Tap the mic and record a single, complete sentence for maximum accuracy.",
     color: "#1A4480", // Royal Blue
     tech: "Step 01",
     mockup: {
@@ -145,7 +145,7 @@ export const phraseSteps = [
     icon: BarChart3,
     title: "Clarity Scoring",
     short: "Word-Level Feedback",
-    desc: "Instantly see your Word Error Rate (WER). Low-confidence words are highlighted in red or orange, helping you identify exactly where your phonetic clarity can be improved.",
+    desc: "Instantly see your Word Error Rate (WER). Low-confidence words are highlighted in red or orange, helping you identify which phrases the AI might struggle to understand so you can prepare alternatives.",
     color: "#2A8FA0", // Teal
     tech: "Step 03",
     mockup: {
@@ -191,7 +191,7 @@ export const phraseSteps = [
     icon: Cloud,
     title: "Growth Tracking",
     short: "Sync to Dashboard",
-    desc: "Every recorded phrase is automatically synced to your history. Monitor your improvement over time and celebrate your milestones as your clarity percentage grows.",
+    desc: "Every recorded phrase is automatically synced to your history. Monitor your successful interactions over time and celebrate your communication milestones.",
     color: "#0F2847", // Deep Navy
     tech: "Step 05",
     mockup: {
@@ -224,7 +224,7 @@ export const features = [
   },
   {
     title: "Progress Tracking",
-    desc: "Visualize your journey to clearer speech with data-driven insights.",
+    desc: "Visualize your communication success with data-driven insights.",
     icon: BarChart3,
     color: "#1A4480", // Royal Blue
     accent: "#60A5FA"
@@ -234,22 +234,22 @@ export const features = [
 export const masteryFeaturesLeft = [
   {
     icon: Mic2,
-    title: "Voice to Text",
-    desc: "Turn your speech into text instantly. Choose between High Precision for perfect spelling or Real-Time for fast, live conversations.",
+    title: "Live & Phrase Modes",
+    desc: "Two powerful modes to suit your needs: continuous, real-time transcription for active conversations, or targeted phrase recording for high-accuracy requests.",
     color: "#1A4480", // Royal Blue
     accent: "#60A5FA"
   },
   {
     icon: Zap,
-    title: "AI Chat Assistant",
-    desc: "Use our smart chatbot powered by Google Gemini to help you find the right words or translate thoughts between Tagalog and English.",
+    title: "Phrase Vault",
+    desc: "Pin frequently used sentences to your Quick Repeat vault. Play back your clarified voice instantly with a single tap—perfect for common daily interactions.",
     color: "#2A8FA0", // Teal
     accent: "#3DAFC4"
   },
   {
     icon: MapPin,
-    title: "Find a Clinic",
-    desc: "Easily find and contact speech clinics and specialists near you across the Philippines with our built-in interactive map.",
+    title: "Community Map",
+    desc: "Discover local resources and community support through our built-in interactive map, helping you connect with others near you.",
     color: "#FF6B6B", // Coral
     accent: "#FF8E8E"
   }
@@ -258,8 +258,8 @@ export const masteryFeaturesLeft = [
 export const masteryFeaturesRight = [
   {
     icon: BarChart3,
-    title: "Track Progress",
-    desc: "See how much you've improved. Our app automatically records your speech clarity and speed so you can celebrate your milestones.",
+    title: "History Insights",
+    desc: "Review past recordings with detailed clarity scoring. Ariya analyzes your history to provide personalized, encouraging feedback on your communication journey.",
     color: "#FF9F43", // Orange
     accent: "#FFB347"
   },
